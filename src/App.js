@@ -4,6 +4,7 @@ import { BrowserBarcodeReader } from "@zxing/library";
 
 function App() {
   const [selectedDeviceId, setSelectedDeviceId] = useState(null);
+  const [scannedBarcode, setScannedBarcode] = useState("")
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -32,6 +33,7 @@ function App() {
       (result, error) => {
         if (result) {
           console.log(result);
+          setScannedBarcode(result.text)
           document.getElementById("result").textContent = result.getText();
         }
         if (error && error.constructor.name !== "NoVideoInputDevicesError") {
@@ -66,6 +68,7 @@ function App() {
       </button>
       <div id="result"></div>
       <video ref={videoRef} style={{ display: "block" }} autoPlay></video>
+      <p>{scannedBarcode}</p>
     </div>
   );
 }
