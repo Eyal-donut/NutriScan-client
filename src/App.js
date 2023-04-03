@@ -4,7 +4,7 @@ import { BrowserBarcodeReader } from "@zxing/library";
 
 function App() {
   const [selectedDeviceId, setSelectedDeviceId] = useState(null);
-  const [scannedBarcode, setScannedBarcode] = useState("")
+  const [scannedBarcode, setScannedBarcode] = useState("");
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -14,7 +14,16 @@ function App() {
     codeReader
       .getVideoInputDevices()
       .then((videoInputDevices) => {
-        setSelectedDeviceId(videoInputDevices[0].deviceId);
+        // Find the back camera device
+        const backCamera = videoInputDevices.find(
+          (device) =>
+            device.label.includes("back") && device.kind === "videoinput"
+        );
+        if (backCamera) {
+          setSelectedDeviceId(backCamera.deviceId);
+        } else {
+          setSelectedDeviceId(videoInputDevices[0].deviceId);
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -33,7 +42,7 @@ function App() {
       (result, error) => {
         if (result) {
           console.log(result);
-          setScannedBarcode(result.text)
+          setScannedBarcode(result.text);
           document.getElementById("result").textContent = result.getText();
         }
         if (error && error.constructor.name !== "NoVideoInputDevicesError") {
