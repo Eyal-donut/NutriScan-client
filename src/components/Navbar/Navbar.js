@@ -1,8 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import classes from "./Navbar.module.css";
 
 const Navbar = () => {
-
+  const location = useLocation();
+  const pathName = location.pathname;
+  console.log(pathName);
   return (
     <>
       <nav className={classes.nav}>
@@ -11,12 +13,16 @@ const Navbar = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? classes.activeScanner : classes.scanner
+                isActive ? classes.active : undefined
               }
               end
             >
-
-              Scanner
+              <div
+                className={
+                  pathName === "/" ? classes.activeScanner : classes.scanner
+                }
+              />
+              <p>Scanner</p>
             </NavLink>
           </li>
           <li className={classes.li}>
@@ -27,7 +33,14 @@ const Navbar = () => {
               }
               end
             >
-              My Scans
+              <div
+                className={
+                  pathName === "/my-scans"
+                    ? classes.activeMyScans
+                    : classes.myScans
+                }
+              />
+              <p>My Scans</p>
             </NavLink>
           </li>
           <li className={classes.li}>
@@ -38,7 +51,14 @@ const Navbar = () => {
               }
               end
             >
-              Profile
+              <div
+                className={
+                  pathName === "/profile"
+                    ? classes.activeProfile
+                    : classes.profile
+                }
+              />
+              <p>Profile</p>
             </NavLink>
           </li>
           <li className={classes.li}>
@@ -49,7 +69,12 @@ const Navbar = () => {
               }
               end
             >
-              Menu
+              <div
+                className={
+                  pathName === "/menu" ? classes.activeMenu : classes.menu
+                }
+              />
+              <p>Menu</p>
             </NavLink>
           </li>
         </ul>
