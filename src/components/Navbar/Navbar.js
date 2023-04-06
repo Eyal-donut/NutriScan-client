@@ -12,24 +12,24 @@ const Navbar = () => {
           <li className={classes.li}>
             <NavLink
               to="/"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
               end
+              className={({ isActive }) =>
+                isActive ? classes.activeLinkWrap : classes.linkWrap
+              }
             >
               <div
                 className={
                   pathName === "/" ? classes.activeScanner : classes.scanner
                 }
-              />
-              <p>Scanner</p>
+              ></div>
+              Scanner
             </NavLink>
           </li>
           <li className={classes.li}>
             <NavLink
               to="/my-scans"
               className={({ isActive }) =>
-                isActive ? classes.active : undefined
+                isActive ? classes.activeLinkWrap : classes.linkWrap
               }
               end
             >
@@ -40,14 +40,14 @@ const Navbar = () => {
                     : classes.myScans
                 }
               />
-              <p>My Scans</p>
+              My Scans
             </NavLink>
           </li>
           <li className={classes.li}>
             <NavLink
               to="/profile"
               className={({ isActive }) =>
-                isActive ? classes.active : undefined
+                isActive ? classes.activeLinkWrap : classes.linkWrap
               }
               end
             >
@@ -58,14 +58,14 @@ const Navbar = () => {
                     : classes.profile
                 }
               />
-              <p>Profile</p>
+              Profile
             </NavLink>
           </li>
           <li className={classes.li}>
             <NavLink
               to="/menu"
               className={({ isActive }) =>
-                isActive ? classes.active : undefined
+                isActive ? classes.activeLinkWrap : classes.linkWrap
               }
               end
             >
@@ -74,7 +74,7 @@ const Navbar = () => {
                   pathName === "/menu" ? classes.activeMenu : classes.menu
                 }
               />
-              <p>Menu</p>
+              Menu
             </NavLink>
           </li>
         </ul>
