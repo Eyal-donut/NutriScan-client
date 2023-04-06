@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import classes from "./Navbar.module.css";
 
 const Navbar = () => {
+
   return (
     <>
       <nav className={classes.nav}>
@@ -10,10 +11,11 @@ const Navbar = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? classes.active : undefined
+                isActive ? classes.activeScanner : classes.scanner
               }
               end
             >
+
               Scanner
             </NavLink>
           </li>
