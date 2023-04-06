@@ -8,7 +8,7 @@ const Navbar = () => {
         <ul className={classes.ul}>
           <li className={classes.li}>
             <NavLink
-              to="/scanner"
+              to="/"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
