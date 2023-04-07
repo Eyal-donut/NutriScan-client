@@ -1,7 +1,10 @@
 .button {
     width: 10rem;
     height: 3rem;
-    box-shadow: var(--box-shadow);
-    border-radius: 5px;
+    box-shadow: var(--btn-box-shadow);
+    border-radius: 10px;
     color: var(--sec-text-color);
+    margin-top: 1rem;
+    border: none;
+    background: var(--main-theme-color);
 }
