@@ -9,6 +9,8 @@
     --light-blue: #5185E2;
     --main-text-color: #464646;
     --sec-text-color: #FFFFFF;
+    --bgr-nestedWindow: rgb(147,138,138, .9 );
+    --bgr-screenCover: rgB(0,0,0,.62);
 
     --navbar-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     --btn-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
