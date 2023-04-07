@@ -1,0 +1,7 @@
+.button {
+    width: 10rem;
+    height: 3rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+    color: var(--sec-text-color);
+}

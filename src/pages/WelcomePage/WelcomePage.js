@@ -1,8 +1,11 @@
+import constants from '../../constants/constants.js'
+import classes from './WelcomePage.module.css'
 
 const WelcomePage = () => {
   return (
     <>
-      <h1>Welcome Page</h1>
+      <div>LOGO - design sth cool</div>
+      <h1>Welcome to<br/>{constants.APP_NAME}</h1>
     </>
   );
 };
