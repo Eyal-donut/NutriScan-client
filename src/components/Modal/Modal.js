@@ -6,7 +6,7 @@ const Modal = ({ children }) => {
   const { setIsLoginPageDisplay } = useLoginPageDisplayContext();
 
   const clickHandler = (e) => {
-    if (e.target.id === "screen-cover") {
+    if (e.target.id === "screen-cover" || e.target.id === "xBtn") {
       setIsLoginPageDisplay(false);
     }
   };
@@ -17,7 +17,7 @@ const Modal = ({ children }) => {
         onClick={clickHandler}
         id="screen-cover"
       >
-        <NestedWindow>{children}</NestedWindow>
+        <NestedWindow onXClick={clickHandler}>{children}</NestedWindow>
       </div>
     </>
   );
