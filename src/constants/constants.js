@@ -1,6 +1,6 @@
 const constants = {
     APP_NAME : "Products Scanner",
-    EMAIL_REGEX: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    EMAIL_REGEX: /^\w+([-._]\w+)*@\w+([-._]\w+)*\.\w{2,}$/i
 }
 
 export default constants
