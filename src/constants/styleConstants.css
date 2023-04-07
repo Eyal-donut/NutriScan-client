@@ -10,6 +10,7 @@
     --main-text-color: #464646;
     --sec-text-color: #FFFFFF;
     --bgr-nestedWindow: rgb(147,138,138, .9 );
+    --bgr-input: rgb(147,138,138, .18 );
     --bgr-screenCover: rgB(0,0,0,.62);
 
     --navbar-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

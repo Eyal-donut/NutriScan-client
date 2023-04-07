@@ -1,0 +1,43 @@
+.form {
+    margin-top: 10rem;
+}
+
+.label {
+    font-weight: 650;
+}
+
+.input {
+  height: max-content;
+  padding: 0.3rem;
+  width: 16rem;
+  border-radius: 5px;
+  background: rgb(255, 255, 255, 0.7);
+  margin-top: var(--prim-margin-top);
+  border: none;
+  background: var(--bgr-input);
+}
+
+
+.ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+
+}
+
+.button {
+    margin-top: 10rem;
+}
+
+.errorText {
+    position: absolute;
+    top:auto;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    margin-top: var(--prim-margin-top);
+    line-height: 1.8;
+    color: var(--red);
+    width: max-content;
+  }
