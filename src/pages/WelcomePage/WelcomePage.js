@@ -10,14 +10,14 @@ const WelcomePage = () => {
   const { isLoginPageDisplay, setIsLoginPageDisplay } =
     useLoginPageDisplayContext();
 
-  const { setLocalAndLoggedUser } = useLoggedUser();
+  const { setNewUser } = useLoggedUser();
 
   const clickHandler = (e) => {
     if (e.target.id === "login-btn") {
       setIsLoginPageDisplay(true);
     }
     if (e.target.id === "next-btn") {
-      setLocalAndLoggedUser()
+      setNewUser()
       // updateLocalAndLoggedUser(undefined, "allProducts", ["sugar"])
 
     }

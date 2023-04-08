@@ -4,17 +4,26 @@ import { newUser } from "../constants/constants";
 export const useLoggedUser = () => {
   const { loggedUser, setLoggedUser } = useLoggedUserContext();
 
-  const setLocalAndLoggedUser = () => {
+  const setNewUser = () => {
+  
+    localStorage.setItem("loggedUser", JSON.stringify(newUser));
+    setLoggedUser(newUser);
+    return loggedUser;
+  };
+
+  const setExistingUser = (existingUser) => {
+    localStorage.setItem("loggedUser", JSON.stringify(existingUser));
+    setLoggedUser(existingUser);
+    console.log(loggedUser)
+    return loggedUser;
+  };
+
+  const setLoggedUserFromLocal = () => {
     const localLoggedUser = localStorage.getItem("loggedUser");
     if (localLoggedUser) {
       const fetchedFromLocal = JSON.parse(localLoggedUser);
       setLoggedUser(fetchedFromLocal);
-    } else {
-      localStorage.setItem("loggedUser", JSON.stringify(newUser));
-      setLoggedUser(newUser);
     }
-    console.log(loggedUser);
-    return loggedUser;
   };
 
   const updateLocalAndLoggedUser = (section, key, value) => {
@@ -52,8 +61,11 @@ export const useLoggedUser = () => {
     console.log(loggedUser);
     return loggedUser;
   };
+  
   return {
-    setLocalAndLoggedUser,
+    setNewUser,
+    setExistingUser,
     updateLocalAndLoggedUser,
+    setLoggedUserFromLocal,
   };
 };
