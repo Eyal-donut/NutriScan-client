@@ -8,7 +8,6 @@ const LoginPage = () => {
 
   const loginHandler = async (e, email, password) => {
     e.preventDefault();
-    console.log(email, password);
     const data = await loginUser({ email, password });
     if (data.success) {
       console.log(data.token);

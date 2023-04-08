@@ -1,7 +1,7 @@
 import classes from "./LoginForm.module.css";
 import { useEffect, useRef, useState } from "react";
 import Button from "../Button/Button";
-import constants from "../../constants/constants";
+import {constants} from "../../constants/constants";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { useErrorMessageContext } from "../../context/ErrorMessageContext";
 

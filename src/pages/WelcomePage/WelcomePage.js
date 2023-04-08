@@ -1,5 +1,5 @@
 import ContentWrap from "../../components/ContentWrap/ContentWrap.js";
-import constants from "../../constants/constants.js";
+import { constants } from "../../constants/constants.js";
 import Button from "../../components/Button/Button.js";
 import ButtonWrap from "../../components/ButtonWrap/ButtonWrap.js";
 import { useLoginPageDisplayContext } from "../../context/LoginPageDisplayContext.js";
