@@ -6,12 +6,12 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { useErrorMessageContext } from "../../context/ErrorMessageContext";
 
 const LoginForm = ({ loginHandler }) => {
-  const {errorMessage, setErrorMessage} = useErrorMessageContext()
+  const { errorMessage, setErrorMessage } = useErrorMessageContext();
+
   const [isInvalidPassword, setIsInvalidPassword] = useState(false);
   const [isInvalidEmail, setIsInvalidEmail] = useState(false);
   const [isEmptyForm, setIsEmptyForm] = useState(true);
   const [loginError, setLoginError] = useState("");
-  // const [backError, setBackError] = useState(false);
 
   useEffect(() => {
     if (isInvalidEmail && isInvalidPassword) {
@@ -19,28 +19,26 @@ const LoginForm = ({ loginHandler }) => {
         "Invalid Email format. Password must be longer than six characters."
       );
     }
-     if (isInvalidEmail && !isInvalidPassword) {
+    else if (isInvalidEmail && !isInvalidPassword) {
       setLoginError("Invalid Email format.");
     }
-     if ( !isInvalidEmail && isInvalidPassword) {
+    else if (!isInvalidEmail && isInvalidPassword) {
       setLoginError("Password must be longer than six characters.");
     }
-    if (!isInvalidEmail && !isInvalidPassword) {
+    else if (!isInvalidEmail && !isInvalidPassword) {
       setLoginError("");
-    } 
-    if (errorMessage !== ""){
+    }
+    if (errorMessage !== "") {
       setLoginError(errorMessage);
     }
-    
   }, [isInvalidEmail, isInvalidPassword, errorMessage]);
-
 
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
   const inputHandler = (e) => {
     if (isEmptyForm) setIsEmptyForm(false);
-    if(errorMessage !== "") setErrorMessage("")
+    if (errorMessage !== "") setErrorMessage("");
     setTimeout(() => {
       if (e.target.name === "email") {
         if (!constants.EMAIL_REGEX.test(e.target.value)) {
@@ -57,7 +55,6 @@ const LoginForm = ({ loginHandler }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // setBackError(true)
     if (isEmptyForm) {
       setLoginError("Please enter Email and Password");
       return;
