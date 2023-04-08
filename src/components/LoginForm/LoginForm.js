@@ -1,16 +1,46 @@
 import classes from "./LoginForm.module.css";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "../Button/Button";
 import constants from "../../constants/constants";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { useErrorMessageContext } from "../../context/ErrorMessageContext";
 
 const LoginForm = ({ loginHandler }) => {
+  const {errorMessage, setErrorMessage} = useErrorMessageContext()
   const [isInvalidPassword, setIsInvalidPassword] = useState(false);
   const [isInvalidEmail, setIsInvalidEmail] = useState(false);
+  const [isEmptyForm, setIsEmptyForm] = useState(true);
+  const [loginError, setLoginError] = useState("");
+  // const [backError, setBackError] = useState(false);
+
+  useEffect(() => {
+    if (isInvalidEmail && isInvalidPassword) {
+      setLoginError(
+        "Invalid Email format. Password must be longer than six characters."
+      );
+    }
+     if (isInvalidEmail && !isInvalidPassword) {
+      setLoginError("Invalid Email format.");
+    }
+     if ( !isInvalidEmail && isInvalidPassword) {
+      setLoginError("Password must be longer than six characters.");
+    }
+    if (!isInvalidEmail && !isInvalidPassword) {
+      setLoginError("");
+    } 
+    if (errorMessage !== ""){
+      setLoginError(errorMessage);
+    }
+    
+  }, [isInvalidEmail, isInvalidPassword, errorMessage]);
+
 
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
   const inputHandler = (e) => {
+    if (isEmptyForm) setIsEmptyForm(false);
+    if(errorMessage !== "") setErrorMessage("")
     setTimeout(() => {
       if (e.target.name === "email") {
         if (!constants.EMAIL_REGEX.test(e.target.value)) {
@@ -26,6 +56,12 @@ const LoginForm = ({ loginHandler }) => {
   };
 
   const submitHandler = (e) => {
+    e.preventDefault();
+    // setBackError(true)
+    if (isEmptyForm) {
+      setLoginError("Please enter Email and Password");
+      return;
+    }
     loginHandler(e, emailRef.current.value, passwordRef.current.value);
   };
 
@@ -58,21 +94,7 @@ const LoginForm = ({ loginHandler }) => {
           />
         </li>
       </ul>
-      {isInvalidEmail && !isInvalidPassword && (
-        <div className={classes.errorText}>Invalid Email format</div>
-      )}
-      {isInvalidPassword && !isInvalidEmail && (
-        <div className={classes.errorText}>
-          Password must be longer than six characters.
-        </div>
-      )}
-      {isInvalidEmail && isInvalidPassword && (
-        <div className={classes.errorText}>
-          Invalid Email format.
-          <br />
-          Password must be longer than six characters.
-        </div>
-      )}
+      {loginError !== "" && <ErrorMessage textOne={loginError} />}
       <Button
         type="submit"
         text="Login"

@@ -1,0 +1,11 @@
+.error {
+    position: absolute;
+    top:auto;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    margin-top: var(--prim-margin-top);
+    line-height: 1.8;
+    color: var(--red);
+    width: max-content;
+  }
