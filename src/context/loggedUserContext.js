@@ -4,12 +4,15 @@ const LoggedUserContext = createContext();
 
 const LoggedUserProvider = ({ children }) => {
   const [loggedUser, setLoggedUser] = useState({});
+  const [isLoggedUser, setIsLoggedUser] = useState(false);
 
   return (
     <LoggedUserContext.Provider
       value={{
         loggedUser,
         setLoggedUser,
+        isLoggedUser,
+        setIsLoggedUser,
       }}
     >
       {children}

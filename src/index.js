@@ -7,6 +7,7 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import { LoginPageDisplayProvider } from "./context/LoginPageDisplayContext";
 import { ErrorMessageProvider } from "./context/ErrorMessageContext";
 import { LoggedUserProvider } from "./context/loggedUserContext";
+import { SpinnerProvider } from "./context/SpinnerContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,7 +15,9 @@ root.render(
     <LoginPageDisplayProvider>
       <ErrorMessageProvider>
         <LoggedUserProvider>
-          <App />
+          <SpinnerProvider>
+            <App />
+          </SpinnerProvider>
         </LoggedUserProvider>
       </ErrorMessageProvider>
     </LoginPageDisplayProvider>

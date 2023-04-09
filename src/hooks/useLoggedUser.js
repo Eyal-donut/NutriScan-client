@@ -2,7 +2,7 @@ import { useLoggedUserContext } from "../context/loggedUserContext";
 import { newUser } from "../constants/constants";
 
 export const useLoggedUser = () => {
-  const { loggedUser, setLoggedUser } = useLoggedUserContext();
+  const { loggedUser, setLoggedUser, setIsLoggedUser } = useLoggedUserContext();
 
   const setNewUser = () => {
   
@@ -14,6 +14,7 @@ export const useLoggedUser = () => {
   const setExistingUser = (existingUser) => {
     localStorage.setItem("loggedUser", JSON.stringify(existingUser));
     setLoggedUser(existingUser);
+    setIsLoggedUser(true)
     console.log(loggedUser)
     return loggedUser;
   };
@@ -23,6 +24,7 @@ export const useLoggedUser = () => {
     if (localLoggedUser) {
       const fetchedFromLocal = JSON.parse(localLoggedUser);
       setLoggedUser(fetchedFromLocal);
+      setIsLoggedUser(true)
     }
   };
 

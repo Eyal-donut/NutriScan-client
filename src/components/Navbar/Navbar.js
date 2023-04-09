@@ -4,7 +4,6 @@ import classes from "./Navbar.module.css";
 const Navbar = () => {
   const location = useLocation();
   const pathName = location.pathname;
-  console.log(pathName);
   return (
     <>
       <nav className={classes.nav}>
