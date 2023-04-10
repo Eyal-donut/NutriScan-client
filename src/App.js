@@ -5,6 +5,7 @@ import MyScansPage from "./pages/MyScansPage/MyScansPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import MenuPage from "./pages/MenuPage/MenuPage";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
+import ProductPage from "./pages/ProductPage/ProductPage";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useLoggedUserContext } from "./context/loggedUserContext";
@@ -19,6 +20,7 @@ const userRouter = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: "", element: <ScannerPage /> },
+      { path: "product", element: <ProductPage /> },
       { path: "my-scans", element: <MyScansPage /> },
       { path: "profile", element: <ProfilePage /> },
       { path: "menu", element: <MenuPage /> },

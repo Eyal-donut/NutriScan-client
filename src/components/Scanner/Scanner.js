@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { BrowserBarcodeReader } from "@zxing/library";
 import classes from "./Scanner.module.css";
 
-const Scanner = () => {
+const Scanner = ({ onBarcodeScan }) => {
   const [selectedDeviceId, setSelectedDeviceId] = useState(null);
   const [scannedBarcode, setScannedBarcode] = useState("");
   const videoRef = useRef(null);
@@ -58,12 +58,12 @@ const Scanner = () => {
   }, []);
 
   useEffect(() => {
-    //!call use scanned barcode
+    onBarcodeScan(scannedBarcode);
 
     return () => {
-      setScannedBarcode('')
+      setScannedBarcode("");
     };
-  }, [scannedBarcode]);
+  }, [scannedBarcode, onBarcodeScan]);
 
   return (
     <div>
