@@ -25,7 +25,7 @@ export const useLoggedUser = () => {
       const fetchedFromLocal = JSON.parse(localLoggedUser);
       setLoggedUser(fetchedFromLocal);
       setIsLoggedUser(true)
-    }
+    } else setIsLoggedUser(false)
   };
 
   const updateLocalAndLoggedUser = (section, key, value) => {

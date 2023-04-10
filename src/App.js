@@ -44,10 +44,11 @@ const App = () => {
     // eslint-disable-next-line
   }, []);
 
-  return (
+  if (isLoggedUser === null ) return
+  else return (
     <>
-      {isLoggedUser && <RouterProvider router={userRouter} />}
-      {!isLoggedUser && <RouterProvider router={guestRouter} />}
+      {isLoggedUser === true && <RouterProvider router={userRouter} />}
+      {isLoggedUser === false && <RouterProvider router={guestRouter} />}
     </>
   );
 };

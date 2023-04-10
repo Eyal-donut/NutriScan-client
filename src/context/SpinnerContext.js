@@ -3,7 +3,7 @@ import { useState, createContext, useContext } from "react";
 const SpinnerContext = createContext();
 
 const SpinnerProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <SpinnerContext.Provider

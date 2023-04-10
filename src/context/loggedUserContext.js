@@ -4,7 +4,7 @@ const LoggedUserContext = createContext();
 
 const LoggedUserProvider = ({ children }) => {
   const [loggedUser, setLoggedUser] = useState({});
-  const [isLoggedUser, setIsLoggedUser] = useState(false);
+  const [isLoggedUser, setIsLoggedUser] = useState(null);
 
   return (
     <LoggedUserContext.Provider
