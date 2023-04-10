@@ -16,7 +16,7 @@ const Scanner = () => {
         // Find the back camera device
         const backCamera = videoInputDevices.find(
           (device) =>
-            device.label.includes("back") && device.facingMode === "environment"
+            device.label.includes("back") || device.facingMode === "environment"
         );
         if (backCamera) {
           setSelectedDeviceId(backCamera.deviceId);
@@ -79,6 +79,6 @@ const Scanner = () => {
       <p>{scannedBarcode}</p>
     </div>
   );
-}
+};
 
 export default Scanner;
