@@ -14,14 +14,20 @@ const Scanner = () => {
       .getVideoInputDevices()
       .then((videoInputDevices) => {
         // Find the back camera device
-        const backCamera = videoInputDevices.find(
-          (device) =>
-            device.label.includes("back") || device.facingMode === "environment"
+        const backCamera = videoInputDevices.find((device) =>
+          device.label.includes("back")
         );
         if (backCamera) {
           setSelectedDeviceId(backCamera.deviceId);
         } else {
-          setSelectedDeviceId(videoInputDevices[0].deviceId);
+          const backCamera = videoInputDevices.find(
+            (device) => device.facingMode === "environment"
+          );
+          if (backCamera) {
+            setSelectedDeviceId(backCamera.deviceId)
+          } else {
+            setSelectedDeviceId(videoInputDevices[0].deviceId);
+          }
         }
       })
       .catch((err) => {
