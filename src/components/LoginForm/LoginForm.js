@@ -59,7 +59,7 @@ const LoginForm = ({ loginHandler }) => {
       setLoginError("Please enter Email and Password");
       return;
     }
-    loginHandler(e, emailRef.current.value, passwordRef.current.value);
+    loginHandler(e, emailRef.current.value.toLowerCase(), passwordRef.current.value);
   };
 
   return (
