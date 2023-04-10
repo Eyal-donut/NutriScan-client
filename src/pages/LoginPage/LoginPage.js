@@ -1,6 +1,6 @@
 import Modal from "../../components/Modal/Modal";
 import LoginForm from "../../components/LoginForm/LoginForm";
-import { getCurrentUser, loginUser } from "../../api";
+import { getCurrentUser, loginUser } from "../../API/usersApi";
 import { useErrorMessageContext } from "../../context/ErrorMessageContext";
 import { useLoggedUser } from "../../hooks/useLoggedUser";
 // import { useLocalStorage } from "../../hooks/useLocalStorage";

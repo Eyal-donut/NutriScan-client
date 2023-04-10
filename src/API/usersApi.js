@@ -1,7 +1,6 @@
 import axios from "axios";
-import { constants } from "./constants/constants";
+import { constants } from "../constants/constants";
 
-// const authrorisation = `Bearer ${token}`
 
 export const loginUser = async (reqBody) => {
   try {
@@ -9,7 +8,6 @@ export const loginUser = async (reqBody) => {
       method: "post",
       baseURL: `${constants.AUTH_ROUTES_URL}/login`,
       headers: {
-        //     Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       data: reqBody,

@@ -38,7 +38,6 @@ const Scanner = () => {
           videoRef.current,
           (result, error) => {
             if (result) {
-              console.log(result);
               setScannedBarcode(result.text);
             }
             if (
@@ -57,6 +56,14 @@ const Scanner = () => {
     initBarcodeReader();
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    //!call use scanned barcode
+
+    return () => {
+      setScannedBarcode('')
+    };
+  }, [scannedBarcode]);
 
   return (
     <div>
