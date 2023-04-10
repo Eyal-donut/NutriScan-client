@@ -58,26 +58,8 @@ const Scanner = () => {
     // eslint-disable-next-line
   }, []);
 
-  // const handleSourceChange = (event) => {
-  //   setSelectedDeviceId(event.target.value);
-  // };
-
-  // const handleReset = () => {
-  //   document.getElementById("result").textContent = "";
-  //   const codeReader = new BrowserBarcodeReader(10);
-  //   codeReader.reset();
-  //   console.log("Reset.");
-  // };
-
   return (
     <div>
-      {/* <div id="sourceSelectPanel" style={{ display: "block" }}>
-        <select id="sourceSelect" onChange={handleSourceChange}></select>
-      </div>
-      <button id="resetButton" onClick={handleReset}>
-        Reset
-      </button> */}
-      <div id="result"></div>
       <div className={classes.scanTarget}>
         <div className={classes.leftside}></div>
         <div className={classes.rightside}></div>

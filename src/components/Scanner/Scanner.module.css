@@ -12,10 +12,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 15rem;
-    width: 20rem;
+    height: 20rem;
+    width: 28rem;
     position: relative;
-    margin-top: 10rem;
+    margin-top: 15rem;
   }
 .scanTarget:after {
     content: '';
