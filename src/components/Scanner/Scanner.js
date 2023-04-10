@@ -16,7 +16,7 @@ const Scanner = () => {
         // Find the back camera device
         const backCamera = videoInputDevices.find(
           (device) =>
-            device.label.includes("back") && device.kind === "videoinput"
+            device.label.includes("back") && device.facingMode === "environment"
         );
         if (backCamera) {
           setSelectedDeviceId(backCamera.deviceId);
