@@ -71,7 +71,7 @@ const Scanner = () => {
 
   return (
     <div>
-      <div id="sourceSelectPanel" style={{ display: "none" }}>
+      <div id="sourceSelectPanel" style={{ display: "block" }}>
         <select id="sourceSelect" onChange={handleSourceChange}></select>
       </div>
       <button id="startButton" onClick={handleStart}>
