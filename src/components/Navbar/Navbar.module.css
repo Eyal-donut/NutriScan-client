@@ -1,7 +1,7 @@
 .nav {
   width: 100vw;
   height: 65px;
-  background: var(--bgr-nav);
+  background: var(--bgr-main);
   position: absolute;
   bottom: 0;
   right: 50vw;

@@ -1,19 +1,17 @@
 import React, { useEffect, useState, useRef } from "react";
 import { BrowserBarcodeReader } from "@zxing/library";
+import classes from "./Scanner.module.css";
 
 const Scanner = () => {
   const [selectedDeviceId, setSelectedDeviceId] = useState(null);
   const [scannedBarcode, setScannedBarcode] = useState("");
   const videoRef = useRef(null);
 
-  useEffect(() => {
-    const codeReader = new BrowserBarcodeReader();
-    console.log("ZXing code reader initialized");
-
+  const initBarcodeReader = () => {
+    const codeReader = new BrowserBarcodeReader(10);
     codeReader
       .getVideoInputDevices()
       .then((videoInputDevices) => {
-        // Find the back camera device
         const backCamera = videoInputDevices.find((device) =>
           device.label.includes("back")
         );
@@ -24,64 +22,67 @@ const Scanner = () => {
             (device) => device.facingMode === "environment"
           );
           if (backCamera) {
-            setSelectedDeviceId(backCamera.deviceId)
+            setSelectedDeviceId(backCamera.deviceId);
           } else {
             setSelectedDeviceId(videoInputDevices[0].deviceId);
           }
         }
       })
       .catch((err) => {
+        console.error("Error finding a video device");
         console.error(err);
+      })
+      .then(() => {
+        codeReader.decodeFromVideoDevice(
+          selectedDeviceId,
+          videoRef.current,
+          (result, error) => {
+            if (result) {
+              console.log(result);
+              setScannedBarcode(result.text);
+            }
+            if (
+              error &&
+              error.constructor.name !== "NoVideoInputDevicesError" &&
+              error.constructor.name !== "NotFoundException"
+            ) {
+              console.error(error);
+            }
+          }
+        );
       });
+  };
+
+  useEffect(() => {
+    initBarcodeReader();
+    // eslint-disable-next-line
   }, []);
 
-  const handleSourceChange = (event) => {
-    setSelectedDeviceId(event.target.value);
-  };
+  // const handleSourceChange = (event) => {
+  //   setSelectedDeviceId(event.target.value);
+  // };
 
-  const handleStart = () => {
-    const codeReader = new BrowserBarcodeReader();
-    codeReader.decodeFromVideoDevice(
-      selectedDeviceId,
-      videoRef.current,
-      (result, error) => {
-        if (result) {
-          console.log(result);
-          setScannedBarcode(result.text);
-          document.getElementById("result").textContent = result.getText();
-        }
-        if (error && error.constructor.name !== "NoVideoInputDevicesError") {
-          // console.error(error);
-          document.getElementById("result").textContent = error;
-        }
-      }
-    );
-
-    console.log(
-      `Started continuous decode from camera with id ${selectedDeviceId}`
-    );
-  };
-
-  const handleReset = () => {
-    document.getElementById("result").textContent = "";
-    const codeReader = new BrowserBarcodeReader(10);
-    codeReader.reset();
-    console.log("Reset.");
-  };
+  // const handleReset = () => {
+  //   document.getElementById("result").textContent = "";
+  //   const codeReader = new BrowserBarcodeReader(10);
+  //   codeReader.reset();
+  //   console.log("Reset.");
+  // };
 
   return (
     <div>
-      <div id="sourceSelectPanel" style={{ display: "block" }}>
+      {/* <div id="sourceSelectPanel" style={{ display: "block" }}>
         <select id="sourceSelect" onChange={handleSourceChange}></select>
       </div>
-      <button id="startButton" onClick={handleStart}>
-        Start
-      </button>
       <button id="resetButton" onClick={handleReset}>
         Reset
-      </button>
+      </button> */}
       <div id="result"></div>
-      <video ref={videoRef} style={{ display: "block" }} autoPlay></video>
+      <div className={classes.scanTarget}>
+        <div className={classes.leftside}></div>
+        <div className={classes.rightside}></div>
+      </div>
+      <video ref={videoRef} className={classes.scanner} autoPlay></video>
       <p>{scannedBarcode}</p>
     </div>
   );
