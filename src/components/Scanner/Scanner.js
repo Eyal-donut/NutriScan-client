@@ -64,7 +64,7 @@ const Scanner = () => {
 
   const handleReset = () => {
     document.getElementById("result").textContent = "";
-    const codeReader = new BrowserBarcodeReader();
+    const codeReader = new BrowserBarcodeReader(100);
     codeReader.reset();
     console.log("Reset.");
   };
