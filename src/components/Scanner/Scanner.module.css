@@ -1,11 +1,14 @@
 .scanner {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50vw;
+  transform: translateX(-50%);
   z-index: -1;
   height: 100vh;
-  max-height: 140rem;
-  max-width: 860rem;
+  overflow: hidden;
+  /* max-height: 100vh;
+  max-height: 140rem; */
+  /* max-width: 86rem; */
 }
 .scanTarget {
     display: flex;
