@@ -1,0 +1,19 @@
+
+.liked {
+    background: url('../../assets/icons/heartRed.png') no-repeat center center/cover;
+    width: 10px;
+    height: 10px;
+}
+.notLiked {
+    background: url('../../assets/icons/heartGrey.png') no-repeat center center/cover;
+    width: 10px;
+    height: 10px;
+}
+.bgr {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
