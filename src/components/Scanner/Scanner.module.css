@@ -1,21 +1,20 @@
 .scanner {
   position: absolute;
-  top: 0;
-  left: 50vw;
-  transform: translateX(-50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: -1;
+  width: 100vw;
   height: 100vh;
-  overflow: hidden;
-  /* max-height: 100vh;
-  max-height: 140rem; */
-  /* max-width: 86rem; */
+ 
 }
+
 .scanTarget {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 20rem;
-    width: 95vw;
+    width: 90vw;
     max-width: 400px;
     position: relative;
     margin-top: 10rem;

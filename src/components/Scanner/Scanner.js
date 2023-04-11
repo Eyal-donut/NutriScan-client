@@ -82,23 +82,23 @@
 
 import React, { useEffect } from "react";
 import config from "./config.json";
-import Quagga from '@ericblade/quagga2';
+import classes from "./Scanner.module.css";
+import Quagga from "@ericblade/quagga2";
 
-const Scanner = ({onDetectedBarcode}) => {
-
+const Scanner = ({ onDetectedBarcode }) => {
   useEffect(() => {
-    Quagga.init(config, err => {
+    Quagga.init(config, (err) => {
       if (err) {
         console.log(err, "error msg");
       }
       Quagga.start();
       return () => {
-        Quagga.stop()
-      }
+        Quagga.stop();
+      };
     });
 
     //detecting boxes on stream
-    Quagga.onProcessed(result => {
+    Quagga.onProcessed((result) => {
       var drawingCtx = Quagga.canvas.ctx.overlay,
         drawingCanvas = Quagga.canvas.dom.overlay;
 
@@ -111,13 +111,13 @@ const Scanner = ({onDetectedBarcode}) => {
             Number(drawingCanvas.getAttribute("height"))
           );
           result.boxes
-            .filter(function(box) {
+            .filter(function (box) {
               return box !== result.box;
             })
-            .forEach(function(box) {
+            .forEach(function (box) {
               Quagga.ImageDebug.drawPath(box, { x: 0, y: 1 }, drawingCtx, {
                 color: "green",
-                lineWidth: 2
+                lineWidth: 2,
               });
             });
         }
@@ -125,7 +125,7 @@ const Scanner = ({onDetectedBarcode}) => {
         if (result.box) {
           Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, {
             color: "#00F",
-            lineWidth: 2
+            lineWidth: 2,
           });
         }
       }
@@ -136,8 +136,8 @@ const Scanner = ({onDetectedBarcode}) => {
   }, []);
 
   const detected = (result) => {
-    console.log(result.codeResult.code)
-    console.log(typeof result.codeResult.code)
+    console.log(result.codeResult.code);
+    console.log(typeof result.codeResult.code);
     onDetectedBarcode(result.codeResult.code);
   };
 
@@ -145,7 +145,13 @@ const Scanner = ({onDetectedBarcode}) => {
     // If you do not specify a target,
     // QuaggaJS would look for an element that matches
     // the CSS selector #interactive.viewport
-    <div id="interactive" className="viewport" />
+    <>
+      <div id="interactive" className={`viewport ${classes.scanner}`} />
+      <div className={classes.scanTarget}>
+        <div className={classes.leftside}></div>
+        <div className={classes.rightside}></div>
+      </div>
+    </>
   );
 };
 

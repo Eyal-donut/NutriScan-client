@@ -7,7 +7,8 @@
   text-align: center;
 }
 
-body, html *{
+body,
+html * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -41,10 +42,49 @@ p {
   margin-top: var(--prim-margin-top);
 }
 
-ul{
+ul {
   list-style: none;
 }
 
-input:focus{
-  outline: none
+input:focus {
+  outline: none;
+}
+
+/* canvas.drawingBuffer {
+  position: absolute;
+  top: 0;
+  left: 50vw;
+  transform: translateX(-50%);
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+} */
+canvas.drawingBuffer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20rem;
+  width: 90vw;
+  max-width: 400px;
+  position: relative;
+  margin-top: 10rem;
+}
+
+/* video {
+  position: absolute;
+  top: 0;
+  left: 50vw;
+  transform: translateX(-50%);
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+} */
+
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
