@@ -60,10 +60,10 @@ input:focus {
   height: 100%;
 } */
 canvas.drawingBuffer {
-    height: 20rem;
+    height: 25rem;
     width: 90vw;
     max-width: 400px;
-    margin-top: 15.5rem;
+    margin-top: 16rem;
 }
 
 /* video {
