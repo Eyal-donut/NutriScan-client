@@ -86,7 +86,7 @@ import classes from "./Scanner.module.css";
 import Quagga from "@ericblade/quagga2";
 
 const Scanner = ({ onDetectedBarcode }) => {
-  const [result, setResult] = useState("")
+  const [result, setResult] = useState("");
 
   useEffect(() => {
     Quagga.init(config, (err) => {
@@ -140,7 +140,7 @@ const Scanner = ({ onDetectedBarcode }) => {
   const detected = (result) => {
     console.log(result.codeResult.code);
     console.log(typeof result.codeResult.code);
-    setResult(result.codeResult.code)
+    setResult(result.codeResult.code);
     onDetectedBarcode(result.codeResult.code);
   };
 
@@ -148,6 +148,7 @@ const Scanner = ({ onDetectedBarcode }) => {
     <>
       <div id="interactive" className={`viewport ${classes.scanner}`} />
       <div className={classes.scanTarget}>
+        <div className={classes.scanLogo} />
         <div className={classes.leftside}></div>
         <div className={classes.rightside}></div>
       </div>
