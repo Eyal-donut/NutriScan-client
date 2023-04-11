@@ -151,7 +151,7 @@ const Scanner = ({ onDetectedBarcode }) => {
         <div className={classes.leftside}></div>
         <div className={classes.rightside}></div>
       </div>
-      <div>{result}</div>
+      <div>result: {result}</div>
     </>
   );
 };
