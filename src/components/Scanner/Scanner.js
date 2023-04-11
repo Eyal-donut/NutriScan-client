@@ -84,8 +84,7 @@ import React, { useEffect } from "react";
 import config from "./config.json";
 import Quagga from '@ericblade/quagga2';
 
-const Scanner = props => {
-  const { onDetected } = props;
+const Scanner = ({onDetectedBarcode}) => {
 
   useEffect(() => {
     Quagga.init(config, err => {
@@ -129,15 +128,6 @@ const Scanner = props => {
             lineWidth: 2
           });
         }
-
-        if (result.codeResult && result.codeResult.code) {
-          Quagga.ImageDebug.drawPath(
-            result.line,
-            { x: "x", y: "y" },
-            drawingCtx,
-            { color: "red", lineWidth: 3 }
-          );
-        }
       }
     });
 
@@ -145,8 +135,10 @@ const Scanner = props => {
     // eslint-disable-next-line
   }, []);
 
-  const detected = result => {
-    onDetected(result.codeResult.code);
+  const detected = (result) => {
+    console.log(result.codeResult.code)
+    console.log(typeof result.codeResult.code)
+    onDetectedBarcode(result.codeResult.code);
   };
 
   return (
