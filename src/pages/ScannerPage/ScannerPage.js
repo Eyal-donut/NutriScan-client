@@ -8,7 +8,7 @@ const ScannerPage = () => {
   return (
     <>
       <h1>Scanner Page</h1>
-      <Scanner onBarcodeScan={handleScan} />
+      <Scanner onDetectedBarcode={handleScan} />
     </>
   );
 };
