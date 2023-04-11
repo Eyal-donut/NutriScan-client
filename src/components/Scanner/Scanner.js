@@ -65,6 +65,7 @@ const Scanner = ({ onDetectedBarcode }) => {
     <>
       <div id="interactive" className={`viewport ${classes.scanner}`} />
       <div className={classes.scanTarget}>
+      
         <div className={classes.scanLogo} />
         <div className={classes.leftside}></div>
         <div className={classes.rightside}></div>
