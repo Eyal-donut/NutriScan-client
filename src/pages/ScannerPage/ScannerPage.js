@@ -1,8 +1,8 @@
 import Scanner from "../../components/Scanner/Scanner";
-import { useBarcode } from "../../hooks/useBarcode";
+// import { useBarcode } from "../../hooks/useBarcode";
 
 const ScannerPage = () => {
-  const {getProductAndSetCurrent} = useBarcode()
+  // const {getProductAndSetCurrent} = useBarcode()
 
 
 
