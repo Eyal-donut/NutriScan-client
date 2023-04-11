@@ -56,6 +56,7 @@ const Scanner = ({ onDetectedBarcode }) => {
   }, []);
 
   const detected = (result) => {
+    Quagga.stop()
     setResult(result.codeResult.code);
     onDetectedBarcode(result.codeResult.code);
   };

@@ -39,12 +39,10 @@ const getFromOpenFoodFacts = async (barcode) => {
 export const getProduct = async (barcode) => {
   const dataFromMongo = await getFromMongo(barcode);
   if (dataFromMongo) {
-    console.log(dataFromMongo);
     return dataFromMongo;
   }
   const dataFromOpenFoodApi = await getFromOpenFoodFacts(barcode);
   if (dataFromOpenFoodApi) {
-    console.log(dataFromOpenFoodApi);
     return dataFromOpenFoodApi;
   }
   throw new Error("Product not found");

@@ -1,10 +1,14 @@
 import Scanner from "../../components/Scanner/Scanner";
-import {getProduct} from '../../API/productsApi'
+import { useBarcode } from "../../hooks/useBarcode";
 
 const ScannerPage = () => {
+  const {getProductAndSetCurrent} = useBarcode()
+
+
+
   const handleDetected = (barcode) => {
     console.log(barcode);
-    getProduct(barcode)
+    // getProductAndSetCurrent(barcode)
   };
   return (
     <>
