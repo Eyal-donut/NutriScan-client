@@ -8,6 +8,7 @@ import { LoginPageDisplayProvider } from "./context/LoginPageDisplayContext";
 import { ErrorMessageProvider } from "./context/ErrorMessageContext";
 import { LoggedUserProvider } from "./context/loggedUserContext";
 import { SpinnerProvider } from "./context/SpinnerContext";
+import { ProductProvider } from "./context/ProductContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,7 +17,9 @@ root.render(
       <ErrorMessageProvider>
         <LoggedUserProvider>
           <SpinnerProvider>
-            <App />
+            <ProductProvider>
+              <App />
+            </ProductProvider>
           </SpinnerProvider>
         </LoggedUserProvider>
       </ErrorMessageProvider>
