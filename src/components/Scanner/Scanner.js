@@ -80,12 +80,14 @@
 
 // export default Scanner;
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import config from "./config.json";
 import classes from "./Scanner.module.css";
 import Quagga from "@ericblade/quagga2";
 
 const Scanner = ({ onDetectedBarcode }) => {
+  const [result, setResult] = useState("")
+
   useEffect(() => {
     Quagga.init(config, (err) => {
       if (err) {
@@ -138,6 +140,7 @@ const Scanner = ({ onDetectedBarcode }) => {
   const detected = (result) => {
     console.log(result.codeResult.code);
     console.log(typeof result.codeResult.code);
+    setResult(result.codeResult.code)
     onDetectedBarcode(result.codeResult.code);
   };
 
@@ -148,6 +151,7 @@ const Scanner = ({ onDetectedBarcode }) => {
         <div className={classes.leftside}></div>
         <div className={classes.rightside}></div>
       </div>
+      <div>{result}</div>
     </>
   );
 };
