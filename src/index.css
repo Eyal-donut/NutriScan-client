@@ -60,14 +60,10 @@ input:focus {
   height: 100%;
 } */
 canvas.drawingBuffer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 20rem;
-  width: 90vw;
-  max-width: 400px;
-  position: relative;
-  margin-top: 10rem;
+    height: 20rem;
+    width: 90vw;
+    max-width: 400px;
+    margin-top: 15.5rem;
 }
 
 /* video {
