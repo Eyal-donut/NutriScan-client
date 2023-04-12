@@ -4,9 +4,10 @@ import { useEffect } from "react";
 import ProductCardMain from "../../components/ProductCardMain/ProductCardMain";
 import { useProductContext } from "../../context/ProductContext";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import IsMatchBar from "../../components/IsMatchBar/IsMatchBar";
 
 const ProductPage = () => {
-  const { setCurrentProduct, currentProduct } = useProductContext();
+  const { setCurrentProduct } = useProductContext();
   const { getLocalStorageItem } = useLocalStorage();
 
   useEffect(() => {
@@ -19,6 +20,7 @@ const ProductPage = () => {
   return (
     <>
       <h1>Product Page</h1>
+      <IsMatchBar/>
       <ProductCardMain />
     </>
   );

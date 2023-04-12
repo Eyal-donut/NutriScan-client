@@ -14,11 +14,10 @@ const ProductCardMain = () => {
       //click will change in current product the isLiked prop
     }
   };
-  
 
   return (
     <>
-    <h2>Product name: {currentProduct.name}</h2>
+      <h2>{currentProduct.name}</h2>
       <ProductImage imageUrl={currentProduct.imageUrl} />
       <LikeButton onBtnClick={clickHandler} isLiked={isLiked} />
     </>
