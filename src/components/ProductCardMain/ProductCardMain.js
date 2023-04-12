@@ -1,7 +1,7 @@
-import classes from "./ProductCardMain.module.css";
+// import classes from "./ProductCardMain.module.css";
 
 import { useState } from "react";
-import LikeButton from "../ModifiableButton/LikeButton";
+import LikeButton from "../LikeButton/LikeButton";
 import ProductImage from "../ProductImage/ProductImage";
 import { useProductContext } from "../../context/ProductContext";
 

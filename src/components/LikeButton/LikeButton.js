@@ -1,3 +1,5 @@
+import classes from "./LikeButton.module.css"
+
 const LikeButton = ({ onBtnClick, isLiked }) => {
   return (
     <button className={classes.bgr} onClick={onBtnClick}>
