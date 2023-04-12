@@ -14,6 +14,7 @@ const ProductCardMain = () => {
       //click will change in current product the isLiked prop
     }
   };
+  
 
   return (
     <>
