@@ -5,7 +5,7 @@ const getFromMongo = async (barcode) => {
   try {
     const response = await axios.get(`${constants.PRODUCTS_ROUTES_URL}/${barcode}`);
     const data = await response.data;
-    return data;
+    return data.data;
   } catch (error) {
     if (error.response.status === 404) {
       console.log(`Product not found in ${constants.APP_NAME} API.`);
