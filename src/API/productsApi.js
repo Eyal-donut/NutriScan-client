@@ -1,13 +1,9 @@
 import { constants } from "../constants/constants";
 import axios from "axios";
 
-
 const getFromMongo = async (barcode) => {
   try {
-    const response = await axios.request({
-      method: "get",
-      baseURL: `${constants.PRODUCTS_ROUTES_URL}/${barcode}`,
-    });
+    const response = await axios.get(`${constants.PRODUCTS_ROUTES_URL}/${barcode}`);
     const data = await response.data;
     return data;
   } catch (error) {
@@ -25,7 +21,6 @@ const getFromOpenFoodFacts = async (barcode) => {
       `${constants.OPEN_FOOD_FACTS_URL}/${barcode}`
     );
     const data = response.data;
-    console.log(data);
     return data;
   } catch (error) {
     if (error.response.status === 404) {
