@@ -1,9 +1,9 @@
-import { constants } from "../constants/constants";
+import { links, constants } from "../constants/constants";
 import axios from "axios";
 
 const getFromMongo = async (barcode) => {
   try {
-    const response = await axios.get(`${constants.PRODUCTS_ROUTES_URL}/${barcode}`);
+    const response = await axios.get(`${links.PRODUCTS_ROUTES_URL}/${barcode}`);
     const data = await response.data;
     return data.data;
   } catch (error) {
@@ -18,7 +18,7 @@ const getFromMongo = async (barcode) => {
 const getFromOpenFoodFacts = async (barcode) => {
   try {
     const response = await axios.get(
-      `${constants.OPEN_FOOD_FACTS_URL}/${barcode}`
+      `${links.OPEN_FOOD_FACTS_URL}/${barcode}`
     );
     const data = response.data;
     return data;
