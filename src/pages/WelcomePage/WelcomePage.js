@@ -28,7 +28,7 @@ const WelcomePage = () => {
       {isLoginPageDisplay && <LoginPage />}
 
       <div>LOGO - design sth cool</div>
-      <ContentWrap>
+      <ContentWrap width="75%">
         <h1>
           Welcome to
           <br />

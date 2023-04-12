@@ -1,7 +1,11 @@
-import classes from './ContentWrap.module.css'
+import classes from "./ContentWrap.module.css";
 
-const ContentWrap = ({children}) => {
-    return <div className={classes.contentWrap}>{children}</div>
-}
+const ContentWrap = ({ children, width }) => {
+  return (
+    <div className={classes.contentWrap} style={{ width: `${width}` }}>
+      {children}
+    </div>
+  );
+};
 
-export default ContentWrap
+export default ContentWrap;

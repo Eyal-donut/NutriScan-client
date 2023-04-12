@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import config from "./config.json";
 import classes from "./Scanner.module.css";
 import Quagga from "@ericblade/quagga2";
+import { useCameraContext } from "../../context/CameraContext";
 
 const Scanner = ({ onDetectedBarcode }) => {
   const [result, setResult] = useState("");
+  const {setIsCameraOn} = useCameraContext()
 
   useEffect(() => {
     Quagga.init(config, (err) => {
@@ -12,12 +14,14 @@ const Scanner = ({ onDetectedBarcode }) => {
         console.log(err, "Error while initiating Quagga barcode scanner");
       }
       Quagga.start();
+      setIsCameraOn(true)
     });
 
     Quagga.onDetected(detected);
 
     return () => {
       Quagga.stop();
+      
     };
     // eslint-disable-next-line
   }, []);

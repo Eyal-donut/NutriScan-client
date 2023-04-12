@@ -1,0 +1,40 @@
+.wrap{
+    margin-top: var(--prim-margin-top);
+    width: 100%;
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.wrap * {
+    text-align: left;
+}
+
+.li {
+    font-weight: 550;
+    text-align: left;
+    width: 100%;
+}
+
+.nameAndLikeBtn {
+    width: 100%;
+    max-width: 40rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.productDetails{
+    width: 100%;
+    max-width: 40rem;
+    margin-top: 1rem;
+    list-style-type: disc;
+}
+
+.h3 {
+    margin-right: 1rem;
+    max-width: 85%;
+}

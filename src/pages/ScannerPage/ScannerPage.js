@@ -9,6 +9,7 @@ const ScannerPage = () => {
   const handleDetected = (barcode) => {
     getProductAndSetCurrent(barcode)
     navigate("/product")
+    
   };
 
   return (

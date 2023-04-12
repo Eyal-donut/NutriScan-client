@@ -9,6 +9,7 @@ import { ErrorMessageProvider } from "./context/ErrorMessageContext";
 import { LoggedUserProvider } from "./context/loggedUserContext";
 import { SpinnerProvider } from "./context/SpinnerContext";
 import { ProductProvider } from "./context/ProductContext";
+import { CameraProvider } from "./context/CameraContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,7 +19,9 @@ root.render(
         <LoggedUserProvider>
           <SpinnerProvider>
             <ProductProvider>
-              <App />
+              <CameraProvider>
+                <App />
+              </CameraProvider>
             </ProductProvider>
           </SpinnerProvider>
         </LoggedUserProvider>

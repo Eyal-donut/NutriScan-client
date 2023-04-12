@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
 import classes from "./ErrorPage.module.css";
+import { useEffect } from "react";
+import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh ";
 
 const ErrorPage = () => {
+  const { checkCameraAndRefresh } = useCheckCameraAndRefresh();
+
+  useEffect(() => {
+    checkCameraAndRefresh();
+
+    // eslint-disable-next-line
+  }, []);
+  
   return (
     <>
       <main>
