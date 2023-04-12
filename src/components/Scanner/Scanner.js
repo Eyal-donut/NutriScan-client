@@ -7,13 +7,17 @@ const Scanner = ({ onDetectedBarcode }) => {
   const [result, setResult] = useState("");
 
   useEffect(() => {
+    console.log("useEffect called");
     Quagga.init(config, (err) => {
       if (err) {
         console.log(err, "error msg");
       }
       Quagga.start();
       return () => {
+        Quagga.offProcessed();
+        Quagga.offDetected();
         Quagga.stop();
+        console.log("unmounted");
       };
     });
 
@@ -42,12 +46,12 @@ const Scanner = ({ onDetectedBarcode }) => {
             });
         }
 
-        if (result.box) {
-          Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, {
-            color: "#00F",
-            lineWidth: 2,
-          });
-        }
+        // if (result.box) {
+        //   Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, {
+        //     color: "#00F",
+        //     lineWidth: 2,
+        //   });
+        // }
       }
     });
 
@@ -56,7 +60,9 @@ const Scanner = ({ onDetectedBarcode }) => {
   }, []);
 
   const detected = (result) => {
-    Quagga.stop()
+    Quagga.offProcessed();
+    Quagga.offDetected();
+    Quagga.stop();
     setResult(result.codeResult.code);
     onDetectedBarcode(result.codeResult.code);
   };
@@ -65,7 +71,6 @@ const Scanner = ({ onDetectedBarcode }) => {
     <>
       <div id="interactive" className={`viewport ${classes.scanner}`} />
       <div className={classes.scanTarget}>
-      
         <div className={classes.scanLogo} />
         <div className={classes.leftside}></div>
         <div className={classes.rightside}></div>

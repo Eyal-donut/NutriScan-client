@@ -9,13 +9,16 @@ const ProductCardMain = () => {
   const { currentProduct } = useProductContext();
   const [isLiked, setIsLiked] = useState(currentProduct.isLiked);
 
-  const clickHandler = () => {
-    //click will change in current product the isLiked prop
+  const clickHandler = (e) => {
+    if (e.target.className.includes("LikeButton")) {
+      //click will change in current product the isLiked prop
+    }
   };
 
   return (
     <>
-      <ProductImage imageUrl={currentProduct.imageUrl}/>
+    <h2>Product name: {currentProduct.name}</h2>
+      <ProductImage imageUrl={currentProduct.imageUrl} />
       <LikeButton onBtnClick={clickHandler} isLiked={isLiked} />
     </>
   );
