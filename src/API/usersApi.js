@@ -1,12 +1,12 @@
 import axios from "axios";
-import { constants } from "../constants/constants";
+import { links } from "../constants/constants";
 
 
 export const loginUser = async (reqBody) => {
   try {
     const response = await axios.request({
       method: "post",
-      baseURL: `${constants.AUTH_ROUTES_URL}/login`,
+      baseURL: `${links.AUTH_ROUTES_URL}/login`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -23,7 +23,7 @@ export const getCurrentUser = async (token) => {
   try {
     const response = await axios.request({
       method: "get",
-      baseURL: `${constants.AUTH_ROUTES_URL}/current-user`,
+      baseURL: `${links.AUTH_ROUTES_URL}/current-user`,
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
