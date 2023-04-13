@@ -4,10 +4,9 @@ import { useProductContext } from "../context/ProductContext";
 import { constants } from "../constants/constants";
 
 export const useBarcodeAndProduct = () => {
-  
   const { setCurrentProduct, setProductSource, setIsProductFound } =
     useProductContext();
-  const { setLocalStorageItem, getLocalStorageItem } = useLocalStorage();
+  const { setLocalStorageItem, getLocalStorageItem, getItemProperty } = useLocalStorage();
 
   const setProductStates = (product) => {
     setProductSource(product.source);
@@ -17,30 +16,46 @@ export const useBarcodeAndProduct = () => {
     } else setIsProductFound(true);
   };
 
-  const getFromUserProducts = () => {
-    const user = getLocalStorageItem("loggedUser")
-    const productsArray = user.productsArray
-  }
+  const getFromLocalUserProducts = (barcode) => {
+    const products = getItemProperty("loggedUser", "products");
+    console.log(products)
+    const product = products.find((prod) => {
+      return prod.code === barcode 
+    });
+    if (product) {
+      return product;
+    }
+  };
 
   const getProductAndSetCurrent = async (barcode) => {
-    const product = await getProduct(barcode);
-    setLocalStorageItem("currentProduct", await product);
-    setProductStates(await product);
+    let result
+    const product = getFromLocalUserProducts(barcode);
+    if (product) {
+      result = product
+    } else {
+      result = await getProduct(barcode);
+    }
+    setLocalStorageItem("currentProduct", result);
+    setProductStates(result);
   };
 
   const getProductFromLocalAndSetStates = () => {
     const product = getLocalStorageItem("currentProduct");
-    setProductStates(product)
+    setProductStates(product);
   };
 
   const updateProduct = (key) => {
-    const product = getLocalStorageItem("currentProduct")
-    if(key === "isLiked"){
-      product.isLiked = !product.isLiked
+    const product = getLocalStorageItem("currentProduct");
+    if (key === "isLiked") {
+      product.isLiked = !product.isLiked;
     }
-    setLocalStorageItem("currentProduct", product)
-    setCurrentProduct(product)
-  }
+    setLocalStorageItem("currentProduct", product);
+    setCurrentProduct(product);
+  };
 
-  return { getProductAndSetCurrent, getProductFromLocalAndSetStates, updateProduct };
+  return {
+    getProductAndSetCurrent,
+    getProductFromLocalAndSetStates,
+    updateProduct,
+  };
 };

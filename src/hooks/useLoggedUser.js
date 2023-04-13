@@ -16,7 +16,6 @@ export const useLoggedUser = () => {
     setLocalStorageItem("loggedUser", existingUser);
     setLoggedUser(existingUser);
     setIsLoggedUser(true);
-    console.log(loggedUser);
     return loggedUser;
   };
 
@@ -32,7 +31,7 @@ export const useLoggedUser = () => {
   const updateLocalAndLoggedUser = (section, key, value) => {
     let updatedUser = {};
 
-    if (section) {
+    if (section !== undefined) {
       updatedUser = {
         ...loggedUser,
         [section]: {
@@ -40,25 +39,43 @@ export const useLoggedUser = () => {
           [key]: value,
         },
       };
-    } else if (key === "singleProduct") {
-      updatedUser = {
-        ...loggedUser,
-        products: [...loggedUser.products, value],
-      };
-    } else if (key === "allProducts") {
+      setLoggedUser(updatedUser);
+      setLocalStorageItem("loggedUser", updatedUser);
+      return;
+    }
+    if (key === "singleProduct") {
+      const existingProduct = loggedUser.products.find(
+        (prod) => prod.code === value.code
+      );
+      if (!existingProduct) {
+        console.log(loggedUser, "loggedUser");
+        updatedUser = {
+          ...loggedUser,
+          products: [...loggedUser.products, value],
+        };
+        setLoggedUser(updatedUser);
+        setLocalStorageItem("loggedUser", updatedUser);
+        return;
+      }
+    }
+    if (key === "allProducts") {
       updatedUser = {
         ...loggedUser,
         products: value,
       };
-    } else if (key) {
+      setLoggedUser(updatedUser);
+      setLocalStorageItem("loggedUser", updatedUser);
+      return;
+    }
+    if (key) {
       updatedUser = {
         ...loggedUser,
         [key]: value,
       };
+      setLoggedUser(updatedUser);
+      setLocalStorageItem("loggedUser", updatedUser);
+      return;
     }
-    setLoggedUser(updatedUser);
-    setLocalStorageItem("loggedUser", updatedUser);
-    return loggedUser;
   };
 
   return {

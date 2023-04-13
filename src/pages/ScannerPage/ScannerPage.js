@@ -3,18 +3,25 @@ import SpinnerPage from "../SpinnerPage/SpinnerPage";
 import { useNavigate } from "react-router-dom";
 import { useBarcodeAndProduct } from "../../hooks/useBarcodeAndProduct";
 import { useSpinnerContext } from "../../context/SpinnerContext";
+import { useRef } from "react";
 
 const ScannerPage = () => {
   const { getProductAndSetCurrent } = useBarcodeAndProduct();
   const { isLoading, setIsLoading } = useSpinnerContext();
   const navigate = useNavigate();
+  const inputRef = useRef(null);
 
   const handleDetected = async (barcode) => {
-    setIsLoading(true)
+    setIsLoading(true);
     await getProductAndSetCurrent(barcode);
-    setIsLoading(false)
+    setIsLoading(false);
     navigate("/product");
   };
+
+  const submitHandler =(e) =>{
+    e.preventDefault()
+    handleDetected(inputRef.current.value)
+  }
 
   return (
     <>
@@ -22,6 +29,9 @@ const ScannerPage = () => {
         <>
           <h1>Scanner Page</h1>
           <Scanner onDetectedBarcode={handleDetected} />
+          <form onSubmit={submitHandler}>
+            <input ref={inputRef}></input>
+          </form>
         </>
       )}
       {isLoading && <SpinnerPage />}
