@@ -15,6 +15,7 @@ const ProductPage = () => {
     checkCameraAndRefresh()
     getProductFromLocalAndSetStates();
 
+    
     // eslint-disable-next-line
   }, []);
 

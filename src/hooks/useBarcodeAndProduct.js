@@ -17,6 +17,11 @@ export const useBarcodeAndProduct = () => {
     } else setIsProductFound(true);
   };
 
+  const getFromUserProducts = () => {
+    const user = getLocalStorageItem("loggedUser")
+    const productsArray = user.productsArray
+  }
+
   const getProductAndSetCurrent = async (barcode) => {
     const product = await getProduct(barcode);
     setLocalStorageItem("currentProduct", await product);
@@ -33,8 +38,8 @@ export const useBarcodeAndProduct = () => {
     if(key === "isLiked"){
       product.isLiked = !product.isLiked
     }
-    setCurrentProduct(product)
     setLocalStorageItem("currentProduct", product)
+    setCurrentProduct(product)
   }
 
   return { getProductAndSetCurrent, getProductFromLocalAndSetStates, updateProduct };
