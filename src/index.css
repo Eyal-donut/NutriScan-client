@@ -24,7 +24,6 @@ html * {
   align-items: center;
   position: relative;
   font-size: 1.4rem;
-  background-color: var(--bgr-main);
 }
 
 a {

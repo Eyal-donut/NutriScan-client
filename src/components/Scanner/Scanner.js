@@ -46,3 +46,4 @@ const Scanner = ({ onDetectedBarcode }) => {
 };
 
 export default Scanner;
+
