@@ -28,7 +28,7 @@ export const useBarcodeAndProduct = () => {
     setProductStates(product)
   };
 
-  const editProductAndSave = (key) => {
+  const updateProduct = (key) => {
     const product = getLocalStorageItem("currentProduct")
     if(key === "isLiked"){
       product.isLiked = !product.isLiked
@@ -37,5 +37,5 @@ export const useBarcodeAndProduct = () => {
     setLocalStorageItem("currentProduct", product)
   }
 
-  return { getProductAndSetCurrent, getProductFromLocalAndSetStates, editProductAndSave };
+  return { getProductAndSetCurrent, getProductFromLocalAndSetStates, updateProduct };
 };
