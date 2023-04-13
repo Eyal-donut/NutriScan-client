@@ -9,12 +9,6 @@
     left: 0;
     background: var(--bgr-sec);
     border-bottom: 1px solid var(--grey);
-    /* box-shadow: var(--navbar-box-shadow); */
-}
-.name{
-    /* width: 75%; */
-    text-align: center;
-    
 }
 
 .icon{
