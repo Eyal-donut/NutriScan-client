@@ -3,10 +3,10 @@ import classes from "./ProductCardMain.module.css";
 import { useState } from "react";
 import LikeButton from "../LikeButton/LikeButton";
 import ProductImage from "../ProductImage/ProductImage";
-import ContentWrap from "../ContentWrap/ContentWrap";
-import { useProductContext } from "../../context/ProductContext";
-import { constants } from "../../constants/constants";
-import { useBarcodeAndProduct } from "../../hooks/useBarcodeAndProduct";
+import ContentWrap from "../../ContentWrap/ContentWrap";
+import { useProductContext } from "../../../context/ProductContext";
+import { constants } from "../../../constants/constants";
+import { useBarcodeAndProduct } from "../../../hooks/useBarcodeAndProduct";
 
 const ProductCardMain = () => {
   const { currentProduct, productSource, isProductFound } = useProductContext();

@@ -1,6 +1,6 @@
-import Icon from "../Icon(clickable)/Icon";
+import Icon from "../../Icon(clickable)/Icon";
 import classes from "./IsMatchBar.module.css";
-import {icons} from "../../constants/constants"
+import {icons} from "../../../constants/constants"
 
 
 const IsMatchBar = ({isMatch}) => {

@@ -1,11 +1,11 @@
 
 .liked {
-    background: url('../../assets/icons/heartRed.png') no-repeat center center/cover;
+    background: url('../../../assets/icons/heartRed.png') no-repeat center center/cover;
     width: 17px;
     height: 17px;
 }
 .notLiked {
-    background: url('../../assets/icons/heartGrey.png') no-repeat center center/cover;
+    background: url('../../../assets/icons/heartGrey.png') no-repeat center center/cover;
     width: 17px;
     height: 17px;
 }

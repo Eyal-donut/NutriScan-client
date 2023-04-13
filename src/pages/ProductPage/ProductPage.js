@@ -1,5 +1,5 @@
-import ProductCardMain from "../../components/ProductCardMain/ProductCardMain";
-import IsMatchBar from "../../components/IsMatchBar/IsMatchBar";
+import ProductCardMain from "../../components/ProductCard/ProductCardMain/ProductCardMain";
+import IsMatchBar from "../../components/ProductCard/IsMatchBar/IsMatchBar";
 import ProductNotFound from "../../components/ProductNotFound/ProductNotFound";
 import { useEffect } from "react";
 import { useProductContext } from "../../context/ProductContext";
