@@ -10,8 +10,9 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const ProductPage = () => {
   const { isProductFound } = useProductContext();
-  const { checkCameraAndRefresh } = useCheckCameraAndRefresh();
+  
   const { getProductFromLocalAndSetStates } = useBarcodeAndProduct();
+  const { checkCameraAndRefresh } = useCheckCameraAndRefresh();
   const { updateLocalAndLoggedUser } = useLoggedUser();
   const { getLocalStorageItem } = useLocalStorage();
 
@@ -19,8 +20,8 @@ const ProductPage = () => {
     checkCameraAndRefresh();
     getProductFromLocalAndSetStates();
 
-    if (isProductFound) {
-      return () => {
+    return () => {
+        if (isProductFound) {
         updateLocalAndLoggedUser(
           undefined,
           "singleProduct",
