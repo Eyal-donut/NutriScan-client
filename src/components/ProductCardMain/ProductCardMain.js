@@ -14,7 +14,7 @@ const ProductCardMain = () => {
   const clickHandler = (e) => {
     if (e.target.className.includes("LikeButton")) {
       //click will change in current product the isLiked prop
-      console.log(currentProduct.imageUrl);
+      
     }
   };
 

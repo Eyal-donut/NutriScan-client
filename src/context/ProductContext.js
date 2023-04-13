@@ -5,7 +5,7 @@ const ProductContext = createContext();
 const ProductProvider = ({ children }) => {
   const [currentProduct, setCurrentProduct] = useState({});
   const [productSource, setProductSource] = useState("");
-  const [productFound, setProductFound] = useState(true);
+  const [isProductFound, setIsProductFound] = useState(true);
 
   return (
     <ProductContext.Provider
@@ -14,8 +14,8 @@ const ProductProvider = ({ children }) => {
         setCurrentProduct,
         productSource,
         setProductSource,
-        productFound,
-        setProductFound
+        isProductFound,
+        setIsProductFound,
       }}
     >
       {children}

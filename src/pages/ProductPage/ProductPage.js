@@ -1,29 +1,30 @@
 import { useEffect } from "react";
 import ProductCardMain from "../../components/ProductCardMain/ProductCardMain";
 import { useProductContext } from "../../context/ProductContext";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
 import IsMatchBar from "../../components/IsMatchBar/IsMatchBar";
-import { useCheckCameraAndRefresh  } from "../../hooks/useCheckCameraAndRefresh ";
+import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh ";
+import { useBarcodeAndProduct } from "../../hooks/useBarcodeAndProduct";
 
 const ProductPage = () => {
-  const { setCurrentProduct, productSource, setProductSource } = useProductContext();
-  const { getLocalStorageItem } = useLocalStorage();
-  const {checkCameraAndRefresh} = useCheckCameraAndRefresh()
+  const { isProductFound } = useProductContext();
+  const { checkCameraAndRefresh } = useCheckCameraAndRefresh();
+  const { getProductFromLocalAndSetStates } = useBarcodeAndProduct();
 
   useEffect(() => {
     // checkCameraAndRefresh()
-    const currentProductLocal = getLocalStorageItem("currentProduct");
-    setCurrentProduct(currentProductLocal);
-    setProductSource(currentProductLocal.source)
-    
+    getProductFromLocalAndSetStates();
 
     // eslint-disable-next-line
   }, []);
 
   return (
     <>
-      <IsMatchBar />
-      <ProductCardMain />
+      {isProductFound && (
+        <>
+          <IsMatchBar />
+          <ProductCardMain />
+        </>
+      )}
     </>
   );
 };

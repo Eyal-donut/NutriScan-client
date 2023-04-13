@@ -1,22 +1,30 @@
-import { useNavigate } from "react-router-dom";
 import Scanner from "../../components/Scanner/Scanner";
-import { useBarcode } from "../../hooks/useBarcode";
+import SpinnerPage from "../SpinnerPage/SpinnerPage";
+import { useNavigate } from "react-router-dom";
+import { useBarcodeAndProduct } from "../../hooks/useBarcodeAndProduct";
+import { useSpinnerContext } from "../../context/SpinnerContext";
 
 const ScannerPage = () => {
-  const {getProductAndSetCurrent} = useBarcode()
-  const navigate = useNavigate()
+  const { getProductAndSetCurrent } = useBarcodeAndProduct();
+  const { isLoading, setIsLoading } = useSpinnerContext();
+  const navigate = useNavigate();
 
-  const handleDetected = (barcode) => {
-    getProductAndSetCurrent(barcode)
-    navigate("/product")
-    
+  const handleDetected = async (barcode) => {
+    setIsLoading(true)
+    await getProductAndSetCurrent(barcode);
+    setIsLoading(false)
+    navigate("/product");
   };
 
   return (
     <>
-      <h1>Scanner Page</h1>
-       <Scanner onDetectedBarcode={handleDetected} />
-      
+      {!isLoading && (
+        <>
+          <h1>Scanner Page</h1>
+          <Scanner onDetectedBarcode={handleDetected} />
+        </>
+      )}
+      {isLoading && <SpinnerPage />}
     </>
   );
 };

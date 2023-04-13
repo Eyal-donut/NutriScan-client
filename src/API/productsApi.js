@@ -11,7 +11,7 @@ const getFromMongo = async (barcode) => {
     if (error.response.status === 404) {
       console.log(`Product not found in ${constants.APP_NAME} API.`);
     } else {
-      console.error(`Error while fetching from MongoDB error: ${error}`);
+      console.error(`Error while fetching from MongoDB. error: ${error}`);
     }
   }
 };
