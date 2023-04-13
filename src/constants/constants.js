@@ -1,6 +1,7 @@
 import WARNING_ICON from "../assets/icons/warningGrey.png";
 import NO_MATCH_ICON from "../assets/icons/noMatch.png";
 import MATCH_ICON from "../assets/icons/check.png";
+import BACK_ICON from "../assets/icons/arrow.png"
 
 export const constants = {
   APP_NAME: "Products Scanner",
@@ -20,6 +21,7 @@ export const icons = {
   MATCH_ICON,
   WARNING_ICON,
   NO_MATCH_ICON,
+  BACK_ICON
 };
 
 export const newUser = {

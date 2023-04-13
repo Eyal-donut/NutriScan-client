@@ -7,6 +7,7 @@ import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh "
 import { useBarcodeAndProduct } from "../../hooks/useBarcodeAndProduct";
 import { useLoggedUser } from "../../hooks/useLoggedUser";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import ProductPageHeader from "../../components/ProductPageHeader/ProductPageHeader";
 
 const ProductPage = () => {
   const { isProductFound } = useProductContext();
@@ -36,6 +37,7 @@ const ProductPage = () => {
     <>
       {isProductFound && (
         <>
+        <ProductPageHeader/>
           <IsMatchBar />
           <ProductCardMain />
         </>
