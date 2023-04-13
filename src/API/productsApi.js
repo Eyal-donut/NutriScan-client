@@ -1,11 +1,12 @@
-import { links, constants } from "../constants/constants";
+import { links, constants, productNotFoundObj } from "../constants/constants";
 import axios from "axios";
 
 const getFromMongo = async (barcode) => {
   try {
     const response = await axios.get(`${links.PRODUCTS_ROUTES_URL}/${barcode}`);
-    const data = await response.data;
-    return data.data;
+    const data = await response.data.data;
+    data.source = constants.APP_NAME;
+    return data;
   } catch (error) {
     if (error.response.status === 404) {
       console.log(`Product not found in ${constants.APP_NAME} API.`);
@@ -17,10 +18,9 @@ const getFromMongo = async (barcode) => {
 
 const getFromOpenFoodFacts = async (barcode) => {
   try {
-    const response = await axios.get(
-      `${links.OPEN_FOOD_FACTS_URL}/${barcode}`
-    );
+    const response = await axios.get(`${links.OPEN_FOOD_FACTS_URL}/${barcode}`);
     const data = response.data;
+    data.source = constants.OPEN_FOOD_API;
     return data;
   } catch (error) {
     if (error.response.status === 404) {
@@ -33,12 +33,15 @@ const getFromOpenFoodFacts = async (barcode) => {
 
 export const getProduct = async (barcode) => {
   const dataFromMongo = await getFromMongo(barcode);
-  if (dataFromMongo) {
+  if (await dataFromMongo) {
     return dataFromMongo;
+  } else {
+    const dataFromOpenFoodApi = await getFromOpenFoodFacts(barcode);
+    if (await dataFromOpenFoodApi) {
+      return dataFromOpenFoodApi;
+    } else {
+      console.log("Product not found in both API's")
+      return productNotFoundObj
+    }
   }
-  const dataFromOpenFoodApi = await getFromOpenFoodFacts(barcode);
-  if (dataFromOpenFoodApi) {
-    return dataFromOpenFoodApi;
-  }
-  throw new Error("Product not found");
 };

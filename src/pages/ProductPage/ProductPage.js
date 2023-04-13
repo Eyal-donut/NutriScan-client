@@ -6,14 +6,16 @@ import IsMatchBar from "../../components/IsMatchBar/IsMatchBar";
 import { useCheckCameraAndRefresh  } from "../../hooks/useCheckCameraAndRefresh ";
 
 const ProductPage = () => {
-  const { setCurrentProduct } = useProductContext();
+  const { setCurrentProduct, productSource, setProductSource } = useProductContext();
   const { getLocalStorageItem } = useLocalStorage();
   const {checkCameraAndRefresh} = useCheckCameraAndRefresh()
 
   useEffect(() => {
-    checkCameraAndRefresh()
+    // checkCameraAndRefresh()
     const currentProductLocal = getLocalStorageItem("currentProduct");
     setCurrentProduct(currentProductLocal);
+    setProductSource(currentProductLocal.source)
+    
 
     // eslint-disable-next-line
   }, []);

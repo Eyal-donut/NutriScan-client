@@ -4,12 +4,18 @@ const ProductContext = createContext();
 
 const ProductProvider = ({ children }) => {
   const [currentProduct, setCurrentProduct] = useState({});
+  const [productSource, setProductSource] = useState("");
+  const [productFound, setProductFound] = useState(true);
 
   return (
     <ProductContext.Provider
       value={{
         currentProduct,
         setCurrentProduct,
+        productSource,
+        setProductSource,
+        productFound,
+        setProductFound
       }}
     >
       {children}
@@ -18,7 +24,7 @@ const ProductProvider = ({ children }) => {
 };
 
 export const useProductContext = () => {
-  return useContext(ProductContext)
-}
+  return useContext(ProductContext);
+};
 
-export {ProductProvider}
+export { ProductProvider };
