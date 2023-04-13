@@ -1,21 +1,22 @@
 import { useLoggedUserContext } from "../context/loggedUserContext";
 import { newUser } from "../constants/constants";
+import { useLocalStorage } from "./useLocalStorage";
 
 export const useLoggedUser = () => {
   const { loggedUser, setLoggedUser, setIsLoggedUser } = useLoggedUserContext();
+  const { setLocalStorageItem } = useLocalStorage();
 
   const setNewUser = () => {
-  
-    localStorage.setItem("loggedUser", JSON.stringify(newUser));
+    setLocalStorageItem("loggedUser", newUser);
     setLoggedUser(newUser);
     return loggedUser;
   };
 
   const setExistingUser = (existingUser) => {
-    localStorage.setItem("loggedUser", JSON.stringify(existingUser));
+    setLocalStorageItem("loggedUser", existingUser);
     setLoggedUser(existingUser);
-    setIsLoggedUser(true)
-    console.log(loggedUser)
+    setIsLoggedUser(true);
+    console.log(loggedUser);
     return loggedUser;
   };
 
@@ -24,15 +25,14 @@ export const useLoggedUser = () => {
     if (localLoggedUser) {
       const fetchedFromLocal = JSON.parse(localLoggedUser);
       setLoggedUser(fetchedFromLocal);
-      setIsLoggedUser(true)
-    } else setIsLoggedUser(false)
+      setIsLoggedUser(true);
+    } else setIsLoggedUser(false);
   };
 
   const updateLocalAndLoggedUser = (section, key, value) => {
     let updatedUser = {};
 
     if (section) {
-      console.log("section");
       updatedUser = {
         ...loggedUser,
         [section]: {
@@ -40,30 +40,27 @@ export const useLoggedUser = () => {
           [key]: value,
         },
       };
-      setLoggedUser(updatedUser);
     } else if (key === "singleProduct") {
       updatedUser = {
         ...loggedUser,
         products: [...loggedUser.products, value],
       };
-      setLoggedUser(updatedUser);
     } else if (key === "allProducts") {
       updatedUser = {
         ...loggedUser,
         products: value,
       };
-      setLoggedUser(updatedUser);
     } else if (key) {
       updatedUser = {
         ...loggedUser,
         [key]: value,
       };
-      setLoggedUser(updatedUser);
     }
-    console.log(loggedUser);
+    setLoggedUser(updatedUser);
+    setLocalStorageItem("loggedUser", updatedUser);
     return loggedUser;
   };
-  
+
   return {
     setNewUser,
     setExistingUser,

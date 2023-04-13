@@ -1,7 +1,8 @@
-import { useEffect } from "react";
 import ProductCardMain from "../../components/ProductCardMain/ProductCardMain";
-import { useProductContext } from "../../context/ProductContext";
 import IsMatchBar from "../../components/IsMatchBar/IsMatchBar";
+import ProductNotFound from "../../components/ProductNotFound/ProductNotFound"
+import { useEffect } from "react";
+import { useProductContext } from "../../context/ProductContext";
 import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh ";
 import { useBarcodeAndProduct } from "../../hooks/useBarcodeAndProduct";
 
@@ -11,7 +12,7 @@ const ProductPage = () => {
   const { getProductFromLocalAndSetStates } = useBarcodeAndProduct();
 
   useEffect(() => {
-    // checkCameraAndRefresh()
+    checkCameraAndRefresh()
     getProductFromLocalAndSetStates();
 
     // eslint-disable-next-line
@@ -25,6 +26,7 @@ const ProductPage = () => {
           <ProductCardMain />
         </>
       )}
+      {!isProductFound && <ProductNotFound/>}
     </>
   );
 };
