@@ -1,11 +1,15 @@
 import { links, constants, productNotFoundObj } from "../constants/constants";
 import axios from "axios";
 
+const addProperty = (product, key, value) => {
+  product[key] = value;
+};
+
 const getFromMongo = async (barcode) => {
   try {
     const response = await axios.get(`${links.PRODUCTS_ROUTES_URL}/${barcode}`);
     const data = await response.data.data;
-    data.source = constants.APP_NAME;
+    addProperty(data, "source", constants.APP_NAME)
     return data;
   } catch (error) {
     if (error.response.status === 404) {
@@ -20,7 +24,8 @@ const getFromOpenFoodFacts = async (barcode) => {
   try {
     const response = await axios.get(`${links.OPEN_FOOD_FACTS_URL}/${barcode}`);
     const data = response.data;
-    data.source = constants.OPEN_FOOD_API;
+    addProperty(data, "source", constants.OPEN_FOOD_API)
+    addProperty(data, "isLiked", false)
     return data;
   } catch (error) {
     if (error.response.status === 404) {
@@ -40,8 +45,8 @@ export const getProduct = async (barcode) => {
     if (await dataFromOpenFoodApi) {
       return dataFromOpenFoodApi;
     } else {
-      console.log("Product not found in both API's")
-      return productNotFoundObj
+      console.log("Product not found in both API's");
+      return productNotFoundObj;
     }
   }
 };

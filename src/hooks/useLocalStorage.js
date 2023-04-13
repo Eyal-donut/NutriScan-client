@@ -6,5 +6,9 @@ export const useLocalStorage = () => {
     const item = JSON.parse(localStorage.getItem(itemName));
     return item;
   };
-  return { setLocalStorageItem, getLocalStorageItem };
+  const getItemProperty = (itemName, property) => {
+    const item = JSON.parse(localStorage.getItem(itemName));
+    return item[property]
+  }
+  return { setLocalStorageItem, getLocalStorageItem, getItemProperty };
 };

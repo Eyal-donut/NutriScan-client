@@ -6,18 +6,22 @@ import ProductImage from "../ProductImage/ProductImage";
 import ContentWrap from "../ContentWrap/ContentWrap";
 import { useProductContext } from "../../context/ProductContext";
 import { constants } from "../../constants/constants";
+import { useBarcodeAndProduct } from "../../hooks/useBarcodeAndProduct";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const ProductCardMain = () => {
   const { currentProduct, productSource } = useProductContext();
-  const [isLiked] = useState(currentProduct.isLiked);
+  const { getItemProperty } = useLocalStorage();
+  const { updateProduct } = useBarcodeAndProduct();
+
+  const [isLiked, setIsLiked] = useState(getItemProperty("currentProduct", "isLiked"))
 
   const clickHandler = (e) => {
     if (e.target.className.includes("LikeButton")) {
-      //click will change in current product the isLiked prop
-      
+      updateProduct("isLiked");
+      setIsLiked((prevState)=> !prevState)
     }
   };
-
   return (
     <div className={classes.wrap}>
       <ContentWrap width="85%">
