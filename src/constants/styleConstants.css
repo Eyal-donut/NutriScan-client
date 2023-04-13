@@ -1,7 +1,9 @@
 :root {
     --bgr-main: #FFFFFF;
-    --bgr-sec: #EFEFEF;
+    /* --bgr-sec: #EFEFEF; */
+    --bgr-sec: #D8DADE;
     --main-theme-color: #86C01C;
+    --grey: #A4ACB9;
     --dark-green: #096A2E;
     --red:  #DA0217;
     --orange: #F1A239;
@@ -17,4 +19,6 @@
     --navbar-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     --btn-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     --prim-margin-top: 2rem;
+    --sec-margin: 1rem;
+    --font-weight-text: 550;
 }

@@ -1,5 +1,5 @@
 import ProductCardMain from "../../components/ProductCard/ProductCardMain/ProductCardMain";
-import IsMatchBar from "../../components/ProductCard/IsMatchBar/IsMatchBar";
+import IsMatchBar from "../../components/IsMatchBar/IsMatchBar";
 import ProductNotFound from "../../components/ProductNotFound/ProductNotFound";
 import { useEffect } from "react";
 import { useProductContext } from "../../context/ProductContext";
@@ -40,6 +40,7 @@ const ProductPage = () => {
         <ProductPageHeader/>
           <IsMatchBar />
           <ProductCardMain />
+          <div style={{width: "100%", height:"200vh"}}/>
         </>
       )}
       {!isProductFound && <ProductNotFound />}

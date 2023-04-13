@@ -1,11 +1,26 @@
 .wrap {
-    width: 100%;
+    width: 100vw;
     height:4rem;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    position: absolute;
+    position: sticky;
     top: 0;
     left: 0;
-    z-index: 1;
+    background: var(--bgr-sec);
+    border-bottom: 1px solid var(--grey);
+    /* box-shadow: var(--navbar-box-shadow); */
+}
+.name{
+    /* width: 75%; */
+    text-align: center;
+    
+}
+
+.icon{
+    margin-left: var(--sec-margin);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    left: 0;
 }

@@ -1,17 +1,19 @@
 import Icon from "../Icon(clickable)/Icon";
 import { Link } from "react-router-dom";
 import { icons } from "../../constants/constants";
-import classes from "./ProductPageHeader.module.css"
+import classes from "./ProductPageHeader.module.css";
+import { useProductContext } from "../../context/ProductContext";
 
-const ProductPageHeader = ({name}) => {
+const ProductPageHeader = () => {
+  const { currentProduct } = useProductContext();
   return (
     <div className={classes.wrap}>
-      <Link to=".." relative="path">
+      <Link to=".." relative="path" className={classes.icon}>
         <Icon imageUrl={icons.BACK_ICON} />
       </Link>
-      <p>{name}</p>
+      <div className={classes.name}>{currentProduct.name}</div>
     </div>
   );
 };
 
-export default ProductPageHeader
+export default ProductPageHeader;
