@@ -1,7 +1,6 @@
 import WARNING_ICON from "../assets/icons/warningGrey.png";
 import NO_MATCH_ICON from "../assets/icons/noMatch.png";
 import MATCH_ICON from "../assets/icons/check.png";
-import IMAGE_PLACEHOLDER from "../assets/images/imagePlaceholder.jpg";
 
 export const constants = {
   APP_NAME: "Products Scanner",
@@ -44,10 +43,4 @@ export const newUser = {
     Sugar: "Off",
     Salt: "Off",
   },
-};
-
-export const productNotFoundObj = {
-  source: constants.APP_NAME,
-  imageUrl: IMAGE_PLACEHOLDER,
-  name: constants.PRODUCT_NOT_FOUND,
 };

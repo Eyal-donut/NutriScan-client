@@ -4,7 +4,7 @@ import { useLocalStorage } from "./useLocalStorage";
 
 export const useLoggedUser = () => {
   const { loggedUser, setLoggedUser, setIsLoggedUser } = useLoggedUserContext();
-  const { setLocalStorageItem } = useLocalStorage();
+  const { setLocalStorageItem, getLocalStorageItem } = useLocalStorage();
 
   const setNewUser = () => {
     setLocalStorageItem("loggedUser", newUser);
@@ -47,16 +47,24 @@ export const useLoggedUser = () => {
       const existingProduct = loggedUser.products.find(
         (prod) => prod.code === value.code
       );
-      if (!existingProduct) {
-        console.log(loggedUser, "loggedUser");
+      if (existingProduct) {
+        const productsUpdate = loggedUser.products.filter(
+          (prod) => prod.code !== existingProduct.code
+        );
+        productsUpdate.push(getLocalStorageItem("currentProduct"));
+        updatedUser = {
+          ...loggedUser,
+          products: productsUpdate,
+        };
+      } else {
         updatedUser = {
           ...loggedUser,
           products: [...loggedUser.products, value],
         };
-        setLoggedUser(updatedUser);
-        setLocalStorageItem("loggedUser", updatedUser);
-        return;
       }
+      setLoggedUser(updatedUser);
+      setLocalStorageItem("loggedUser", updatedUser);
+      return;
     }
     if (key === "allProducts") {
       updatedUser = {

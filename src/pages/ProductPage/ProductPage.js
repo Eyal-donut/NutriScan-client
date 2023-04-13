@@ -9,19 +9,25 @@ import { useLoggedUser } from "../../hooks/useLoggedUser";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const ProductPage = () => {
-  const { isProductFound, currentProduct } = useProductContext();
+  const { isProductFound } = useProductContext();
   const { checkCameraAndRefresh } = useCheckCameraAndRefresh();
   const { getProductFromLocalAndSetStates } = useBarcodeAndProduct();
   const { updateLocalAndLoggedUser } = useLoggedUser();
-  const {getLocalStorageItem} = useLocalStorage()
+  const { getLocalStorageItem } = useLocalStorage();
 
   useEffect(() => {
-    // checkCameraAndRefresh();
+    checkCameraAndRefresh();
     getProductFromLocalAndSetStates();
 
-    return () => {
-      updateLocalAndLoggedUser(undefined, "singleProduct", getLocalStorageItem("currentProduct"));
-    };
+    if (isProductFound) {
+      return () => {
+        updateLocalAndLoggedUser(
+          undefined,
+          "singleProduct",
+          getLocalStorageItem("currentProduct")
+        );
+      };
+    }
     // eslint-disable-next-line
   }, []);
 

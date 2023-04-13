@@ -1,4 +1,4 @@
-import { links, constants, productNotFoundObj } from "../constants/constants";
+import { links, constants } from "../constants/constants";
 import axios from "axios";
 
 const addProperty = (product, key, value) => {
@@ -46,7 +46,7 @@ export const getProduct = async (barcode) => {
       return dataFromOpenFoodApi;
     } else {
       console.log("Product not found in both API's");
-      return productNotFoundObj;
+      return;
     }
   }
 };

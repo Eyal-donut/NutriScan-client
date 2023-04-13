@@ -1,47 +1,58 @@
 import { useLocalStorage } from "./useLocalStorage";
 import { getProduct } from "../API/productsApi";
 import { useProductContext } from "../context/ProductContext";
-import { constants } from "../constants/constants";
 
 export const useBarcodeAndProduct = () => {
-  const { setCurrentProduct, setProductSource, setIsProductFound } =
-    useProductContext();
-  const { setLocalStorageItem, getLocalStorageItem, getItemProperty } = useLocalStorage();
+  const {
+    setCurrentProduct,
+    setProductSource,
+    setIsProductFound,
+  } = useProductContext();
+  const { setLocalStorageItem, getLocalStorageItem, getItemProperty } =
+    useLocalStorage();
 
   const setProductStates = (product) => {
     setProductSource(product.source);
     setCurrentProduct(product);
-    if (product.name === constants.PRODUCT_NOT_FOUND) {
-      setIsProductFound(false);
-    } else setIsProductFound(true);
+    setIsProductFound(true);
   };
 
   const getFromLocalUserProducts = (barcode) => {
+    console.log(typeof barcode)
     const products = getItemProperty("loggedUser", "products");
-    console.log(products)
-    const product = products.find((prod) => {
-      return prod.code === barcode 
-    });
+    const product = products.find((prod) => prod.code === barcode);
     if (product) {
       return product;
     }
   };
 
   const getProductAndSetCurrent = async (barcode) => {
-    let result
+    let result;
     const product = getFromLocalUserProducts(barcode);
     if (product) {
-      result = product
+      result = product;
     } else {
       result = await getProduct(barcode);
     }
-    setLocalStorageItem("currentProduct", result);
-    setProductStates(result);
+    if (result) {
+      setLocalStorageItem("currentProduct", result);
+      setLocalStorageItem("isProductFound", { state: true });
+      setProductStates(result);
+    }
+    if (!result) {
+      setLocalStorageItem("isProductFound", { state: false });
+      setIsProductFound(false);
+    }
   };
 
   const getProductFromLocalAndSetStates = () => {
-    const product = getLocalStorageItem("currentProduct");
-    setProductStates(product);
+    const productFoundState = getLocalStorageItem("isProductFound");
+    if (productFoundState) {
+      if (productFoundState.state) {
+        const product = getLocalStorageItem("currentProduct");
+        if (product) setProductStates(product);
+      }
+    }
   };
 
   const updateProduct = (key) => {

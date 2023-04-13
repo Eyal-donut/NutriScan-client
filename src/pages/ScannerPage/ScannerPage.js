@@ -18,9 +18,10 @@ const ScannerPage = () => {
     navigate("/product");
   };
 
+  //! Dev only!
   const submitHandler =(e) =>{
     e.preventDefault()
-    handleDetected(inputRef.current.value)
+    handleDetected(Number(inputRef.current.value))
   }
 
   return (
