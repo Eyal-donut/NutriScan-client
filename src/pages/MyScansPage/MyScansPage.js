@@ -14,7 +14,12 @@ const MyScansPage = () => {
   );
   const [shownScans, setShownScans] = useState(myScans);
 
-  const handleDelete = () => {
+  useEffect(() => {
+    setShownScans(myScans)
+    
+  }, [myScans]);
+
+  const handleCardBtnClick = () => {
     setMyScans(getItemProperty("loggedUser", "products"));
   };
   const handleSearch = (filteredBySearch) => {
@@ -46,7 +51,7 @@ const MyScansPage = () => {
             product={scan}
             page="my-scans"
             key={scan.code}
-            onDelete={handleDelete}
+            onBtnClick={handleCardBtnClick}
           />
         );
       })}

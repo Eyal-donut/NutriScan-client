@@ -9,7 +9,7 @@ import { constants } from "../../../constants/constants";
 import { useBarcodeAndProduct } from "../../../hooks/useBarcodeAndProduct";
 import { useLoggedUser } from "../../../hooks/useLoggedUser";
 
-const ProductCardMyScans = ({ product, page, onDelete }) => {
+const ProductCardMyScans = ({ product, page, onBtnClick }) => {
 
   const { updateMyScanCard } = useBarcodeAndProduct();
   const {deleteLocalUserProduct} = useLoggedUser()
@@ -21,9 +21,8 @@ const ProductCardMyScans = ({ product, page, onDelete }) => {
       setIsLiked((prevState) => !prevState);
     } else if (e.target.className.includes("DeleteButton")) {
       deleteLocalUserProduct(Number(e.target.id))
-      onDelete()
     }
-    
+    onBtnClick()
   };
     return (
       <div className={classes.wrap}>
