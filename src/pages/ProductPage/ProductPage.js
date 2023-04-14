@@ -11,7 +11,7 @@ import ProductPageHeader from "../../components/ProductPageHeader/ProductPageHea
 
 const ProductPage = () => {
   const { isProductFound } = useProductContext();
-  
+
   const { getProductFromLocalAndSetStates } = useBarcodeAndProduct();
   const { checkCameraAndRefresh } = useCheckCameraAndRefresh();
   const { updateLocalAndLoggedUser } = useLoggedUser();
@@ -22,28 +22,29 @@ const ProductPage = () => {
     getProductFromLocalAndSetStates();
 
     return () => {
-        if (isProductFound) {
+      if (isProductFound) {
         updateLocalAndLoggedUser(
           undefined,
           "singleProduct",
           getLocalStorageItem("currentProduct")
         );
-      };
-    }
+      }
+    };
     // eslint-disable-next-line
   }, []);
 
   return (
     <>
+      {isProductFound === null}
       {isProductFound && (
         <>
-        <ProductPageHeader/>
+          <ProductPageHeader />
           <IsMatchBar />
           <ProductCardMain />
-          <div style={{width: "100%", height:"200vh"}}/>
+          <div style={{ width: "100%", height: "200vh" }} />
         </>
       )}
-      {!isProductFound && <ProductNotFound />}
+      {isProductFound === false && <ProductNotFound />}
     </>
   );
 };
