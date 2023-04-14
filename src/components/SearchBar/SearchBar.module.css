@@ -1,0 +1,14 @@
+.input {
+    width: 60%;
+    height: 2.8rem;
+    margin-left: 0.8rem;
+    padding-left:0.8rem
+}
+
+.searchBarWrap {
+    margin-top: var(--prim-margin-top);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
