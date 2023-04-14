@@ -1,0 +1,12 @@
+.wrap {
+    width: 100vw;
+    height:5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: var(--bgr-sec);
+    border-bottom: 1px solid var(--grey);
+}
