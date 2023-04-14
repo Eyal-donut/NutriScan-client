@@ -2,22 +2,22 @@ import { useEffect, useState } from "react";
 // import { getProduct } from "../../API/productsApi";
 import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh ";
 import ProductCardMyScans from "../../components/ProductCard/ProductCardMyScans/ProductCardMyScans";
-import { useBarcodeAndProduct } from "../../hooks/useBarcodeAndProduct";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const MyScansPage = () => {
   const { checkCameraAndRefresh } = useCheckCameraAndRefresh();
-  const { getProductFromLocalAndSetStates } = useBarcodeAndProduct();
-  const { getLocalStorageItem, getItemProperty } = useLocalStorage();
-  const localProduct = getLocalStorageItem("currentProduct");
+  const { getItemProperty } = useLocalStorage();
 
   const [myScans, setMyScans] = useState(() =>
     getItemProperty("loggedUser", "products")
   );
 
+  const handleDelete = () => {
+    setMyScans(getItemProperty("loggedUser", "products"))
+  }
+
   useEffect(() => {
-    // checkCameraAndRefresh()
-    console.log(myScans);
+    checkCameraAndRefresh()
 
     // eslint-disable-next-line
   }, []);
@@ -25,7 +25,7 @@ const MyScansPage = () => {
   return (
     <>
       {myScans.map((scan) => {
-        return <ProductCardMyScans product={scan} page="my-scans" key={scan.code}/>;
+        return <ProductCardMyScans product={scan} page="my-scans" key={scan.code} onDelete={handleDelete}/>;
       })}
     </>
   );

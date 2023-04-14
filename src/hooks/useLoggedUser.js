@@ -30,7 +30,7 @@ export const useLoggedUser = () => {
 
   const deleteLocalUserProduct = (barcode) => {
     const products = getItemProperty("loggedUser", "products");
-    const filtered = products.filter((prod) => prod.code !== barcode);
+    const filtered = products.filter((prod) => Number(prod.code) !== barcode);
     const updatedUser = {
       ...loggedUser,
       products: filtered,

@@ -18,7 +18,7 @@ export const useBarcodeAndProduct = () => {
 
   const getFromLocalUserProducts = (barcode) => {
     const products = getItemProperty("loggedUser", "products");
-    const product = products.find((prod) => prod.code === barcode);
+    const product = products.find((prod) => Number(prod.code) === barcode);
     if (product) {
       return product;
     }
