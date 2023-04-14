@@ -6,7 +6,10 @@
   align-items: center;
   font-weight: 650;
 }
-
+.iconProductPage {
+}
+.ProductPageText {
+}
 
 .containerNo {
   background: rgb(218, 2, 23, 0.75);
@@ -18,7 +21,7 @@
   background: rgb(241, 162, 57, 1);
 }
 
-.containerSmall{
+.containerSmall {
   position: relative;
   width: 100%;
   display: flex;
@@ -32,7 +35,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: -.5rem;
+  left: -0.5rem;
 }
 
 .MyScansText {
@@ -42,5 +45,4 @@
   z-index: 1;
   width: 20rem;
   font-size: 1.4rem;
-  
 }

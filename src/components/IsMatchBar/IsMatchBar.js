@@ -31,9 +31,13 @@ const IsMatchBar = ({ isMatch, page }) => {
             ? icons.NO_MATCH_ICON
             : icons.WARNING_ICON
         }
-        className={page === "my-scans" ? classes.icon : ""}
+        className={page === "my-scans" ? classes.icon : classes.iconProductPage}
       />
-      <div className={page === "my-scans" ? classes.MyScansText : ""}>
+      <div
+        className={
+          page === "my-scans" ? classes.MyScansText : classes.ProductPageText
+        }
+      >
         {page === "product"
           ? isMatch === "yes"
             ? `It's a match!`

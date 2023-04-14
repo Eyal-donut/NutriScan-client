@@ -9,6 +9,7 @@
     border: .7rem solid var(--grey);
     border-radius: 10px;
     box-shadow: var(--btn-box-shadow);
+    padding: 0 1rem;
 }
 
 .wrap * {
@@ -26,7 +27,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-right: 1rem;
 }
 
 .productDetails{
