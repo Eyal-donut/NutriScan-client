@@ -11,13 +11,13 @@ import { useBarcodeAndProduct } from "../../../hooks/useBarcodeAndProduct";
 const ProductCardMain = () => {
   const { currentProduct, productSource, isProductFound } = useProductContext();
 
-  const { updateProduct } = useBarcodeAndProduct();
+  const { updateProductAndSetCurrent } = useBarcodeAndProduct();
 
   const [isLiked, setIsLiked] = useState(currentProduct.isLiked);
 
   const clickHandler = (e) => {
     if (e.target.className.includes("LikeButton")) {
-      updateProduct("isLiked");
+      updateProductAndSetCurrent(currentProduct, "isLiked");
       setIsLiked((prevState) => !prevState);
     }
   };

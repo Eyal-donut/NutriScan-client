@@ -27,6 +27,7 @@ const ProductPage = () => {
           undefined,
           "singleProduct",
           getLocalStorageItem("currentProduct")
+          //! Add here api call to update the user
         );
       }
     };
@@ -40,7 +41,7 @@ const ProductPage = () => {
         <>
           <ProductPageHeader />
           <IsMatchBar />
-          <ProductCardMain />
+          <ProductCardMain page="product"/>
           <div style={{ width: "100%", height: "200vh" }} />
         </>
       )}

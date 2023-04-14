@@ -1,13 +1,12 @@
 import { useLocalStorage } from "./useLocalStorage";
 import { getProduct } from "../API/productsApi";
 import { useProductContext } from "../context/ProductContext";
+import { useLoggedUser } from "./useLoggedUser";
 
 export const useBarcodeAndProduct = () => {
-  const {
-    setCurrentProduct,
-    setProductSource,
-    setIsProductFound,
-  } = useProductContext();
+  const { setCurrentProduct, setProductSource, setIsProductFound } =
+    useProductContext();
+  const { updateLocalAndLoggedUser } = useLoggedUser();
   const { setLocalStorageItem, getLocalStorageItem, getItemProperty } =
     useLocalStorage();
 
@@ -18,7 +17,6 @@ export const useBarcodeAndProduct = () => {
   };
 
   const getFromLocalUserProducts = (barcode) => {
-    console.log(typeof barcode)
     const products = getItemProperty("loggedUser", "products");
     const product = products.find((prod) => prod.code === barcode);
     if (product) {
@@ -55,18 +53,31 @@ export const useBarcodeAndProduct = () => {
     }
   };
 
-  const updateProduct = (key) => {
-    const product = getLocalStorageItem("currentProduct");
+  //! Later and allow edit the product also with other stuff
+  const updateProduct = (product, key, value) => {
+    const update = product;
     if (key === "isLiked") {
-      product.isLiked = !product.isLiked;
+      update.isLiked = !update.isLiked;
     }
-    setLocalStorageItem("currentProduct", product);
-    setCurrentProduct(product);
+    return update;
+  };
+
+  const updateProductAndSetCurrent = (product, key, value) => {
+    const update = updateProduct(product, key, value);
+    setLocalStorageItem("currentProduct", update);
+    setCurrentProduct(update);
+  };
+
+  const updateMyScanCard = (barcode, key, value) => {
+    const product = getFromLocalUserProducts(barcode);
+    const updated = updateProduct(product, key, value);
+    updateLocalAndLoggedUser(undefined, "singleProduct", updated);
   };
 
   return {
     getProductAndSetCurrent,
     getProductFromLocalAndSetStates,
-    updateProduct,
+    updateProductAndSetCurrent,
+    updateMyScanCard,
   };
 };

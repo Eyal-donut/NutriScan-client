@@ -1,9 +1,9 @@
 import classes from "./ProductImage.module.css";
 
-const ProductImage = ({ imageUrl }) => {
+const ProductImage = ({ imageUrl, page }) => {
   return (
     <div
-      className={classes.image}
+      className={page === "product" ? classes.imageProductPage : classes.imageMyScansPage}
       style={{ background: `url(${imageUrl}) no-repeat center center/cover` }}
     />
   );

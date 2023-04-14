@@ -4,7 +4,7 @@ import { useLocalStorage } from "./useLocalStorage";
 
 export const useLoggedUser = () => {
   const { loggedUser, setLoggedUser, setIsLoggedUser } = useLoggedUserContext();
-  const { setLocalStorageItem, getLocalStorageItem } = useLocalStorage();
+  const { setLocalStorageItem, getItemProperty } = useLocalStorage();
 
   const setNewUser = () => {
     setLocalStorageItem("loggedUser", newUser);
@@ -26,6 +26,17 @@ export const useLoggedUser = () => {
       setLoggedUser(fetchedFromLocal);
       setIsLoggedUser(true);
     } else setIsLoggedUser(false);
+  };
+
+  const deleteLocalUserProduct = (barcode) => {
+    const products = getItemProperty("loggedUser", "products");
+    const filtered = products.filter((prod) => prod.code !== barcode);
+    const updatedUser = {
+      ...loggedUser,
+      products: filtered,
+    };
+    setLoggedUser(updatedUser);
+    setLocalStorageItem("loggedUser", updatedUser);
   };
 
   const updateLocalAndLoggedUser = (section, key, value) => {
@@ -51,7 +62,7 @@ export const useLoggedUser = () => {
         const productsUpdate = loggedUser.products.filter(
           (prod) => prod.code !== existingProduct.code
         );
-        productsUpdate.push(getLocalStorageItem("currentProduct"));
+        productsUpdate.push(value);
         updatedUser = {
           ...loggedUser,
           products: productsUpdate,
@@ -91,5 +102,6 @@ export const useLoggedUser = () => {
     setExistingUser,
     updateLocalAndLoggedUser,
     setLoggedUserFromLocal,
+    deleteLocalUserProduct,
   };
 };

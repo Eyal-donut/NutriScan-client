@@ -1,4 +1,9 @@
-.image {
+.imageProductPage {
     width: 20rem;
     height: 20rem;
+}
+
+.imageMyScansPage {
+    width: 10rem;
+    height: 10rem;
 }
