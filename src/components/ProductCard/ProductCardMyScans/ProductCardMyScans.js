@@ -2,22 +2,27 @@ import classes from "./ProductCardMyScans.module.css";
 
 import { useState } from "react";
 import LikeButton from "../LikeButton/LikeButton";
+import DeleteButton from "../DeleteButton/DeleteButton";
 import ProductImage from "../ProductImage/ProductImage";
-import ContentWrap from "../../ContentWrap/ContentWrap";
-import { useProductContext } from "../../../context/ProductContext";
+import IsMatchBar from "../../IsMatchBar/IsMatchBar"
 import { constants } from "../../../constants/constants";
 import { useBarcodeAndProduct } from "../../../hooks/useBarcodeAndProduct";
+import { useLoggedUser } from "../../../hooks/useLoggedUser";
 
 const ProductCardMyScans = ({ product, page }) => {
 
   const { updateMyScanCard } = useBarcodeAndProduct();
+  const {deleteLocalUserProduct} = useLoggedUser()
   const [isLiked, setIsLiked] = useState(product.isLiked);
 
   const clickHandler = (e) => {
     if (e.target.className.includes("LikeButton")) {
       updateMyScanCard(Number(e.target.id), "isLiked");
       setIsLiked((prevState) => !prevState);
+    } else if (e.target.className.includes("DeleteButton")) {
+      deleteLocalUserProduct(Number(e.target.id))
     }
+    
   };
     return (
       <div className={classes.wrap}>
@@ -32,8 +37,9 @@ const ProductCardMyScans = ({ product, page }) => {
             }
           />
           <ul className={classes.productDetails}>
-            <h3>{product.name}</h3>
-            <h3>{product.company}</h3>
+            <li className={classes.li}>{product.name}</li>
+            <li className={classes.li}>{product.company}</li>
+            <IsMatchBar page="my-scans" />
           </ul>
           <div className={classes.buttonsWrap}>
             <LikeButton
@@ -41,7 +47,7 @@ const ProductCardMyScans = ({ product, page }) => {
               isLiked={isLiked}
               id={product.code}
             />
-            <LikeButton
+            <DeleteButton
               onBtnClick={clickHandler}
               isLiked={isLiked}
               id={product.code}

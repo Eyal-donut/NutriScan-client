@@ -40,7 +40,7 @@ const ProductPage = () => {
       {isProductFound && (
         <>
           <ProductPageHeader />
-          <IsMatchBar />
+          <IsMatchBar page="product"/>
           <ProductCardMain page="product"/>
           <div style={{ width: "100%", height: "200vh" }} />
         </>

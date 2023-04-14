@@ -6,8 +6,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 6px solid var(--grey);
+    border: .7rem solid var(--grey);
     border-radius: 10px;
+    box-shadow: var(--btn-box-shadow);
 }
 
 .wrap * {
@@ -20,22 +21,24 @@
 }
 
 .buttonsWrap {
-    width: 33%;
+    width: 22%;
     max-width: 40rem;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 1rem;
+    margin-right: 1rem;
 }
 
 .productDetails{
-    width: 33%;
+    width: 40%;
+    overflow-wrap: break-word;
     max-width: 40rem;
-    margin-top: 1rem;
+    height: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    font-size: 1.4rem;
 }
 

@@ -1,6 +1,6 @@
-import WARNING_ICON from "../assets/icons/warningGrey.png";
-import NO_MATCH_ICON from "../assets/icons/noMatch.png";
-import MATCH_ICON from "../assets/icons/check.png";
+import WARNING_ICON from "../assets/icons/warningOrange.png";
+import NO_MATCH_ICON from "../assets/icons/noMatchRed.png";
+import MATCH_ICON from "../assets/icons/checkGreen.png";
 import BACK_ICON from "../assets/icons/arrow.png"
 
 export const constants = {

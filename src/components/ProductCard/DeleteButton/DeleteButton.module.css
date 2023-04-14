@@ -1,0 +1,17 @@
+
+.iconDelete {
+    background: url('../../../assets/icons/deleteGrey.png') no-repeat center center/cover;
+    width: 12px;
+    height: 12px;
+    
+}
+.bgr {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px #A4ACB9;
+    box-shadow: var(--btn-box-shadow);
+}
