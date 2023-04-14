@@ -4,8 +4,10 @@
     max-width: 40rem;
     height: 15rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    border: 6px solid var(--grey);
+    border-radius: 10px;
 }
 
 .wrap * {
@@ -17,23 +19,23 @@
     width: 100%;
 }
 
-.nameAndLikeBtn {
-    width: 100%;
+.buttonsWrap {
+    width: 33%;
     max-width: 40rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     margin-top: 1rem;
 }
 
 .productDetails{
-    width: 100%;
+    width: 33%;
     max-width: 40rem;
     margin-top: 1rem;
-    list-style-type: disc;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.h3 {
-    margin-right: 1rem;
-    max-width: 85%;
-}

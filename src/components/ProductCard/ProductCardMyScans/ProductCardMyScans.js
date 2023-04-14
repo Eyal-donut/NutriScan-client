@@ -31,22 +31,22 @@ const ProductCardMyScans = ({ product, page }) => {
                 : ""
             }
           />
-          <div className={classes.details}>
-            {product.name}
-          </div>
-          <div className={classes.nameAndLikeBtn}>
-            <h3 className={classes.h3}>{product.name}</h3>
+          <ul className={classes.productDetails}>
+            <h3>{product.name}</h3>
+            <h3>{product.company}</h3>
+          </ul>
+          <div className={classes.buttonsWrap}>
+            <LikeButton
+              onBtnClick={clickHandler}
+              isLiked={isLiked}
+              id={product.code}
+            />
             <LikeButton
               onBtnClick={clickHandler}
               isLiked={isLiked}
               id={product.code}
             />
           </div>
-          <ul className={classes.productDetails}>
-            <h3 className={classes.h3}>Product details</h3>
-            <li className={classes.li}>Category: {product.category}</li>
-            <li className={classes.li}>Manufacturer: {product.company}</li>
-          </ul>
       </div>
     );
 };
