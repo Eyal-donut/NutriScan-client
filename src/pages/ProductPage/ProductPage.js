@@ -9,7 +9,6 @@ import { useLoggedUser } from "../../hooks/useLoggedUser";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const ProductPage = () => {
-
   const { getProductFromLocalAndSetStates, isProductFound } =
     useBarcodeAndProduct();
   const { checkCameraAndRefresh } = useCheckCameraAndRefresh();
@@ -18,23 +17,21 @@ const ProductPage = () => {
 
   useEffect(() => {
     getProductFromLocalAndSetStates();
-    // checkCameraAndRefresh();
-   
+    checkCameraAndRefresh();
+
     return () => {
-      const localProduct = getLocalStorageItem("currentProduct");
-      if (!localProduct.deleted) {
-        updateLocalAndLoggedUser(
-          undefined,
-          "singleProduct",
-          localProduct
-          );
+      if (isProductFound) {
+        const localProduct = getLocalStorageItem("currentProduct");
+        if (!localProduct.deleted) {
+          updateLocalAndLoggedUser(undefined, "singleProduct", localProduct);
           //! Add here api call to update the user
         }
+      }
     };
     // eslint-disable-next-line
   }, []);
 
-  return isProductFound !== null ? (
+  return (
     <>
       {isProductFound ? (
         <>
@@ -46,6 +43,6 @@ const ProductPage = () => {
         <ProductNotFound />
       )}
     </>
-  ) : null;
+  );
 };
 export default ProductPage;

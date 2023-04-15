@@ -5,11 +5,17 @@ import { useLoggedUser } from "./useLoggedUser";
 import { useState } from "react";
 
 export const useBarcodeAndProduct = () => {
-  const [isProductFound, setIsProductFound] = useState(null);
-  const { setCurrentProduct, setProductSource } = useProductContext();
-  const { updateLocalAndLoggedUser } = useLoggedUser();
   const { setLocalStorageItem, getLocalStorageItem, getItemProperty } =
     useLocalStorage();
+  const [isProductFound, setIsProductFound] = useState(() => {
+    const productFoundState = getLocalStorageItem("isProductFound");
+    if (productFoundState) {
+      if (productFoundState.state) return true;
+    }
+    return false;
+  });
+  const { setCurrentProduct, setProductSource } = useProductContext();
+  const { updateLocalAndLoggedUser } = useLoggedUser();
 
   const setProductStates = (product) => {
     setProductSource(product.source);
@@ -57,7 +63,7 @@ export const useBarcodeAndProduct = () => {
   const updateProduct = (product, key, value) => {
     const update = product;
     if (key === "isLiked") {
-      update.isLiked = value
+      update.isLiked = value;
     }
     if (key === "delete") {
       update.deleted = true;
@@ -74,9 +80,9 @@ export const useBarcodeAndProduct = () => {
   const updateMyScanCard = (barcode, key, value) => {
     const product = getFromLocalUserProducts(barcode);
     const updated = updateProduct(product, key, value);
-    const localCurrentProductCode = getItemProperty("currentProduct", "code")
-    if (Number(localCurrentProductCode) === Number(product.code)){
-      updateProductAndSetCurrent(updated, key, value)
+    const localCurrentProductCode = getItemProperty("currentProduct", "code");
+    if (Number(localCurrentProductCode) === Number(product.code)) {
+      updateProductAndSetCurrent(updated, key, value);
     }
     updateLocalAndLoggedUser(undefined, "singleProduct", updated);
   };
