@@ -1,0 +1,9 @@
+.header{
+    height: 10rem;
+    background: var(--main-theme-color);
+    box-shadow: var(--navbar-box-shadow);
+    
+}
+.h1{
+    margin: 0;
+}
