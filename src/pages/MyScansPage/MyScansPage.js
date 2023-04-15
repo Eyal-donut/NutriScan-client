@@ -14,12 +14,8 @@ const MyScansPage = () => {
   );
   const [shownScans, setShownScans] = useState(myScans);
 
-  useEffect(() => {
-    setShownScans(myScans)
-    
-  }, [myScans]);
-
-  const handleCardBtnClick = () => {
+  const handleCardBtnClick = (e) => {
+    // console.log(e.target.className.includes("LikeButton"))
     setMyScans(getItemProperty("loggedUser", "products"));
   };
   const handleSearch = (filteredBySearch) => {
@@ -34,6 +30,11 @@ const MyScansPage = () => {
       setShownScans(myScans);
     }
   };
+
+  useEffect(() => {
+    setShownScans(myScans)
+    
+  }, [myScans]);
 
   useEffect(() => {
     checkCameraAndRefresh();

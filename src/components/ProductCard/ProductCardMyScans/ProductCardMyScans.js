@@ -24,7 +24,7 @@ const ProductCardMyScans = ({ product, page, onBtnClick }) => {
       updateMyScanCard(Number(e.target.id), "delete");
       deleteLocalUserProduct(Number(e.target.id))
     }
-    onBtnClick()
+    onBtnClick(e)
   };
     return (
       <div className={classes.wrap}>

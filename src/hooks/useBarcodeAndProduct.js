@@ -61,9 +61,9 @@ export const useBarcodeAndProduct = () => {
   };
 
   const updateProduct = (product, key, value) => {
-    const update = product;
+    let update = product;
     if (key === "isLiked") {
-      update.isLiked = value;
+      update = { ...update, isLiked: value };
     }
     if (key === "delete") {
       update.deleted = true;
@@ -77,11 +77,11 @@ export const useBarcodeAndProduct = () => {
     setCurrentProduct(update);
   };
 
-  const updateMyScanCard = (barcode, key, value) => {
+  const updateMyScanCard = async (barcode, key, value) => {
     const product = getFromLocalUserProducts(barcode);
     const updated = updateProduct(product, key, value);
     const localCurrentProductCode = getItemProperty("currentProduct", "code");
-    if (Number(localCurrentProductCode) === Number(product.code)) {
+    if (Number(localCurrentProductCode) === Number(barcode)) {
       updateProductAndSetCurrent(updated, key, value);
     }
     updateLocalAndLoggedUser(undefined, "singleProduct", updated);
