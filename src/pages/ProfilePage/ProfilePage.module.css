@@ -1,9 +1,14 @@
 .header{
-    height: 10rem;
+    height: 8rem;
     background: var(--main-theme-color);
     box-shadow: var(--navbar-box-shadow);
-    
+    z-index: 1;
 }
 .h1{
     margin: 0;
+}
+
+.contentWrap{
+    margin-top: var(--prim-margin-top);
+    margin-bottom: 7rem;
 }

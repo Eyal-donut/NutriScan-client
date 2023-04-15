@@ -4,8 +4,6 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  margin-top: var(--sec-margin);
-  border-top: 2px solid var(--grey);
 }
 
 .wrap * {
@@ -13,8 +11,9 @@
 }
 
 .categoryIcon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
 }
 
 .categoryWrap {
@@ -23,11 +22,13 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  /* padding: var(--sec-margin) 0; */
 }
 
 .optionIcon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
 }
 
 .optionWrap,
@@ -36,9 +37,13 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: var(--sec-margin) 0;
+  border-top: 1px solid var(--grey)
 }
 
-
+.headerWrap{
+    padding: var(--prim-margin-top) 0;
+}
 
 .optionIconAndName,
 .CategoryIconAndName {

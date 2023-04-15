@@ -6,7 +6,6 @@ import Icon from "../../Icon(clickable)/Icon";
 import Checkbox from "../OptionInput/CheckBox/CheckBox";
 import RangeSelection from "../OptionInput/RangeSelection/RangeSelection";
 
-//This will be used for each category!
 const DropdownComponent = ({ categoryIcon, headerText, options }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -14,7 +13,7 @@ const DropdownComponent = ({ categoryIcon, headerText, options }) => {
     <div className={classes.wrap}>
       <div className={classes.headerWrap}>
         <div className={classes.CategoryIconAndName}>
-          <Icon imageUrl={categoryIcon} />
+          {/* <Icon imageUrl={categoryIcon} className={classes.categoryIcon}/> */}
           <h3 className={classes.h3}>{headerText}</h3>
         </div>
         <Icon
