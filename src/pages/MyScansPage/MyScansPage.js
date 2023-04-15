@@ -14,8 +14,7 @@ const MyScansPage = () => {
   );
   const [shownScans, setShownScans] = useState(myScans);
 
-  const handleCardBtnClick = (e) => {
-    // console.log(e.target.className.includes("LikeButton"))
+  const handleCardBtnClick = () => {
     setMyScans(getItemProperty("loggedUser", "products"));
   };
   const handleSearch = (filteredBySearch) => {
@@ -32,8 +31,7 @@ const MyScansPage = () => {
   };
 
   useEffect(() => {
-    setShownScans(myScans)
-    
+    setShownScans(myScans);
   }, [myScans]);
 
   useEffect(() => {
@@ -46,16 +44,18 @@ const MyScansPage = () => {
     <>
       <MyScansHeader handleNavButtons={handleNavButtons} />
       <SearchBar onInputChange={handleSearch} products={myScans} />
-      {shownScans.map((scan) => {
-        return (
-          <ProductCardMyScans
-            product={scan}
-            page="my-scans"
-            key={scan.code}
-            onBtnClick={handleCardBtnClick}
-          />
-        );
-      })}
+      {shownScans
+        .sort((a, b) => new Date(b.dateScanned) - new Date(a.dateScanned))
+        .map((scan) => {
+          return (
+            <ProductCardMyScans
+              product={scan}
+              page="my-scans"
+              key={scan.code}
+              onBtnClick={handleCardBtnClick}
+            />
+          );
+        })}
     </>
   );
 };

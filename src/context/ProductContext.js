@@ -1,9 +1,16 @@
 import { useState, createContext, useContext } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const ProductContext = createContext();
 
 const ProductProvider = ({ children }) => {
-  const [currentProduct, setCurrentProduct] = useState({});
+  const { getLocalStorageItem } = useLocalStorage();
+  const [currentProduct, setCurrentProduct] = useState(() => {
+    const localCurrentProduct = getLocalStorageItem("currentProduct");
+    if (localCurrentProduct) {
+      return localCurrentProduct;
+    } else return {};
+  });
   const [productSource, setProductSource] = useState("");
 
   return (
