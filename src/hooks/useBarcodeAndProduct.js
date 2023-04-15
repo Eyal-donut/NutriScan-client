@@ -2,10 +2,11 @@ import { useLocalStorage } from "./useLocalStorage";
 import { getProduct } from "../API/productsApi";
 import { useProductContext } from "../context/ProductContext";
 import { useLoggedUser } from "./useLoggedUser";
+import { useState } from "react";
 
 export const useBarcodeAndProduct = () => {
-  const { setCurrentProduct, setProductSource, setIsProductFound } =
-    useProductContext();
+  const [isProductFound, setIsProductFound] = useState(null);
+  const { setCurrentProduct, setProductSource } = useProductContext();
   const { updateLocalAndLoggedUser } = useLoggedUser();
   const { setLocalStorageItem, getLocalStorageItem, getItemProperty } =
     useLocalStorage();
@@ -57,7 +58,10 @@ export const useBarcodeAndProduct = () => {
   const updateProduct = (product, key, value) => {
     const update = product;
     if (key === "isLiked") {
-      update.isLiked = !update.isLiked;
+      update.isLiked = value
+    }
+    if (key === "delete") {
+      update.deleted = true;
     }
     return update;
   };
@@ -71,10 +75,15 @@ export const useBarcodeAndProduct = () => {
   const updateMyScanCard = (barcode, key, value) => {
     const product = getFromLocalUserProducts(barcode);
     const updated = updateProduct(product, key, value);
+    const localCurrentProductCode = getItemProperty("currentProduct", "code")
+    if (Number(localCurrentProductCode) === Number(product.code)){
+      updateProductAndSetCurrent(updated, key, value)
+    }
     updateLocalAndLoggedUser(undefined, "singleProduct", updated);
   };
 
   return {
+    isProductFound,
     getProductAndSetCurrent,
     getProductFromLocalAndSetStates,
     updateProductAndSetCurrent,

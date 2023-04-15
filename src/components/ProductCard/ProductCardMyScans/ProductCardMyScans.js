@@ -17,9 +17,10 @@ const ProductCardMyScans = ({ product, page, onBtnClick }) => {
 
   const clickHandler = (e) => {
     if (e.target.className.includes("LikeButton")) {
-      updateMyScanCard(Number(e.target.id), "isLiked");
+      updateMyScanCard(Number(e.target.id), "isLiked", !isLiked);
       setIsLiked((prevState) => !prevState);
     } else if (e.target.className.includes("DeleteButton")) {
+      updateMyScanCard(Number(e.target.id), "delete");
       deleteLocalUserProduct(Number(e.target.id))
     }
     onBtnClick()
