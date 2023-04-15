@@ -1,7 +1,7 @@
 import WARNING_ICON from "../assets/icons/warningOrange.png";
 import NO_MATCH_ICON from "../assets/icons/noMatchRed.png";
 import MATCH_ICON from "../assets/icons/checkGreen.png";
-import BACK_ICON from "../assets/icons/arrow.png"
+import BACK_ICON from "../assets/icons/arrow.png";
 
 export const constants = {
   APP_NAME: "Products Scanner",
@@ -12,8 +12,7 @@ export const constants = {
 
 export const links = {
   AUTH_ROUTES_URL: "https://products-scanner-server.onrender.com/api/v1/auth",
-  PRODUCTS_ROUTES_URL:
-    "http://localhost:5000/api/v1/products-scanner/products",
+  PRODUCTS_ROUTES_URL: "http://localhost:5000/api/v1/products-scanner/products",
   OPEN_FOOD_FACTS_URL: "https://world.openfoodfacts.org/api/v2/product",
 };
 
@@ -21,7 +20,7 @@ export const icons = {
   MATCH_ICON,
   WARNING_ICON,
   NO_MATCH_ICON,
-  BACK_ICON
+  BACK_ICON,
 };
 
 export const newUser = {
@@ -46,3 +45,4 @@ export const newUser = {
     Salt: "Off",
   },
 };
+
