@@ -1,5 +1,61 @@
-.option {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-top: var(--sec-margin);
+  border-top: 2px solid var(--grey);
+}
+
+.wrap * {
+  transition: all 0.1s ease-in-out;
+}
+
+.categoryIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.categoryWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.optionIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.optionWrap,
+.headerWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+
+
+.optionIconAndName,
+.CategoryIconAndName {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.arrowDown {
+  transform: rotate(90deg);
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
+}
+
+.arrowRight {
+    margin: 0;
+    width: 2rem;
+    height: 2rem;
 }

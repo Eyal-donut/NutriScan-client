@@ -1,24 +1,22 @@
 import { useState } from "react";
-import classes from "./DropdownComponent.module.css";
-import Icon from "../../Icon(clickable)/Icon";
-
 import { icons } from "../../../constants/constants";
+import classes from "./DropdownComponent.module.css";
+
+import Icon from "../../Icon(clickable)/Icon";
+import Checkbox from "../OptionInput/CheckBox/CheckBox";
+import RangeSelection from "../OptionInput/RangeSelection/RangeSelection";
 
 //This will be used for each category!
-const DropdownComponent = ({ icon, headerText, options, onOptionClick }) => {
+const DropdownComponent = ({ categoryIcon, headerText, options }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleOptionClick = (option, optionType) => {
-    setSelectedOption(option);
-    onOptionClick(option, optionType);
-  };
 
   return (
     <div className={classes.wrap}>
       <div className={classes.headerWrap}>
-        <Icon imageUrl={icon} />
-        <h3 className={classes.h3}>{headerText}</h3>
+        <div className={classes.CategoryIconAndName}>
+          <Icon imageUrl={categoryIcon} />
+          <h3 className={classes.h3}>{headerText}</h3>
+        </div>
         <Icon
           imageUrl={icons.BACK_ICON}
           onBtnClick={() => setIsOpen(!isOpen)}
@@ -26,12 +24,18 @@ const DropdownComponent = ({ icon, headerText, options, onOptionClick }) => {
         />
       </div>
       {isOpen && (
-        <ul className={classes.optionsWrap}>
+        <ul className={classes.categoryWrap}>
           {options.map((option) => (
-            <li key={option.name} className={classes.option}>
-              {option.logo}
-              {option.name}
-              <ValueSetter type={option.type}/>
+            <li key={option.name} className={classes.optionWrap}>
+              <div className={classes.optionIconAndName}>
+                <Icon
+                  imageUrl={option.imageUrl}
+                  className={classes.optionIcon}
+                />
+                {option.name}
+              </div>
+              {option.type === "checkbox" && <Checkbox val={option.value} />}
+              {option.type === "range" && <RangeSelection val={option.value} />}
             </li>
           ))}
         </ul>
