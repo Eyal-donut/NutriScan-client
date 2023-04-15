@@ -54,7 +54,6 @@ export const useBarcodeAndProduct = () => {
     }
   };
 
-  //! Later and allow edit the product also with other stuff
   const updateProduct = (product, key, value) => {
     const update = product;
     if (key === "isLiked") {
