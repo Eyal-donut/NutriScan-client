@@ -7,4 +7,5 @@
     margin: var(--prim-margin-top) 1rem 0;
     border: none;
     background: var(--main-theme-color);
+    cursor: pointer;
 }

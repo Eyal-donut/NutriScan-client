@@ -14,4 +14,5 @@
     align-items: center;
     border: solid 2px #A4ACB9;
     box-shadow: var(--btn-box-shadow);
+    cursor: pointer;
 }
