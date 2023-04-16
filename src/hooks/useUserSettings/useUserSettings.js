@@ -1,7 +1,7 @@
 import { createSettingsArray } from "./utils/createUserSettings";
 import { useState } from "react";
 
-export const useUserSettings = () => {
+export const useUserSettings = ( ) => {
   const [isProductMatch, setIsProductMatch] = useState(true);
   const [dietPreferences, setDietPreferences] = useState([]);
   const [environmentPreferences, setEnvironmentPreferences] = useState([]);

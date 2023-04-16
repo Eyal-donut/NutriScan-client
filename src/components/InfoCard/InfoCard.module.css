@@ -33,7 +33,7 @@
 .details{
     width: 100%;
     margin-top: var(--sec-margin);
-    padding: var(--sec-margin) 0;
+    /* padding: var(--sec-margin) 0; */
 }
 .h3 {
     text-align: left;
@@ -44,7 +44,7 @@
 
 
 .h4_Match{
-    padding: var(--sec-margin) 0;
+    margin-top: var(--third-margin);
     color: var(--main-theme-color);
 }
 .h4_NoMatch{
