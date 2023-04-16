@@ -12,23 +12,30 @@ const DietPreferences = ({ dietPreferences }) => {
         dietPreferences.isMatch
           ? "Product matches all your diet and lifestyle filters"
           : !dietPreferences.isMatch
-          ? "Product doesn't match your diet filters"
-          : "Missing information to determine compatibility"
+          ? "Product doesn't match all your diet filters"
+          : "Can't determine compatibility"
       }
     >
       {dietPreferences.matchingOptions.map((option) => {
         return (
           <div key={`key${option.optionName}`} className={classes.optionWrap}>
-            <Icon
-              className={classes.icon}
-              imageUrl={
-                dietPreferences.isMatch === true
-                  ? icons.MATCH_ICON
-                  : dietPreferences.isMatch === false
-                  ? icons.NO_MATCH_ICON
-                  : icons.WARNING_ICON
-              }
-            />
+            <Icon className={classes.icon} imageUrl={icons.MATCH_ICON} />
+            {option.optionName}
+          </div>
+        );
+      })}
+      {dietPreferences.unknownOptions.map((option) => {
+        return (
+          <div key={`key${option.optionName}`} className={classes.optionWrap}>
+            <Icon className={classes.icon} imageUrl={icons.WARNING_ICON} />
+            {option.optionName} - missing information
+          </div>
+        );
+      })}
+      {dietPreferences.notMatchingOptions.map((option) => {
+        return (
+          <div key={`key${option.optionName}`} className={classes.optionWrap}>
+            <Icon className={classes.icon} imageUrl={icons.NO_MATCH_ICON} />
             {option.optionName}
           </div>
         );
