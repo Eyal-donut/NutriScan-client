@@ -3,10 +3,11 @@ import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import classes from "./RangeSelection.module.css";
 import { useEffect, useState } from "react";
 
-const RangeSelection = ({ val, id, category, optionName }) => {
+const RangeSelection = ({ val, category, optionName }) => {
   const { loggedUser, setLoggedUser } = useLoggedUserContext();
   const { setLocalStorageItem } = useLocalStorage();
   const [num, setNum] = useState(val);
+
   const valuesArray = ["Off", "Zero", "Low", "Moderate"];
 
   const handleClick = (e) => {
@@ -35,7 +36,7 @@ const RangeSelection = ({ val, id, category, optionName }) => {
   }, [num]);
 
   return (
-    <div className={classes.range} id={id}>
+    <div className={classes.range} id={optionName}>
       <button
         className={classes.decrement}
         onClick={handleClick}

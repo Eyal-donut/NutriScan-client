@@ -10,13 +10,13 @@ export const useUserSettings = () => {
             icon: icons.NO_MATCH_ICON,
             value: [
               {
-                name: "Gluten Free",
+                name: "Gluten free",
                 value: user.settings.dietPreferences["Gluten free"],
                 type: "checkbox",
                 imageUrl: icons.MATCH_ICON,
               },
               {
-                name: "Lactose Free",
+                name: "Lactose free",
                 value: user.settings.dietPreferences["Lactose free"],
                 type: "checkbox",
                 imageUrl: icons.MATCH_ICON,

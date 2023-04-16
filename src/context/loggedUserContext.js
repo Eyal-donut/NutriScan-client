@@ -1,9 +1,16 @@
 import { useState, createContext, useContext } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const LoggedUserContext = createContext();
 
 const LoggedUserProvider = ({ children }) => {
-  const [loggedUser, setLoggedUser] = useState({});
+  const { getLocalStorageItem } = useLocalStorage();
+  const [loggedUser, setLoggedUser] = useState(() => {
+    const localUser = getLocalStorageItem("loggedUser");
+    if (localUser) {
+      return localUser;
+    } else return {};
+  });
   const [isLoggedUser, setIsLoggedUser] = useState(null);
 
   return (
