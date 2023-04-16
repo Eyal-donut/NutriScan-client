@@ -1,7 +1,7 @@
 import ContentWrap from "../ContentWrap/ContentWrap";
 import classes from "./InfoCard.module.css";
 
-const InfoCard = ({ header, children, isMatch }) => {
+const InfoCard = ({ header, children, isMatch, subheader }) => {
   return (
     <div
       className={`${classes.wrap} ${
@@ -23,11 +23,7 @@ const InfoCard = ({ header, children, isMatch }) => {
               : classes.h4_UnknownMatch
           }
         >
-          {isMatch
-            ? "Product matches your diet and lifestyle filters"
-            : !isMatch
-            ? "Product doesn't match your diet filters"
-            : "Missing information to determine compatibility"}
+          {subheader}
         </h4>
         <div className={classes.details}>{children}</div>
       </ContentWrap>
