@@ -9,10 +9,8 @@ const Scanner = ({ onDetectedBarcode }) => {
   const {setIsCameraOn} = useCameraContext()
 
   useEffect(() => {
-    Quagga.init(config, (err) => {
-      if (err) {
-        console.log(err, "Error while initiating Quagga barcode scanner");
-      }
+    Quagga.init(config, () => {
+      
       Quagga.start();
       setIsCameraOn(true)
     });
