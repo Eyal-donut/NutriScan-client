@@ -26,12 +26,12 @@ export const useUserSettings = () => {
         const optionResult = {
           optionName: productOption.name,
           isMatch:
-             userOption.value === false
+            userOption.value === false
               ? true
               : userOption.value === 0
               ? true
-              : productOption.value === "unknown"
-              ? "unknown"
+              : productOption.value === "Unknown" || product.value === -1
+              ? "Unknown"
               : userOption.value === true && productOption.value === false
               ? true
               : userOption.value !== true &&
