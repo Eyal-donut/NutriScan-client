@@ -3,13 +3,13 @@ import { createSettingsArray } from "./utils/createUserSettings";
 export const useUserSettings = () => {
   const checkProductMatch = (product, user) => {
     //user
-    const userCategoriesArray = createSettingsArray(user).map(
+    const userCategoriesArray = createSettingsArray(undefined, user).map(
       (category) => category.value
     );
     const userOptionsArray = userCategoriesArray.flat();
 
     // //! Product - If you construct the product the same way like you did the user, you can use the same function
-    const productCategoriesArray = createSettingsArray(product).map(
+    const productCategoriesArray = createSettingsArray(product, undefined).map(
       (category) => category.value
     );
     const allResults = [];

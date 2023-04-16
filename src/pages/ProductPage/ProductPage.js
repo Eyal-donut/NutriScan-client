@@ -9,23 +9,22 @@ import { useLoggedUser } from "../../hooks/useLoggedUser";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useUserSettings } from "../../hooks/useUserSettings/useUserSettings";
 import { useLoggedUserContext } from "../../context/loggedUserContext";
+import { useProductContext } from "../../context/ProductContext";
 
 const ProductPage = () => {
-  const {loggedUser} = useLoggedUserContext()
+  const { loggedUser } = useLoggedUserContext();
   const { getProductFromLocalAndSetStates, isProductFound } =
     useBarcodeAndProduct();
   const { checkCameraAndRefresh } = useCheckCameraAndRefresh();
   const { updateLocalAndLoggedUser } = useLoggedUser();
   const { getLocalStorageItem } = useLocalStorage();
-
-  const {checkProductMatch} = useUserSettings()
+  const { checkProductMatch } = useUserSettings();
+  const{ currentProduct } = useProductContext()
 
   useEffect(() => {
-    getProductFromLocalAndSetStates();
     checkCameraAndRefresh();
-    checkProductMatch(undefined, loggedUser)
-
-
+    // if (isProductFound) getProductFromLocalAndSetStates();
+    checkProductMatch(currentProduct, loggedUser);
 
     return () => {
       if (isProductFound) {

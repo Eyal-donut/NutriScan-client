@@ -5,13 +5,20 @@ const ProductContext = createContext();
 
 const ProductProvider = ({ children }) => {
   const { getLocalStorageItem } = useLocalStorage();
+
   const [currentProduct, setCurrentProduct] = useState(() => {
     const localCurrentProduct = getLocalStorageItem("currentProduct");
     if (localCurrentProduct) {
       return localCurrentProduct;
     } else return {};
   });
-  const [productSource, setProductSource] = useState("");
+
+  const [productSource, setProductSource] = useState(() => {
+    const localCurrentProduct = getLocalStorageItem("currentProduct");
+    if (localCurrentProduct) {
+      return localCurrentProduct.source;
+    } else return "";
+  });
 
   return (
     <ProductContext.Provider

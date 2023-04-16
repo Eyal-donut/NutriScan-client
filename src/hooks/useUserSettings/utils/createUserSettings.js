@@ -1,9 +1,8 @@
 import { icons } from "../../../constants/constants";
 import { convertNutValuesToClasses } from "./convertNutValuesToClasses";
 
-
-export const createSettingsArray = (user, product) => {
-  if (user === undefined) {
+export const createSettingsArray = (product, user) => {
+  if (product && !user) {
     return [
       {
         category: "dietPreferences",
@@ -124,7 +123,7 @@ export const createSettingsArray = (user, product) => {
         ],
       },
     ];
-  } else
+  } else if (!product && user)
     return [
       {
         category: "dietPreferences",

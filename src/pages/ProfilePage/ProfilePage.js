@@ -12,7 +12,7 @@ const ProfilePage = () => {
   const { createSettingsArray } = useUserSettings();
   const { loggedUser } = useLoggedUserContext();
 
-  const settingsArray = createSettingsArray(loggedUser);
+  const settingsArray = createSettingsArray(undefined, loggedUser);
 
   useEffect(() => {
     checkCameraAndRefresh();
