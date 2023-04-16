@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh ";
 import { useLoggedUserContext } from "../../context/loggedUserContext";
 import DropdownComponent from "../../components/ProfilePageComponents/DropdownComponent/DropdownComponent";
-import { useUserSettings } from "../../hooks/useUserSettings";
+import { useUserSettings } from "../../hooks/useUserSettings/useUserSettings";
 
 const ProfilePage = () => {
   const { checkCameraAndRefresh } = useCheckCameraAndRefresh();

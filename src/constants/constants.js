@@ -46,3 +46,21 @@ export const newUser = {
   },
 };
 
+//amounts in 100g. Cholesterol in mg, the rest in g
+export const nutValues = {
+  LOW_CHOLESTEROL: 20,
+  MODERATE_CHOLESTEROL: 60,
+  LOW_CARBS: 5,
+  MODERATE_CARBS: 22.5,
+  LOW_SUGAR: 5,
+  MODERATE_SUGAR: 22.5,
+  LOW_SALT: .3,
+  MODERATE_SALT: 1.5,
+  LOW_SAT_FAT: 1.5,
+  MODERATE_SAT_FAT: 5,
+  LOW_FAT: 3,
+  MODERATE_FAT: 17.5,
+
+}
+
+
