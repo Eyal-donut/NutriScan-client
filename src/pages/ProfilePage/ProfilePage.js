@@ -31,6 +31,7 @@ const ProfilePage = () => {
             options={category.value}
             headerText={category.name}
             categoryIcon={category.icon}
+            category={category.category}
           />
         ))}
       </ContentWrap>

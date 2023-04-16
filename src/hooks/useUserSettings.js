@@ -5,6 +5,7 @@ export const useUserSettings = () => {
     const createSettingsArray = (user) => {
         return [
           {
+            category: "dietPreferences",
             name: "Diet Preferences",
             icon: icons.NO_MATCH_ICON,
             value: [
@@ -35,6 +36,7 @@ export const useUserSettings = () => {
             ],
           },
           {
+            category: "environmentPreferences",
             name: "Environment Preferences",
             icon: icons.MATCH_ICON,
             value: [
@@ -60,6 +62,7 @@ export const useUserSettings = () => {
             ],
           },
           {
+            category: "nutritionPreferences",
             name: "Nutrition Preferences",
             icon: icons.MATCH_ICON,
             value: [

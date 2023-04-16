@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { icons } from "../../../constants/constants";
 import classes from "./DropdownComponent.module.css";
 
 import Icon from "../../Icon(clickable)/Icon";
 import Checkbox from "../CheckBox/CheckBox";
 import RangeSelection from "../RangeSelection/RangeSelection";
+import { useLoggedUserContext } from "../../../context/loggedUserContext";
 
-const DropdownComponent = ({ categoryIcon, headerText, options }) => {
+const DropdownComponent = ({ categoryIcon, headerText, options, category }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { loggedUser } = useLoggedUserContext();
 
   return (
     <div className={classes.wrap}>
@@ -33,8 +35,21 @@ const DropdownComponent = ({ categoryIcon, headerText, options }) => {
                 />
                 {option.name}
               </div>
-              {option.type === "checkbox" && <Checkbox val={option.value} id={option.name}/>}
-              {option.type === "range" && <RangeSelection val={option.value} id={option.name}/>}
+              {option.type === "checkbox" && (
+                <Checkbox
+                  val={option.value}
+                  id={option.name}
+                  category={category}
+                />
+              )}
+              {option.type === "range" && (
+                <RangeSelection
+                  val={option.value}
+                  id={option.name}
+                  optionName={option.name}
+                  category={category}
+                />
+              )}
             </li>
           ))}
         </ul>

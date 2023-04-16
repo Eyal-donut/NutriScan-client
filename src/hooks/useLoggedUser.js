@@ -12,24 +12,24 @@ export const useLoggedUser = () => {
     return loggedUser;
   };
 
-  const removeSettingsId = (user) => {
-    const { dietPreferences, environmentPreferences, nutritionPreferences } =
-      user.settings;
-    const updated = {
-      ...user,
-      settings: {
-        dietPreferences,
-        environmentPreferences,
-        nutritionPreferences,
-      },
-    };
-    return updated;
-  };
+  // const removeSettingsId = (user) => {
+  //   const { dietPreferences, environmentPreferences, nutritionPreferences } =
+  //     user.settings;
+  //   const updated = {
+  //     ...user,
+  //     settings: {
+  //       dietPreferences,
+  //       environmentPreferences,
+  //       nutritionPreferences,
+  //     },
+  //   };
+  //   return updated;
+  // };
 
   const setExistingUser = (existingUser) => {
-    const massagedUser = removeSettingsId(existingUser);
-    setLocalStorageItem("loggedUser", massagedUser);
-    setLoggedUser(massagedUser);
+    // const massagedUser = removeSettingsId(existingUser);
+    setLocalStorageItem("loggedUser", existingUser);
+    setLoggedUser(existingUser);
     setIsLoggedUser(true);
     return loggedUser;
   };

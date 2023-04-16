@@ -1,3 +1,19 @@
 .range {
-    font-size: 1rem;
+    width: 12rem;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.increment,
+.decrement {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50px;
+    background: var(--main-theme-color-transparent) ;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }

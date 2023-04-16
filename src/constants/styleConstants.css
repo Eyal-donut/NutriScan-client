@@ -3,6 +3,7 @@
     /* --bgr-sec: #EFEFEF; */
     --bgr-sec: #D8DADE;
     --main-theme-color: #86C01C;
+    --main-theme-color-transparent: rgb(134, 192, 28, .6);
     --grey: #A4ACB9;
     --dark-green: #096A2E;
     --red:  #DA0217;

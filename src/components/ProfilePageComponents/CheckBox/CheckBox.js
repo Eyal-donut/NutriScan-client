@@ -8,7 +8,6 @@ const Checkbox = ({ val, id }) => {
     toggle(!isOn);
     //change the state with context
   };
-  console.log(isOn)
 
   return (
     <label className={classes.wrap}>
