@@ -8,34 +8,43 @@ export const useUserSettings = () => {
     );
     const userOptionsArray = userCategoriesArray.flat();
 
-    const productCategoriesArray = createSettingsArray(product, undefined).map(
-      (category) => category.value
-    );
+    const productCategoriesArray = createSettingsArray(product, undefined)
+    
+    // const productCategoriesArray = createSettingsArray(product, undefined).map(
+    //   (category) => category.value
+    // );
     const allResults = [];
 
     productCategoriesArray.forEach((productCategory) => {
+      const categoryName = productCategory.name
+      
+      const productOptionsArray = productCategory.value
+      
       const matchesArray = [];
       const notMatchesArray = [];
       const unknownArray = [];
-
-      for (const productOption of productCategory) {
-        const userOption = userOptionsArray.find(
+      
+      for (const productOption of productOptionsArray) {
+        const examinedOption = userOptionsArray.find(
           (userOption) => userOption.name === productOption.name
         );
         const optionResult = {
-          optionName: productOption.name,
+          optionName: examinedOption.name,
           isMatch:
-            userOption.value === false
+            examinedOption.value === false
               ? true
-              : userOption.value === 0
+              : examinedOption.value === 0
               ? true
               : productOption.value === "Unknown" || product.value === -1
               ? "Unknown"
-              : userOption.value === true && productOption.value === false
+              : examinedOption.value === true && productOption.value === false
               ? true
-              : userOption.value !== true &&
-                userOption.value !== false &&
-                userOption.value <= productOption.value,
+              : examinedOption.value !== true &&
+                examinedOption.value !== false &&
+                examinedOption.value !== 0 &&
+                examinedOption.value <= productOption.value
+              ? true
+              : false,
         };
         if (optionResult.isMatch === true) {
           matchesArray.push(optionResult);
@@ -46,14 +55,14 @@ export const useUserSettings = () => {
         }
       }
       const categoryResult = {
-        categoryName: productCategory.name,
+        categoryName,
         matchingOptions: matchesArray,
         notMatchingOptions: notMatchesArray,
-        unknownArray: unknownArray,
+        unknownOptions: unknownArray,
       };
       allResults.push(categoryResult);
     });
-    console.log(allResults)
+    console.log(allResults);
   };
 
   return { createSettingsArray, checkProductMatch };
