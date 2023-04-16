@@ -8,7 +8,6 @@ export const useUserSettings = () => {
     );
     const userOptionsArray = userCategoriesArray.flat();
 
-    // //! Product - If you construct the product the same way like you did the user, you can use the same function
     const productCategoriesArray = createSettingsArray(product, undefined).map(
       (category) => category.value
     );
