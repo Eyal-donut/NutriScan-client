@@ -3,8 +3,8 @@ import { icons } from "../../../constants/constants";
 import classes from "./DropdownComponent.module.css";
 
 import Icon from "../../Icon(clickable)/Icon";
-import Checkbox from "../OptionInput/CheckBox/CheckBox";
-import RangeSelection from "../OptionInput/RangeSelection/RangeSelection";
+import Checkbox from "../CheckBox/CheckBox";
+import RangeSelection from "../RangeSelection/RangeSelection";
 
 const DropdownComponent = ({ categoryIcon, headerText, options }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,8 +33,8 @@ const DropdownComponent = ({ categoryIcon, headerText, options }) => {
                 />
                 {option.name}
               </div>
-              {option.type === "checkbox" && <Checkbox val={option.value} />}
-              {option.type === "range" && <RangeSelection val={option.value} />}
+              {option.type === "checkbox" && <Checkbox val={option.value} id={option.name}/>}
+              {option.type === "range" && <RangeSelection val={option.value} id={option.name}/>}
             </li>
           ))}
         </ul>
