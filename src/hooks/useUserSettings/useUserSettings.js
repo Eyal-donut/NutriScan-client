@@ -54,6 +54,7 @@ export const useUserSettings = () => {
       };
       allResults.push(categoryResult);
     });
+    console.log(allResults)
   };
 
   return { createSettingsArray, checkProductMatch };
