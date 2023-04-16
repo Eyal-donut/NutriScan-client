@@ -10,7 +10,7 @@ const DietPreferences = ({ dietPreferences }) => {
       isMatch={dietPreferences.isMatch}
       subheader={
         dietPreferences.isMatch
-          ? "Product matches your diet and lifestyle filters"
+          ? "Product matches all your diet and lifestyle filters"
           : !dietPreferences.isMatch
           ? "Product doesn't match your diet filters"
           : "Missing information to determine compatibility"
