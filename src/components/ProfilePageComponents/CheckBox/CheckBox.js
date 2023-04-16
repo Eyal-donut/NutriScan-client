@@ -14,7 +14,6 @@ const Checkbox = ({ val, optionName, category }) => {
   };
 
   useEffect(() => {
-    console.log(isOn)
     const update = {
       ...loggedUser,
       settings: {
