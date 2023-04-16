@@ -2,17 +2,12 @@ import { createSettingsArray } from "./utils/createUserSettings";
 
 export const useUserSettings = () => {
   const checkProductMatch = (product, user) => {
-    //user
     const userCategoriesArray = createSettingsArray(undefined, user).map(
       (category) => category.value
     );
     const userOptionsArray = userCategoriesArray.flat();
-
     const productCategoriesArray = createSettingsArray(product, undefined)
     
-    // const productCategoriesArray = createSettingsArray(product, undefined).map(
-    //   (category) => category.value
-    // );
     const allResults = [];
 
     productCategoriesArray.forEach((productCategory) => {

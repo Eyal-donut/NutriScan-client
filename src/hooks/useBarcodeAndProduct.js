@@ -53,15 +53,15 @@ export const useBarcodeAndProduct = () => {
     }
   };
 
-  const getProductFromLocalAndSetStates = () => {
-    const productFoundState = getLocalStorageItem("isProductFound");
-    if (productFoundState) {
-      if (productFoundState.state) {
-        const product = getLocalStorageItem("currentProduct");
-        if (product) setProductStates(product);
-      }
-    }
-  };
+  // const getProductFromLocalAndSetStates = () => {
+  //   const productFoundState = getLocalStorageItem("isProductFound");
+  //   if (productFoundState) {
+  //     if (productFoundState.state) {
+  //       const product = getLocalStorageItem("currentProduct");
+  //       if (product) setProductStates(product);
+  //     }
+  //   }
+  // };
 
   const updateProduct = (product, key, value) => {
     let update;
@@ -94,7 +94,7 @@ export const useBarcodeAndProduct = () => {
   return {
     isProductFound,
     getProductAndSetCurrent,
-    getProductFromLocalAndSetStates,
+    // getProductFromLocalAndSetStates,
     updateProductAndSetCurrent,
     updateMyScanCard,
   };

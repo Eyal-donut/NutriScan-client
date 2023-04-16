@@ -13,17 +13,15 @@ import { useProductContext } from "../../context/ProductContext";
 
 const ProductPage = () => {
   const { loggedUser } = useLoggedUserContext();
-  const { getProductFromLocalAndSetStates, isProductFound } =
-    useBarcodeAndProduct();
+  const { isProductFound } = useBarcodeAndProduct();
   const { checkCameraAndRefresh } = useCheckCameraAndRefresh();
   const { updateLocalAndLoggedUser } = useLoggedUser();
   const { getLocalStorageItem } = useLocalStorage();
   const { checkProductMatch } = useUserSettings();
-  const{ currentProduct } = useProductContext()
+  const { currentProduct } = useProductContext();
 
   useEffect(() => {
     checkCameraAndRefresh();
-    // if (isProductFound) getProductFromLocalAndSetStates();
     checkProductMatch(currentProduct, loggedUser);
 
     return () => {
