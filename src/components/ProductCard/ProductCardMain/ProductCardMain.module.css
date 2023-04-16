@@ -1,11 +1,12 @@
 .wrap{
-    margin-top: var(--prim-margin-top);
     width: 100%;
     max-width: 40rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    border-bottom: var(--content-border);
+    padding: var(--sec-margin) 0;
 }
 
 .wrap * {
@@ -15,6 +16,7 @@
 .li {
     text-align: left;
     width: 100%;
+    margin: 0;
 }
 
 .nameAndLikeBtn {
@@ -28,9 +30,7 @@
 
 .productDetails{
     width: 100%;
-    max-width: 40rem;
-    margin-top: 1rem;
-    list-style-type: disc;
+    margin-top: var(--sec-margin)
 }
 
 .h3 {
