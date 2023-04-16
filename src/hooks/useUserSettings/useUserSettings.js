@@ -82,7 +82,7 @@ export const useUserSettings = () => {
 
       allResults.push(categoryResult);
     });
-    console.log(allResults);
+    console.log(allResults)
   };
 
   return {

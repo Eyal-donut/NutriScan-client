@@ -8,6 +8,15 @@
     border-bottom: var(--content-border);
     padding: var(--sec-margin) 0;
 }
+/* .wrapNoMatch{
+    background-color: var(--red-bgr);
+}
+.wrapMatch{
+    background-color: var(--main-theme-bgr);
+}
+.wrapUnknownMatch{
+    background-color: var(--orange-bgr);
+} */
 
 .wrap * {
     text-align: left;
@@ -31,4 +40,17 @@
     margin-right: 1rem;
     width: 100%;
     padding: var(--sec-margin) 0;
+}
+
+
+.h4_Match{
+    padding: var(--sec-margin) 0;
+    color: var(--main-theme-color);
+}
+.h4_NoMatch{
+    padding: var(--third-margin) 0;
+    color: var(--red);
+}
+.h4_UnknownMatch{
+    color: var(--orange);
 }
