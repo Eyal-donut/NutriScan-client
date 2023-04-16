@@ -1,24 +1,30 @@
 import { createSettingsArray } from "./utils/createUserSettings";
+import { useState } from "react";
 
 export const useUserSettings = () => {
+  const [isProductMatch, setIsProductMatch] = useState(true);
+  const [dietPreferences, setDietPreferences] = useState([]);
+  const [environmentPreferences, setEnvironmentPreferences] = useState([]);
+  const [nutritionPreferences, setNutritionPreferences] = useState([]);
+
   const checkProductMatch = (product, user) => {
     const userCategoriesArray = createSettingsArray(undefined, user).map(
       (category) => category.value
     );
     const userOptionsArray = userCategoriesArray.flat();
-    const productCategoriesArray = createSettingsArray(product, undefined)
-    
+    const productCategoriesArray = createSettingsArray(product, undefined);
+
     const allResults = [];
 
     productCategoriesArray.forEach((productCategory) => {
-      const categoryName = productCategory.name
-      
-      const productOptionsArray = productCategory.value
-      
+      const categoryName = productCategory.name;
+
+      const productOptionsArray = productCategory.value;
+
       const matchesArray = [];
       const notMatchesArray = [];
       const unknownArray = [];
-      
+
       for (const productOption of productOptionsArray) {
         const examinedOption = userOptionsArray.find(
           (userOption) => userOption.name === productOption.name
@@ -55,10 +61,36 @@ export const useUserSettings = () => {
         notMatchingOptions: notMatchesArray,
         unknownOptions: unknownArray,
       };
+
+      //setting is match and the isProductMatch state
+      if (notMatchesArray.length > 0) {
+        categoryResult.isMatch = false;
+        isProductMatch !== false && setIsProductMatch(false);
+      } else if (unknownArray.length > 0) {
+        categoryResult.isMatch = "Unknown";
+        isProductMatch !== false && setIsProductMatch("Unknown");
+      } else {
+        categoryResult.isMatch = true;
+      }
+
+      //setting the state
+      categoryName === "Diet Preferences"
+        ? setDietPreferences(categoryResult)
+        : categoryName === "Environment Preferences"
+        ? setEnvironmentPreferences(categoryResult)
+        : setNutritionPreferences(categoryResult);
+
       allResults.push(categoryResult);
     });
     console.log(allResults);
   };
 
-  return { createSettingsArray, checkProductMatch };
+  return {
+    createSettingsArray,
+    checkProductMatch,
+    nutritionPreferences,
+    environmentPreferences,
+    dietPreferences,
+    isProductMatch,
+  };
 };

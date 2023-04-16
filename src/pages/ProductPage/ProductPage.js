@@ -2,6 +2,7 @@ import ProductCardMain from "../../components/ProductCard/ProductCardMain/Produc
 import IsMatchBar from "../../components/IsMatchBar/IsMatchBar";
 import ProductNotFound from "../../components/ProductNotFound/ProductNotFound";
 import ProductPageHeader from "../../components/ProductPageHeader/ProductPageHeader";
+import InfoCard from "../../components/InfoCard/InfoCard";
 import { useEffect } from "react";
 import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh ";
 import { useBarcodeAndProduct } from "../../hooks/useBarcodeAndProduct";
@@ -13,12 +14,18 @@ import { useProductContext } from "../../context/ProductContext";
 
 const ProductPage = () => {
   const { loggedUser } = useLoggedUserContext();
+  const { currentProduct } = useProductContext();
   const { isProductFound } = useBarcodeAndProduct();
   const { checkCameraAndRefresh } = useCheckCameraAndRefresh();
   const { updateLocalAndLoggedUser } = useLoggedUser();
   const { getLocalStorageItem } = useLocalStorage();
-  const { checkProductMatch } = useUserSettings();
-  const { currentProduct } = useProductContext();
+  const {
+    checkProductMatch,
+    // nutritionPreferences,
+    // environmentPreferences,
+    dietPreferences,
+    isProductMatch,
+  } = useUserSettings();
 
   useEffect(() => {
     checkCameraAndRefresh();
@@ -41,8 +48,12 @@ const ProductPage = () => {
       {isProductFound ? (
         <>
           <ProductPageHeader />
-          <IsMatchBar page="product" />
+          <IsMatchBar page="product" isMatch={isProductMatch} />
           <ProductCardMain page="product" />
+          <InfoCard
+            header="Diet Preferences"
+            isMatch={dietPreferences.isMatch}
+          ></InfoCard>
         </>
       ) : (
         <ProductNotFound />

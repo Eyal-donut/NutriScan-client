@@ -8,16 +8,16 @@ const IsMatchBar = ({ isMatch, page }) => {
       className={
         page === "product"
           ? `${classes.containerBig} ${
-              isMatch === "yes"
+              isMatch === true
                 ? classes.containerYes
-                : isMatch === "no"
+                : isMatch === false
                 ? classes.containerNo
                 : classes.containerUnknown
             }`
           : `${classes.containerSmall} ${
-              isMatch === "yes"
+              isMatch === true
                 ? classes.containerYes
-                : isMatch === "no"
+                : isMatch === false
                 ? classes.containerNo
                 : classes.containerUnknown
             }`
@@ -25,9 +25,9 @@ const IsMatchBar = ({ isMatch, page }) => {
     >
       <Icon
         imageUrl={
-          isMatch === "yes"
+          isMatch === true
             ? icons.MATCH_ICON
-            : isMatch === "no"
+            : isMatch === false
             ? icons.NO_MATCH_ICON
             : icons.WARNING_ICON
         }
@@ -39,14 +39,14 @@ const IsMatchBar = ({ isMatch, page }) => {
         }
       >
         {page === "product"
-          ? isMatch === "yes"
+          ? isMatch === true
             ? `It's a match!`
-            : isMatch === "no"
+            : isMatch === false
             ? `Product doesn't match your filters`
             : `Can't determine compatibility`
-          : isMatch === "yes"
+          : isMatch === true
           ? `Match`
-          : isMatch === "no"
+          : isMatch === false
           ? `Not a match`
           : `Missing information`}
       </div>

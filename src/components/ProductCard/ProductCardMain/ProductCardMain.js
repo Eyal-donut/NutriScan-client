@@ -10,7 +10,7 @@ import { useBarcodeAndProduct } from "../../../hooks/useBarcodeAndProduct";
 import { useLoggedUser } from "../../../hooks/useLoggedUser";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 
-const ProductCardMain = () => {
+const ProductCardMain = ({page}) => {
   const { currentProduct, productSource } = useProductContext();
 
   const { updateProductAndSetCurrent } = useBarcodeAndProduct();
@@ -41,6 +41,7 @@ const ProductCardMain = () => {
               ? currentProduct.product.image_url
               : ""
           }
+          page={page}
         />
         <div className={classes.nameAndLikeBtn}>
           <h3 className={classes.h3}>{currentProduct.name}</h3>

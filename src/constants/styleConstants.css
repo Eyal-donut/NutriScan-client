@@ -22,4 +22,5 @@
     --prim-margin-top: 2rem;
     --sec-margin: 1rem;
     --font-weight-text: 450;
+    --content-border: 1px solid var(--grey);
 }
