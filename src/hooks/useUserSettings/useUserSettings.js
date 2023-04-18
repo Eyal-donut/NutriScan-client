@@ -2,6 +2,8 @@ import { createSettingsArray } from "./utils/createUserSettings";
 import { useState } from "react";
 
 export const useUserSettings = ( ) => {
+
+  const [isPreferencesSet, setIsPreferencesSet] = useState(false);
   const [isProductMatch, setIsProductMatch] = useState(true);
   const [dietPreferences, setDietPreferences] = useState([]);
   const [environmentPreferences, setEnvironmentPreferences] = useState([]);
@@ -29,6 +31,7 @@ export const useUserSettings = ( ) => {
         const examinedOption = userOptionsArray.find(
           (userOption) => userOption.name === productOption.name
         );
+        
         const optionResult = {
           optionName: examinedOption.name,
           isMatch:
@@ -38,7 +41,7 @@ export const useUserSettings = ( ) => {
               ? true
               : productOption.value === "Unknown" || product.value === -1
               ? "Unknown"
-              : examinedOption.value === true && productOption.value === false
+              : examinedOption.value === true && productOption.value === true
               ? true
               : examinedOption.value !== true &&
                 examinedOption.value !== false &&
@@ -80,6 +83,8 @@ export const useUserSettings = ( ) => {
         ? setEnvironmentPreferences(categoryResult)
         : setNutritionPreferences(categoryResult);
 
+        setIsPreferencesSet(true)
+
       allResults.push(categoryResult);
     });
     console.log(allResults)
@@ -92,5 +97,6 @@ export const useUserSettings = ( ) => {
     environmentPreferences,
     dietPreferences,
     isProductMatch,
+    isPreferencesSet
   };
 };

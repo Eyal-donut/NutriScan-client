@@ -1,7 +1,7 @@
-import InfoCard from "../../InfoCard/InfoCard";
-import Icon from "../../Icon(clickable)/Icon";
+import InfoCard from "../InfoCard/InfoCard";
+import Icon from "../Icon(clickable)/Icon";
 import classes from "./DietPreferences.module.css";
-import { icons } from "../../../constants/constants";
+import { icons } from "../../constants/constants";
 
 const DietPreferences = ({ dietPreferences }) => {
   return (
@@ -15,7 +15,7 @@ const DietPreferences = ({ dietPreferences }) => {
           ? "Product doesn't match all your diet filters"
           : "Can't determine compatibility"
       }
-    >
+    > 
       {dietPreferences.matchingOptions.map((option) => {
         return (
           <div key={`key${option.optionName}`} className={classes.optionWrap}>

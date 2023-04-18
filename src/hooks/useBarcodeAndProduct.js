@@ -43,9 +43,9 @@ export const useBarcodeAndProduct = () => {
       result = await getProduct(barcode);
     }
     if (result) {
+      setProductStates(result);
       setLocalStorageItem("currentProduct", result);
       setLocalStorageItem("isProductFound", { state: true });
-      setProductStates(result);
     }
     if (!result) {
       setLocalStorageItem("isProductFound", { state: false });

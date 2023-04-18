@@ -2,8 +2,8 @@ import ProductCardMain from "../../components/ProductCard/ProductCardMain/Produc
 import IsMatchBar from "../../components/IsMatchBar/IsMatchBar";
 import ProductNotFound from "../../components/ProductNotFound/ProductNotFound";
 import ProductPageHeader from "../../components/ProductPageHeader/ProductPageHeader";
-import DietPreferences from "../../components/ProfilePageComponents/DietPreferences/DietPreferences";
-import { useEffect, useState } from "react";
+import DietPreferences from "../../components/DietPreferences/DietPreferences";
+import { useEffect } from "react";
 import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh ";
 import { useBarcodeAndProduct } from "../../hooks/useBarcodeAndProduct";
 import { useLoggedUser } from "../../hooks/useLoggedUser";
@@ -25,13 +25,12 @@ const ProductPage = () => {
     // environmentPreferences,
     dietPreferences,
     isProductMatch,
+    isPreferencesSet
   } = useUserSettings();
-  const [isPreferences, setIsPreferences] = useState(false);
 
   useEffect(() => {
     checkCameraAndRefresh();
     checkProductMatch(currentProduct, loggedUser);
-    setIsPreferences(true);
 
     return () => {
       if (isProductFound) {
@@ -52,8 +51,10 @@ const ProductPage = () => {
           <ProductPageHeader />
           <IsMatchBar page="product" isMatch={isProductMatch} />
           <ProductCardMain page="product" />
-          {isPreferences && (
-            <DietPreferences dietPreferences={dietPreferences} />
+          {isPreferencesSet && (
+            <DietPreferences
+              dietPreferences={dietPreferences}
+            />
           )}
         </>
       ) : (
