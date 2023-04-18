@@ -2,20 +2,12 @@ import { useLocalStorage } from "./useLocalStorage";
 import { getProduct } from "../API/productsApi";
 import { useProductContext } from "../context/ProductContext";
 import { useLoggedUser } from "./useLoggedUser";
-import { useState } from "react";
 import { useLoggedUserContext } from "../context/loggedUserContext";
 
 export const useBarcodeAndProduct = () => {
   const { loggedUser } = useLoggedUserContext();
-  const { setLocalStorageItem, getLocalStorageItem } = useLocalStorage();
-  const [isProductFound, setIsProductFound] = useState(() => {
-    const productFoundState = getLocalStorageItem("isProductFound");
-    if (productFoundState) {
-      if (productFoundState.state) return true;
-    }
-    return false;
-  });
-  const { setCurrentProduct, setProductSource, currentProduct } =
+  const { setLocalStorageItem } = useLocalStorage();
+  const { setCurrentProduct, setProductSource, currentProduct, setIsProductFound } =
     useProductContext();
   const { updateLocalAndLoggedUser } = useLoggedUser();
 
@@ -53,16 +45,6 @@ export const useBarcodeAndProduct = () => {
     }
   };
 
-  // const getProductFromLocalAndSetStates = () => {
-  //   const productFoundState = getLocalStorageItem("isProductFound");
-  //   if (productFoundState) {
-  //     if (productFoundState.state) {
-  //       const product = getLocalStorageItem("currentProduct");
-  //       if (product) setProductStates(product);
-  //     }
-  //   }
-  // };
-
   const updateProduct = (product, key, value) => {
     let update;
     if (key === "isLiked") {
@@ -92,9 +74,7 @@ export const useBarcodeAndProduct = () => {
   };
 
   return {
-    isProductFound,
     getProductAndSetCurrent,
-    // getProductFromLocalAndSetStates,
     updateProductAndSetCurrent,
     updateMyScanCard,
   };

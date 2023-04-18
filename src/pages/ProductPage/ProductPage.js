@@ -7,7 +7,6 @@ import NutritionPrefsSection from "../../components/page specific components/Pro
 import EnvironmentPrefsSection from "../../components/page specific components/ProductPageComponents/EnvirnomentPrefsSection/EnvironmentPrefsSection";
 import { useEffect } from "react";
 import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh ";
-import { useBarcodeAndProduct } from "../../hooks/useBarcodeAndProduct";
 import { useLoggedUser } from "../../hooks/useLoggedUser";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useUserSettings } from "../../hooks/useUserSettings/useUserSettings";
@@ -16,8 +15,7 @@ import { useProductContext } from "../../context/ProductContext";
 
 const ProductPage = () => {
   const { loggedUser } = useLoggedUserContext();
-  const { currentProduct } = useProductContext();
-  const { isProductFound } = useBarcodeAndProduct();
+  const { currentProduct, isProductFound } = useProductContext();
   const { checkCameraAndRefresh } = useCheckCameraAndRefresh();
   const { updateLocalAndLoggedUser } = useLoggedUser();
   const { getLocalStorageItem } = useLocalStorage();
@@ -32,7 +30,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     checkCameraAndRefresh();
-    checkProductMatch(currentProduct, loggedUser);
+    isProductFound && checkProductMatch(currentProduct, loggedUser);
 
     return () => {
       if (isProductFound) {

@@ -20,6 +20,14 @@ const ProductProvider = ({ children }) => {
     } else return "";
   });
 
+  const [isProductFound, setIsProductFound] = useState(() => {
+    const productFoundState = getLocalStorageItem("isProductFound");
+    if (productFoundState) {
+      if (productFoundState.state) return true;
+    }
+    return false;
+  });
+
   return (
     <ProductContext.Provider
       value={{
@@ -27,6 +35,8 @@ const ProductProvider = ({ children }) => {
         setCurrentProduct,
         productSource,
         setProductSource,
+        isProductFound,
+        setIsProductFound
       }}
     >
       {children}
