@@ -10,58 +10,48 @@ const LoginForm = ({ loginHandler, isLoginOrRegister }) => {
 
   const [isInvalidPassword, setIsInvalidPassword] = useState(false);
   const [isInvalidEmail, setIsInvalidEmail] = useState(false);
+  const [isInvalidName, setIsInvalidName] = useState(false);
   const [isEmptyForm, setIsEmptyForm] = useState(true);
   const [loginError, setLoginError] = useState("");
-
-  useEffect(() => {
-    if (isInvalidEmail && isInvalidPassword) {
-      setLoginError(
-        "Invalid Email format. Password must be longer than six characters."
-      );
-    } else if (isInvalidEmail && !isInvalidPassword) {
-      setLoginError("Invalid Email format.");
-    } else if (!isInvalidEmail && isInvalidPassword) {
-      setLoginError("Password must be longer than six characters.");
-    } else if (!isInvalidEmail && !isInvalidPassword) {
-      setLoginError("");
-    }
-    if (errorMessage !== "") {
-      setLoginError(errorMessage);
-    }
-  }, [isInvalidEmail, isInvalidPassword, errorMessage]);
 
   const emailRef = useRef(null);
   const nameRef = useRef(null);
   const passwordRef = useRef(null);
 
+  useEffect(() => {
+    isInvalidEmail || isInvalidPassword || isInvalidName
+      ? setLoginError(true)
+      : setLoginError("");
+  }, [isInvalidEmail, isInvalidPassword, isInvalidName]);
+
+  useEffect(() => {
+    return () => {
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 3000);
+    };
+    // eslint-disable-next-line
+  }, []);
+
   const inputHandler = (e) => {
     if (isEmptyForm) setIsEmptyForm(false);
-    console.log(errorMessage);
     if (errorMessage !== "") setErrorMessage("");
+
     setTimeout(() => {
       if (e.target.name === "email") {
-        if (
-          emailRef.current.value.length === 0 &&
-          passwordRef.current.value.length === 0
-        ) {
-          setIsEmptyForm(true);
-          setIsInvalidEmail(false);
-          setIsInvalidPassword(false);
-        } else if (!constants.EMAIL_REGEX.test(e.target.value)) {
+        if (!constants.EMAIL_REGEX.test(e.target.value)) {
           setIsInvalidEmail(true);
         } else setIsInvalidEmail(false);
       }
       if (e.target.name === "password") {
-        if (
-          emailRef.current.value.length === 0 &&
-          passwordRef.current.value.length === 0
-        ) {
-          setIsEmptyForm(true);
-          setIsInvalidEmail(false);
-          setIsInvalidPassword(false);
-        } else if (e.target.value.length <= 5) {
+        if (e.target.value.length <= 5) {
           setIsInvalidPassword(true);
         } else setIsInvalidPassword(false);
+      }
+      if (e.target.name === "name") {
+        if (e.target.value.length === 0) {
+          setIsInvalidName(true);
+        } else setIsInvalidName(false);
       }
     }, 1000);
   };
@@ -69,36 +59,42 @@ const LoginForm = ({ loginHandler, isLoginOrRegister }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (isEmptyForm) {
-      setLoginError("Please enter Email and Password");
+      setLoginError("Please fill out the form");
       return;
     }
+    if (loginError !== "") return;
 
-    loginHandler(
-      "login",
-      e,
-      emailRef.current.value.toLowerCase(),
-      passwordRef.current.value
-    );
+    if (isLoginOrRegister === "login") {
+      loginHandler(
+        "login",
+        e,
+        emailRef.current.value.toLowerCase(),
+        passwordRef.current.value
+      );
+    }
   };
 
   return (
     <form onSubmit={submitHandler} className={classes.form}>
       <ul className={classes.ul}>
         {isLoginOrRegister === "register" && (
-          <li>
-            <label htmlFor="email" className={classes.label}>
+          <li className={classes.li}>
+            <label htmlFor="name" className={classes.label}>
               Name:{" "}
             </label>
             <input
-              name="email"
+              name="name"
               type="text"
               ref={nameRef}
               className={classes.input}
               onChange={inputHandler}
             />
+            {isInvalidName && (
+              <ErrorMessage textOne={"Please enter a username"} />
+            )}
           </li>
         )}
-        <li>
+        <li className={classes.li}>
           <label htmlFor="email" className={classes.label}>
             Email:{" "}
           </label>
@@ -109,8 +105,9 @@ const LoginForm = ({ loginHandler, isLoginOrRegister }) => {
             className={classes.input}
             onChange={inputHandler}
           />
+          {isInvalidEmail && <ErrorMessage textOne={"Invalid Email format"} />}
         </li>
-        <li>
+        <li className={classes.li}>
           <label htmlFor="password" className={classes.label}>
             Password:{" "}
           </label>
@@ -121,15 +118,21 @@ const LoginForm = ({ loginHandler, isLoginOrRegister }) => {
             className={classes.input}
             onChange={inputHandler}
           />
+          {isInvalidPassword && (
+            <ErrorMessage
+              textOne={"Password must be longer than six characters"}
+            />
+          )}
         </li>
       </ul>
-      {loginError !== "" && <ErrorMessage textOne={loginError} />}
+      {errorMessage !== "" && (
+        <ErrorMessage textOne={""} textTwo={errorMessage} />
+      )}
       <Button
         type="submit"
         text="Login"
         id="login-btn"
         className={classes.button}
-        disabled={isInvalidEmail || isInvalidPassword ? true : false}
       />
     </form>
   );
