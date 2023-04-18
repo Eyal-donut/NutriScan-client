@@ -1,30 +1,35 @@
 import ContentWrap from "../../components/global components/ContentWrap/ContentWrap.js";
-import { constants } from "../../constants/constants.js";
+import LoginPage from "../LoginPage/LoginPage.js";
+import SkipButton from "../../components/global components/SkipButton/SkipButton.js";
 import Button from "../../components/global components/Button/Button.js";
 import ButtonWrap from "../../components/global components/ButtonWrap/ButtonWrap.js";
-import { useLoginPageDisplayContext } from "../../context/LoginPageDisplayContext.js";
-import LoginPage from "../LoginPage/LoginPage.js";
+import { constants } from "../../constants/constants.js";
+import { useLoginAndRegisterPagesDisplayContext } from "../../context/LoginAndRegisterPageContext.js";
 import { useLoggedUser } from "../../hooks/useLoggedUser.js";
-import SkipButton from "../../components/global components/SkipButton/SkipButton.js";
 
 const WelcomePage = () => {
-  const { isLoginPageDisplay, setIsLoginPageDisplay } =
-    useLoginPageDisplayContext();
+  const { isLoginPageDisplay, setIsLoginPageDisplay, setIsLoginOrRegister } =
+    useLoginAndRegisterPagesDisplayContext();
 
   const { setNewUser } = useLoggedUser();
 
   const clickHandler = (e) => {
     if (e.target.id === "login-btn") {
+      setIsLoginOrRegister("login")
       setIsLoginPageDisplay(true);
     }
     if (e.target.id === "skip-btn/") {
       setNewUser()
     }
+    if (e.target.id === "next-btn") {
+      setIsLoginOrRegister("register")
+      setIsLoginPageDisplay(true);
+    }
   };
 
   return (
     <>
-      {isLoginPageDisplay && <LoginPage />}
+      {isLoginPageDisplay &&  <LoginPage />}
 
       <div>LOGO - design sth cool</div>
       <ContentWrap width="75%">

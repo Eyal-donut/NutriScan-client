@@ -4,7 +4,7 @@ import "./index.css";
 import "./constants/styleConstants.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import { LoginPageDisplayProvider } from "./context/LoginPageDisplayContext";
+import {  LoginAndRegisterPagesProvider } from "./context/LoginAndRegisterPageContext";
 import { ErrorMessageProvider } from "./context/ErrorMessageContext";
 import { LoggedUserProvider } from "./context/loggedUserContext";
 import { SpinnerProvider } from "./context/SpinnerContext";
@@ -14,7 +14,7 @@ import { CameraProvider } from "./context/CameraContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <LoginPageDisplayProvider>
+    <LoginAndRegisterPagesProvider>
       <ErrorMessageProvider>
         <LoggedUserProvider>
           <SpinnerProvider>
@@ -26,7 +26,7 @@ root.render(
           </SpinnerProvider>
         </LoggedUserProvider>
       </ErrorMessageProvider>
-    </LoginPageDisplayProvider>
+    </LoginAndRegisterPagesProvider>
   </React.StrictMode>
 );
 

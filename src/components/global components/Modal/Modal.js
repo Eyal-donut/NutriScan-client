@@ -1,9 +1,9 @@
-import { useLoginPageDisplayContext } from "../../../context/LoginPageDisplayContext";
+import { useLoginAndRegisterPagesDisplayContext } from "../../../context/LoginAndRegisterPageContext";
 import classes from "./Modal.module.css";
 import NestedWindow from "./NestedWindow";
 
 const Modal = ({ children }) => {
-  const { setIsLoginPageDisplay } = useLoginPageDisplayContext();
+  const { setIsLoginPageDisplay } = useLoginAndRegisterPagesDisplayContext();
 
   const clickHandler = (e) => {
     if (e.target.id === "screen-cover" || e.target.id === "xBtn") {
