@@ -23,11 +23,11 @@ const ProductPage = () => {
   const { getLocalStorageItem } = useLocalStorage();
   const {
     checkProductMatch,
+    isPreferencesSet,
     nutritionPreferences,
     environmentPreferences,
     dietPreferences,
     isProductMatch,
-    isPreferencesSet,
   } = useUserSettings();
 
   useEffect(() => {

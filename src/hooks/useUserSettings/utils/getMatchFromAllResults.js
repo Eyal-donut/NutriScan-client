@@ -1,4 +1,4 @@
-export const getMatchFromResults = (allResults) => {
+export const getMatchFromAllResults = (allResults) => {
     const categoriesMatchResults = allResults.map((res)=> res.isMatch)
     const noMatch = categoriesMatchResults.find((res)=> res === false)
     if (noMatch) return false
