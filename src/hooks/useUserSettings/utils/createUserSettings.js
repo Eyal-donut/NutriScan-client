@@ -70,7 +70,11 @@ export const createSettingsArray = (product, user) => {
             name: "Carbohydrates",
             value: convertNutValuesToClasses(
               "Carbohydrates",
-              product.settings.nutritionPreferences["Carbohydrates"]
+              product.settings.nutritionPreferences.Carbohydrates["units"] ===
+                "g"
+                ? product.settings.nutritionPreferences.Carbohydrates["val"]
+                : product.settings.nutritionPreferences.Carbohydrates["val"] /
+                    1000
             ),
             type: "range",
             imageUrl: icons.MATCH_ICON,
@@ -79,7 +83,10 @@ export const createSettingsArray = (product, user) => {
             name: "Cholesterol",
             value: convertNutValuesToClasses(
               "Cholesterol",
-              product.settings.nutritionPreferences["Cholesterol"]
+              product.settings.nutritionPreferences.Cholesterol["units"] === "g"
+                ? product.settings.nutritionPreferences.Cholesterol["val"]
+                : product.settings.nutritionPreferences.Cholesterol["val"] /
+                    1000
             ),
             type: "range",
             imageUrl: icons.MATCH_ICON,
@@ -88,7 +95,9 @@ export const createSettingsArray = (product, user) => {
             name: "Fat",
             value: convertNutValuesToClasses(
               "Fat",
-              product.settings.nutritionPreferences["Fat"]
+              product.settings.nutritionPreferences.Fat["units"] === "g"
+                ? product.settings.nutritionPreferences.Fat["val"]
+                : product.settings.nutritionPreferences.Fat["val"] / 1000
             ),
             type: "range",
             imageUrl: icons.MATCH_ICON,
@@ -97,16 +106,24 @@ export const createSettingsArray = (product, user) => {
             name: "Saturated fat",
             value: convertNutValuesToClasses(
               "Saturated fat",
-              product.settings.nutritionPreferences["Saturated fat"]
+              product.settings.nutritionPreferences[
+                "Saturated fat"["units"]
+              ] === "g"
+                ? product.settings.nutritionPreferences["Saturated fat"["val"]]
+                : product.settings.nutritionPreferences[
+                    "Saturated fat"["val"]
+                  ] / 1000
             ),
             type: "range",
             imageUrl: icons.MATCH_ICON,
           },
           {
-            name: "Salt",
+            name: "Sodium",
             value: convertNutValuesToClasses(
-              "Salt",
-              product.settings.nutritionPreferences["Salt"]
+              "Sodium",
+              product.settings.nutritionPreferences.Sodium["units"] === "g"
+                ? product.settings.nutritionPreferences.Sodium["val"]
+                : product.settings.nutritionPreferences.Sodium["val"] / 1000
             ),
             type: "range",
             imageUrl: icons.MATCH_ICON,
@@ -115,7 +132,9 @@ export const createSettingsArray = (product, user) => {
             name: "Sugar",
             value: convertNutValuesToClasses(
               "Sugar",
-              product.settings.nutritionPreferences["Sugar"]
+              product.settings.nutritionPreferences.Sugar["units"] === "g"
+                ? product.settings.nutritionPreferences.Sugar["units"]
+                : product.settings.nutritionPreferences.Sugar["units"] / 1000
             ),
             type: "range",
             imageUrl: icons.MATCH_ICON,
@@ -188,19 +207,19 @@ export const createSettingsArray = (product, user) => {
         value: [
           {
             name: "Carbohydrates",
-            value: user.settings.nutritionPreferences["Carbohydrates"],
+            value: user.settings.nutritionPreferences.Carbohydrates,
             type: "range",
             imageUrl: icons.MATCH_ICON,
           },
           {
             name: "Cholesterol",
-            value: user.settings.nutritionPreferences["Cholesterol"],
+            value: user.settings.nutritionPreferences.Cholesterol,
             type: "range",
             imageUrl: icons.MATCH_ICON,
           },
           {
             name: "Fat",
-            value: user.settings.nutritionPreferences["Fat"],
+            value: user.settings.nutritionPreferences.Fat,
             type: "range",
             imageUrl: icons.MATCH_ICON,
           },
@@ -211,14 +230,14 @@ export const createSettingsArray = (product, user) => {
             imageUrl: icons.MATCH_ICON,
           },
           {
-            name: "Salt",
-            value: user.settings.nutritionPreferences["Salt"],
+            name: "Sodium",
+            value: user.settings.nutritionPreferences.Sodium,
             type: "range",
             imageUrl: icons.MATCH_ICON,
           },
           {
             name: "Sugar",
-            value: user.settings.nutritionPreferences["Sugar"],
+            value: user.settings.nutritionPreferences.Sugar,
             type: "range",
             imageUrl: icons.MATCH_ICON,
           },

@@ -32,7 +32,7 @@ export const newUser = {
     Vegetarian: false,
   },
   environmentPreferences: {
-    "silicone & Siloxane": false,
+    "Silicone & Siloxane": false,
     Microplastic: false,
     "Palm oil": false,
   },

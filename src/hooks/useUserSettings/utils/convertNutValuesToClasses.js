@@ -40,7 +40,7 @@ export const convertNutValuesToClasses = (name, value) => {
           )
           return 3;
           else return 4;
-          case "Salt":
+          case "Sodium":
         if(value=== -1) return -1
         if (value === 0) return 1;
         if (value < nutValues.LOW_SALT && value > 0) return 2;
