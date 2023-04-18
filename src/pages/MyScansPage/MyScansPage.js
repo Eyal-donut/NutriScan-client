@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh ";
-import ProductCardMyScans from "../../components/ProductCard/ProductCardMyScans/ProductCardMyScans";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import MyScansHeader from "../../components/MyScansHeader/MyScansHeader";
+import ProductCardMyScans from "../../components/page specific components/myScans page components/ProductCardMyScans/ProductCardMyScans";
+import SearchBar from "../../components/global components/SearchBar/SearchBar";
+import MyScansHeader from "../../components/page specific components/myScans page components/MyScansHeader/MyScansHeader";
 
 const MyScansPage = () => {
   const { checkCameraAndRefresh } = useCheckCameraAndRefresh();

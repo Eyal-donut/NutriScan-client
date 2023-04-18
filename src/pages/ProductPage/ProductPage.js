@@ -1,8 +1,9 @@
-import ProductCardMain from "../../components/ProductCard/ProductCardMain/ProductCardMain";
-import IsMatchBar from "../../components/IsMatchBar/IsMatchBar";
-import ProductNotFound from "../../components/ProductNotFound/ProductNotFound";
-import ProductPageHeader from "../../components/ProductPageHeader/ProductPageHeader";
-import DietPreferences from "../../components/DietPreferences/DietPreferences";
+import ProductCardMain from "../../components/page specific components/ProductPageComponents/ProductCardMain/ProductCardMain";
+import IsMatchBar from "../../components/global components/IsMatchBar/IsMatchBar";
+import ProductNotFound from "../../components/page specific components/ProductPageComponents/ProductNotFound/ProductNotFound";
+import ProductPageHeader from "../../components/page specific components/ProductPageComponents/ProductPageHeader/ProductPageHeader";
+import DietPrefsSection from "../../components/page specific components/ProductPageComponents/DietPrefsSection/DietPrefsSection";
+import NutritionPrefsSection from "../../components/page specific components/ProductPageComponents/nutriotionPrefsSection/NutritionPrefsSection";
 import { useEffect } from "react";
 import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh ";
 import { useBarcodeAndProduct } from "../../hooks/useBarcodeAndProduct";
@@ -21,11 +22,11 @@ const ProductPage = () => {
   const { getLocalStorageItem } = useLocalStorage();
   const {
     checkProductMatch,
-    // nutritionPreferences,
+    nutritionPreferences,
     // environmentPreferences,
     dietPreferences,
     isProductMatch,
-    isPreferencesSet
+    isPreferencesSet,
   } = useUserSettings();
 
   useEffect(() => {
@@ -52,9 +53,11 @@ const ProductPage = () => {
           <IsMatchBar page="product" isMatch={isProductMatch} />
           <ProductCardMain page="product" />
           {isPreferencesSet && (
-            <DietPreferences
-              dietPreferences={dietPreferences}
-            />
+            <>
+              <DietPrefsSection preferences={dietPreferences} />
+              <NutritionPrefsSection preferences={nutritionPreferences} />
+              <NutritionPrefsSection preferences={nutritionPreferences} />
+            </>
           )}
         </>
       ) : (

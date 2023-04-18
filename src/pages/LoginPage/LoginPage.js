@@ -1,12 +1,13 @@
-import Modal from "../../components/Modal/Modal";
-import LoginForm from "../../components/LoginForm/LoginForm";
+import Modal from "../../components/global components/Modal/Modal";
+import LoginForm from "../../components/page specific components/Login page components/LoginForm/LoginForm";
+import Spinner from "../../components/global components/Spinner/Spinner";
 import { getCurrentUser, loginUser } from "../../API/usersApi";
 import { useErrorMessageContext } from "../../context/ErrorMessageContext";
 import { useLoggedUser } from "../../hooks/useLoggedUser";
 import { useLoggedUserContext } from "../../context/loggedUserContext";
 import { useSpinnerContext } from "../../context/SpinnerContext";
-import Spinner from "../../components/Spinner/Spinner";
 import { setAuthCookie } from "../../coockieManager/coockieManager";
+
 const LoginPage = () => {
   const { setErrorMessage } = useErrorMessageContext();
   const { setIsLoggedUser } = useLoggedUserContext();

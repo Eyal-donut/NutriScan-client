@@ -1,0 +1,101 @@
+.nav {
+  width: 100vw;
+  height: 65px;
+  background: var(--bgr-main);
+  position: fixed;
+  bottom: 0; 
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  box-shadow: var(--navbar-box-shadow);
+  z-index: 1;
+}
+
+li {
+  margin: 0 1rem
+}
+
+.linkWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  font-size: 1.2rem;
+}
+.activeLinkWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-theme-color);
+  width: 60px;
+  height: 60px;
+  font-size: 1.2rem;
+}
+
+.ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.scanner {
+  background: url("../../../assets/icons/ScanDark.png") no-repeat center
+    center/cover;
+  width: 40px;
+  height: 40px;
+}
+
+.activeScanner {
+  background: url("/src/assets/icons/ScanGreen.png") no-repeat center
+    center/cover;
+  width: 40px;
+  height: 40px;
+  color: var(--main-theme-color);
+}
+
+.myScans {
+  background: url("../../../assets/icons/MyScansDark.png") no-repeat center
+    center/cover;
+  width: 40px;
+  height: 40px;
+}
+
+.activeMyScans {
+  background: url("/src/assets/icons/MyScansGreen.png") no-repeat center
+    center/cover;
+  width: 40px;
+  height: 40px;
+  color: var(--main-theme-color);
+}
+
+.profile {
+  background: url("../../../assets/icons/ProfileDark.png") no-repeat center
+    center/cover;
+  width: 40px;
+  height: 40px;
+}
+.activeProfile {
+  background: url("/src/assets/icons/ProfileGreen.png") no-repeat center
+    center/cover;
+  width: 40px;
+  height: 40px;
+  color: var(--main-theme-color);
+}
+.menu {
+  background: url("../../../assets/icons/MenuDark.png") no-repeat center
+    center/cover;
+  width: 40px;
+  height: 40px;
+}
+.activeMenu {
+  background: url("/src/assets/icons/MenuGreen.png") no-repeat center
+    center/cover;
+  width: 40px;
+  height: 40px;
+  color: var(--main-theme-color);
+}

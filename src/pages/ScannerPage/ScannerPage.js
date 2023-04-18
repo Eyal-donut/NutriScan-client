@@ -1,4 +1,4 @@
-import Scanner from "../../components/Scanner/Scanner";
+import Scanner from "../../components/page specific components/scanner page components/Scanner/Scanner";
 import SpinnerPage from "../SpinnerPage/SpinnerPage";
 import { useNavigate } from "react-router-dom";
 import { useBarcodeAndProduct } from "../../hooks/useBarcodeAndProduct";

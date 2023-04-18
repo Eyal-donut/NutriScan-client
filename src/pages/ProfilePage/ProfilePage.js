@@ -1,10 +1,10 @@
-import PageHeader from "../../components/PageHeader/PageHeader";
+import PageHeader from "../../components/global components/PageHeader/PageHeader";
 import classes from "./ProfilePage.module.css";
-import ContentWrap from "../../components/ContentWrap/ContentWrap";
+import ContentWrap from "../../components/global components/ContentWrap/ContentWrap";
+import DropdownComponent from "../../components/page specific components/ProfilePageComponents/DropdownComponent/DropdownComponent";
 import { useEffect } from "react";
 import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh ";
 import { useLoggedUserContext } from "../../context/loggedUserContext";
-import DropdownComponent from "../../components/ProfilePageComponents/DropdownComponent/DropdownComponent";
 import { useUserSettings } from "../../hooks/useUserSettings/useUserSettings";
 
 const ProfilePage = () => {

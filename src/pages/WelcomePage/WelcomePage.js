@@ -1,7 +1,7 @@
-import ContentWrap from "../../components/ContentWrap/ContentWrap.js";
+import ContentWrap from "../../components/global components/ContentWrap/ContentWrap.js";
 import { constants } from "../../constants/constants.js";
-import Button from "../../components/Button/Button.js";
-import ButtonWrap from "../../components/ButtonWrap/ButtonWrap.js";
+import Button from "../../components/global components/Button/Button.js";
+import ButtonWrap from "../../components/global components/ButtonWrap/ButtonWrap.js";
 import { useLoginPageDisplayContext } from "../../context/LoginPageDisplayContext.js";
 import LoginPage from "../LoginPage/LoginPage.js";
 import { useLoggedUser } from "../../hooks/useLoggedUser.js";

@@ -1,0 +1,11 @@
+.optionWrap{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: var(--third-margin);
+}
+
+.icon{
+    margin-right: var(--sec-margin);
+}
