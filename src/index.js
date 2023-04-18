@@ -4,12 +4,13 @@ import "./index.css";
 import "./constants/styleConstants.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import {  LoginAndRegisterPagesProvider } from "./context/LoginAndRegisterPageContext";
+import { LoginAndRegisterPagesProvider } from "./context/LoginAndRegisterPageContext";
 import { ErrorMessageProvider } from "./context/ErrorMessageContext";
 import { LoggedUserProvider } from "./context/loggedUserContext";
 import { SpinnerProvider } from "./context/SpinnerContext";
 import { ProductProvider } from "./context/ProductContext";
 import { CameraProvider } from "./context/CameraContext";
+import { MenuDisplayProvider } from "./context/loggedUserContext copy";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,7 +21,9 @@ root.render(
           <SpinnerProvider>
             <ProductProvider>
               <CameraProvider>
-                <App />
+                <MenuDisplayProvider>
+                  <App />
+                </MenuDisplayProvider>
               </CameraProvider>
             </ProductProvider>
           </SpinnerProvider>

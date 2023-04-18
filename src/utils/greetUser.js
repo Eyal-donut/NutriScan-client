@@ -1,4 +1,4 @@
-const greetUser = () => {
+export const greetUser = () => {
     const currentHour = new Date().getHours()
     if (currentHour >= 5 && currentHour < 12) {
         return 'Good morning'
@@ -10,5 +10,3 @@ const greetUser = () => {
         return 'Good night'
     }
 }
-
-export default greetUser

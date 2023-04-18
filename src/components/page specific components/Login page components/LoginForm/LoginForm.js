@@ -28,7 +28,7 @@ const LoginForm = ({ loginHandler, isLoginOrRegister }) => {
     return () => {
       setTimeout(() => {
         setErrorMessage("");
-      }, 3000);
+      }, 4000);
     };
     // eslint-disable-next-line
   }, []);
@@ -70,6 +70,15 @@ const LoginForm = ({ loginHandler, isLoginOrRegister }) => {
         e,
         emailRef.current.value.toLowerCase(),
         passwordRef.current.value
+      );
+    }
+    if (isLoginOrRegister === "register") {
+      loginHandler(
+        "register",
+        e,
+        emailRef.current.value.toLowerCase(),
+        passwordRef.current.value,
+        nameRef.current.value
       );
     }
   };

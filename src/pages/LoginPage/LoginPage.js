@@ -9,7 +9,7 @@ const {isLoginOrRegister} = useLoginAndRegisterPagesDisplayContext()
   const {handelLoginAndRegister, isLoading} = useLoginAndRegister()
 
   return (
-    <Modal>
+    <Modal page={"login"}>
       <h1>{isLoginOrRegister === "login" ? 'Login' : 'Register'}</h1>
       {!isLoading && <LoginForm isLoginOrRegister={isLoginOrRegister} loginHandler={handelLoginAndRegister} />}
       {isLoading && <Spinner />}

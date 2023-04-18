@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { loginUser, getCurrentUser, registerUser } from "../API/usersApi";
 import { useErrorMessageContext } from "../context/ErrorMessageContext";
 import { useLoggedUserContext } from "../context/loggedUserContext";
@@ -5,15 +6,17 @@ import { useSpinnerContext } from "../context/SpinnerContext";
 import { setAuthCookie } from "../coockieManager/coockieManager";
 import { useLoggedUser } from "./useLoggedUser";
 
-export const useLoginAndRegister = (method) => {
+export const useLoginAndRegister = () => {
   const { setErrorMessage } = useErrorMessageContext();
   const { setIsLoggedUser } = useLoggedUserContext();
   const { setIsLoading, isLoading } = useSpinnerContext();
   const { setExistingUser } = useLoggedUser();
 
+  const navigate = useNavigate();
+
   const handelLoginAndRegister = async (method, e, email, password, name) => {
-    let data;
     e.preventDefault();
+    let data;
     setIsLoading(true);
     if (method === "login") {
       data = await loginUser({ email, password });
@@ -25,6 +28,10 @@ export const useLoginAndRegister = (method) => {
       const fetchedUser = await getCurrentUser(data.token);
       if (data.success) {
         setExistingUser(fetchedUser.data);
+        if (method === "register") {
+          setIsLoggedUser(null);
+          method === "register" && navigate("/profile");
+        }
         setIsLoggedUser(true);
         setIsLoading(false);
       } else {

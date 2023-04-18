@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh ";
 import { useLoggedUserContext } from "../../context/loggedUserContext";
 import { useUserSettings } from "../../hooks/useUserSettings/useUserSettings";
+import {greetUser} from "../../utils/greetUser"
 
 const ProfilePage = () => {
   const { checkCameraAndRefresh } = useCheckCameraAndRefresh();
@@ -22,7 +23,7 @@ const ProfilePage = () => {
   return (
     <>
       <PageHeader className={classes.header}>
-        <h1 className={classes.h1}>Hello {loggedUser.name}!</h1>
+        <h1 className={classes.h1}>{greetUser()}{loggedUser.name}!</h1>
       </PageHeader>
       <ContentWrap width="90%" className={classes.contentWrap}>
         {settingsArray.map((category) => (
