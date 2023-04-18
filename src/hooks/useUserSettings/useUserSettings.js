@@ -1,13 +1,12 @@
 import { createSettingsArray } from "./utils/createUserSettings";
 import { useState } from "react";
 
-export const useUserSettings = ( ) => {
-
+export const useUserSettings = () => {
   const [isPreferencesSet, setIsPreferencesSet] = useState(false);
   const [isProductMatch, setIsProductMatch] = useState(true);
-  const [dietPreferences, setDietPreferences] = useState([]);
-  const [environmentPreferences, setEnvironmentPreferences] = useState([]);
-  const [nutritionPreferences, setNutritionPreferences] = useState([]);
+  const [dietPreferences, setDietPreferences] = useState(null);
+  const [environmentPreferences, setEnvironmentPreferences] = useState(null);
+  const [nutritionPreferences, setNutritionPreferences] = useState(null);
 
   const checkProductMatch = (product, user) => {
     const userCategoriesArray = createSettingsArray(undefined, user).map(
@@ -15,6 +14,7 @@ export const useUserSettings = ( ) => {
     );
     const userOptionsArray = userCategoriesArray.flat();
     const productCategoriesArray = createSettingsArray(product, undefined);
+    console.log(productCategoriesArray);
 
     const allResults = [];
 
@@ -28,29 +28,33 @@ export const useUserSettings = ( ) => {
       const unknownArray = [];
 
       for (const productOption of productOptionsArray) {
-        const examinedOption = userOptionsArray.find(
+        const examinedUserOption = userOptionsArray.find(
           (userOption) => userOption.name === productOption.name
         );
-        
+
         const optionResult = {
-          optionName: examinedOption.name,
+          optionName: examinedUserOption.name,
+          userValue: examinedUserOption.value,
+          productValue: productOption.value,
           isMatch:
-            examinedOption.value === false
-              ? true
-              : examinedOption.value === 0
-              ? true
-              : productOption.value === "Unknown" || product.value === -1
+            examinedUserOption.value === false
+              ? null
+              : examinedUserOption.value === 0
+              ? null
+              : productOption.value === "Unknown"
               ? "Unknown"
-              : examinedOption.value === true && productOption.value === true
+              : examinedUserOption.value === true &&
+                productOption.value === true
               ? true
-              : examinedOption.value !== true &&
-                examinedOption.value !== false &&
-                examinedOption.value !== 0 &&
-                examinedOption.value <= productOption.value
+              : examinedUserOption.value !== true &&
+                examinedUserOption.value !== false &&
+                examinedUserOption.value !== 0 &&
+                examinedUserOption.value >= productOption.value
               ? true
               : false,
         };
-        if (optionResult.isMatch === true) {
+        if (optionResult.isMatch == null) {
+        } else if (optionResult.isMatch === true) {
           matchesArray.push(optionResult);
         } else if (optionResult.isMatch === false) {
           notMatchesArray.push(optionResult);
@@ -65,13 +69,20 @@ export const useUserSettings = ( ) => {
         unknownOptions: unknownArray,
       };
 
-      //setting is match and the isProductMatch state
-      if (notMatchesArray.length > 0) {
+      //setting is match for a category and the isProductMatch state
+      if (
+        notMatchesArray.length === 0 &&
+        matchesArray.length === 0 &&
+        unknownArray.length === 0
+      ) {
+        categoryResult.isMatch = "no filters";
+        setIsProductMatch("no filters");
+      } else if (notMatchesArray.length > 0) {
         categoryResult.isMatch = false;
         isProductMatch !== false && setIsProductMatch(false);
       } else if (unknownArray.length > 0) {
         categoryResult.isMatch = "Unknown";
-        isProductMatch !== false && setIsProductMatch("Unknown");
+        isProductMatch !== "Unknown" && setIsProductMatch("Unknown");
       } else {
         categoryResult.isMatch = true;
       }
@@ -83,11 +94,11 @@ export const useUserSettings = ( ) => {
         ? setEnvironmentPreferences(categoryResult)
         : setNutritionPreferences(categoryResult);
 
-        setIsPreferencesSet(true)
+      setIsPreferencesSet(true);
 
       allResults.push(categoryResult);
     });
-    console.log(allResults)
+    console.log(allResults);
   };
 
   return {
@@ -97,6 +108,6 @@ export const useUserSettings = ( ) => {
     environmentPreferences,
     dietPreferences,
     isProductMatch,
-    isPreferencesSet
+    isPreferencesSet,
   };
 };

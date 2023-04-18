@@ -16,11 +16,14 @@ const InfoCard = ({ header, children, isMatch, subheader }) => {
         <h3>{header}</h3>
         <h4
           className={
-            isMatch
+            isMatch === true
               ? classes.h4_Match
-              : !isMatch
+              : isMatch === false
               ? classes.h4_NoMatch
-              : classes.h4_UnknownMatch
+
+              : classes.isMatch === "Unknown" ?
+              classes.h4_UnknownMatch :
+              classes.h4_noFilter
           }
         >
           {subheader}

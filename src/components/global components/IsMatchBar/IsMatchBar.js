@@ -12,14 +12,18 @@ const IsMatchBar = ({ isMatch, page }) => {
                 ? classes.containerYes
                 : isMatch === false
                 ? classes.containerNo
-                : classes.containerUnknown
+                : isMatch === "Unknown"
+                ? classes.containerUnknown
+                : classes.containerNoFilters
             }`
           : `${classes.containerSmall} ${
               isMatch === true
                 ? classes.containerYes
                 : isMatch === false
                 ? classes.containerNo
-                : classes.containerUnknown
+                : isMatch === "Unknown"
+                ? classes.containerUnknown
+                : classes.containerNoFilters
             }`
       }
     >
@@ -43,12 +47,16 @@ const IsMatchBar = ({ isMatch, page }) => {
             ? `It's a match!`
             : isMatch === false
             ? `Product doesn't match your filters`
-            : `Can't determine compatibility`
+            : isMatch === "Unknown"
+            ? `Can't determine compatibility`
+            : "Set up your profile to easily sort products"
           : isMatch === true
           ? `Match`
           : isMatch === false
           ? `Not a match`
-          : `Missing information`}
+          : isMatch === "Unknown"
+          ? `Missing information`
+          : "No filters set"}
       </div>
     </div>
   );

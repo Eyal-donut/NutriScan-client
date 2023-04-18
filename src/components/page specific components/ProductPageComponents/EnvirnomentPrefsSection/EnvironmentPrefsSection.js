@@ -1,20 +1,20 @@
 import InfoCard from "../InfoCard/InfoCard";
 import Icon from "../../../global components/Icon(clickable)/Icon";
-import classes from "./NutritionPrefsSection.module.css";
+import classes from "./EnvironmentPrefsSection.module.css";
 import { icons } from "../../../../constants/constants";
 
-const NutritionPrefsSection = ({ preferences }) => {
+const EnvironmentPrefsSection = ({ preferences }) => {
   return (
     <InfoCard
-      header="Nutritional Values Preferences"
+      header="Environmental Preferences"
       isMatch={preferences.isMatch}
       subheader={
         preferences.isMatch === true
-          ? "Product matches all your diet and lifestyle filters"
+          ? "Product matches all your environment filters"
           : preferences.isMatch === false
-          ? "Product doesn't match all your diet filters"
+          ? "Product doesn't match all your environment filters"
           : preferences.isMatch === "no filters"
-          ? "No filters set. Personalize your nutrition for a healthier life!"
+          ? "No filters set. Discover product's eco-impact."
           : "Can't determine compatibility"
       }
     >
@@ -46,4 +46,4 @@ const NutritionPrefsSection = ({ preferences }) => {
   );
 };
 
-export default NutritionPrefsSection;
+export default EnvironmentPrefsSection;

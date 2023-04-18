@@ -9,13 +9,15 @@ const DietPrefsSection = ({ preferences }) => {
       header="Diet Preferences"
       isMatch={preferences.isMatch}
       subheader={
-        preferences.isMatch
+        preferences.isMatch === true
           ? "Product matches all your diet and lifestyle filters"
-          : !preferences.isMatch
+          : preferences.isMatch === false
           ? "Product doesn't match all your diet filters"
+          : preferences.isMatch === "no filters"
+          ? "Which ingredients do you want to avoid? No filters set yet."
           : "Can't determine compatibility"
       }
-    > 
+    >
       {preferences.matchingOptions.map((option) => {
         return (
           <div key={`key${option.optionName}`} className={classes.optionWrap}>

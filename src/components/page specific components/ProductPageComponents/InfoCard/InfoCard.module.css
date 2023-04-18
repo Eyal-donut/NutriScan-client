@@ -54,3 +54,6 @@
 .h4_UnknownMatch{
     color: var(--orange);
 }
+.h4_noFilter{
+    color: var(--grey);
+}

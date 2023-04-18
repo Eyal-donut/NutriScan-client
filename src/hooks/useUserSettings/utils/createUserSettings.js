@@ -106,13 +106,9 @@ export const createSettingsArray = (product, user) => {
             name: "Saturated fat",
             value: convertNutValuesToClasses(
               "Saturated fat",
-              product.settings.nutritionPreferences[
-                "Saturated fat"["units"]
-              ] === "g"
-                ? product.settings.nutritionPreferences["Saturated fat"["val"]]
-                : product.settings.nutritionPreferences[
-                    "Saturated fat"["val"]
-                  ] / 1000
+              product.settings.nutritionPreferences["Saturated fat"]["units"] === "g"
+                ? product.settings.nutritionPreferences["Saturated fat"]["val"]
+                : product.settings.nutritionPreferences["Saturated fat"]["val"] / 1000
             ),
             type: "range",
             imageUrl: icons.MATCH_ICON,

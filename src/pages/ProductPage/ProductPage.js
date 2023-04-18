@@ -4,6 +4,7 @@ import ProductNotFound from "../../components/page specific components/ProductPa
 import ProductPageHeader from "../../components/page specific components/ProductPageComponents/ProductPageHeader/ProductPageHeader";
 import DietPrefsSection from "../../components/page specific components/ProductPageComponents/DietPrefsSection/DietPrefsSection";
 import NutritionPrefsSection from "../../components/page specific components/ProductPageComponents/nutriotionPrefsSection/NutritionPrefsSection";
+import EnvironmentPrefsSection from "../../components/page specific components/ProductPageComponents/EnvirnomentPrefsSection/EnvironmentPrefsSection";
 import { useEffect } from "react";
 import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh ";
 import { useBarcodeAndProduct } from "../../hooks/useBarcodeAndProduct";
@@ -23,7 +24,7 @@ const ProductPage = () => {
   const {
     checkProductMatch,
     nutritionPreferences,
-    // environmentPreferences,
+    environmentPreferences,
     dietPreferences,
     isProductMatch,
     isPreferencesSet,
@@ -56,7 +57,7 @@ const ProductPage = () => {
             <>
               <DietPrefsSection preferences={dietPreferences} />
               <NutritionPrefsSection preferences={nutritionPreferences} />
-              <NutritionPrefsSection preferences={nutritionPreferences} />
+              <EnvironmentPrefsSection preferences={environmentPreferences} />
             </>
           )}
         </>

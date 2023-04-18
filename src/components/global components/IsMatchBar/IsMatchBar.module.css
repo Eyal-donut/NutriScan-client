@@ -20,6 +20,9 @@
 .containerUnknown {
   background: rgb(241, 162, 57, 1);
 }
+.containerNoFilters{
+  background: var(--bgr-third);
+}
 
 .containerSmall {
   position: relative;

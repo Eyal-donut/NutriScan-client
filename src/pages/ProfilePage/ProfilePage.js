@@ -18,7 +18,7 @@ const ProfilePage = () => {
     checkCameraAndRefresh();
     // eslint-disable-next-line
   }, []);
-
+  
   return (
     <>
       <PageHeader className={classes.header}>
