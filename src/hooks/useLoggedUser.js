@@ -1,5 +1,5 @@
 import { useLoggedUserContext } from "../context/loggedUserContext";
-import { newUser } from "../constants/constants";
+import { NEW_USER } from "../constants/constants";
 import { useLocalStorage } from "./useLocalStorage";
 
 export const useLoggedUser = () => {
@@ -7,16 +7,15 @@ export const useLoggedUser = () => {
   const { setLocalStorageItem, getItemProperty } = useLocalStorage();
 
   const setNewUser = () => {
-    setLocalStorageItem("loggedUser", newUser);
-    setLoggedUser(newUser);
-    return loggedUser;
+    setLocalStorageItem("loggedUser", NEW_USER);
+    setLoggedUser(NEW_USER);
+    setIsLoggedUser(true)
   };
 
   const setExistingUser = (existingUser) => {
     setLocalStorageItem("loggedUser", existingUser);
     setLoggedUser(existingUser);
     setIsLoggedUser(true);
-    return loggedUser;
   };
 
   const setLoggedUserFromLocal = () => {

@@ -3,9 +3,11 @@
     /* --bgr-sec: #EFEFEF; */
     --bgr-sec: #D8DADE;
     --bgr-third: #e5e7eb;
+
     --main-theme-color: #86C01C;
     --main-theme-bgr:rgb(134, 192, 28, .3);
     --main-theme-color-transparent: rgb(134, 192, 28, .6);
+
     --grey: #A4ACB9;
     --dark-green: #096A2E;
     --red:  #DA0217;
@@ -15,17 +17,25 @@
     --blue: #1F499B;
     --yellow:#FECB32;
     --light-blue: #5185E2;
+
     --main-text-color: #464646;
+    --third-text-color: #7c7979;
     --sec-text-color: #FFFFFF;
+
     --bgr-nestedWindow: rgb(147,138,138, .9 );
     --bgr-input: rgb(147,138,138, .18 );
     --bgr-screenCover: rgB(0,0,0,.62);
 
     --navbar-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     --btn-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    
     --prim-margin-top: 2rem;
     --sec-margin: 1rem;
     --third-margin: .5rem;
+   
     --font-weight-text: 450;
+    --font-weight-bolder: 550;
+
+
     --content-border: 1px solid var(--grey);
 }

@@ -46,6 +46,34 @@ export const newUser = {
   },
 };
 
+export const NEW_USER = 
+  {
+    "settings": {
+        "dietPreferences": {
+            "Gluten free": false,
+            "Lactose free": false,
+            "Vegan": false,
+            "Vegetarian": false
+        },
+        "environmentPreferences": {
+            "Silicone & Siloxane": false,
+            "Microplastic": false,
+            "Palm oil": false
+        },
+        "nutritionPreferences": {
+            "Fat": 0,
+            "Saturated fat": 0,
+            "Cholesterol": 0,
+            "Carbohydrates": 0,
+            "Sugar": 0,
+            "Sodium": 0
+        }
+    },
+    "name": "new user",
+    "email": "",
+    "products": [],
+}
+
 //amounts in 100g. Cholesterol in mg, the rest in g
 export const nutValues = {
   LOW_CHOLESTEROL: 20,

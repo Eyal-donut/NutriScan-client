@@ -5,6 +5,7 @@ import ButtonWrap from "../../components/global components/ButtonWrap/ButtonWrap
 import { useLoginPageDisplayContext } from "../../context/LoginPageDisplayContext.js";
 import LoginPage from "../LoginPage/LoginPage.js";
 import { useLoggedUser } from "../../hooks/useLoggedUser.js";
+import SkipButton from "../../components/global components/SkipButton/SkipButton.js";
 
 const WelcomePage = () => {
   const { isLoginPageDisplay, setIsLoginPageDisplay } =
@@ -16,10 +17,8 @@ const WelcomePage = () => {
     if (e.target.id === "login-btn") {
       setIsLoginPageDisplay(true);
     }
-    if (e.target.id === "next-btn") {
+    if (e.target.id === "skip-btn/") {
       setNewUser()
-      // updateLocalAndLoggedUser(undefined, "allProducts", ["sugar"])
-
     }
   };
 
@@ -48,6 +47,8 @@ const WelcomePage = () => {
           <br />
           Click next for a quick set up of your preferences
         </p>
+        <SkipButton onBtnClick={clickHandler}/>
+        
       </ContentWrap>
     </>
   );
