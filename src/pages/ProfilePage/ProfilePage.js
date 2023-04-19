@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh ";
 import { useLoggedUserContext } from "../../context/loggedUserContext";
 import { useUserSettings } from "../../hooks/useUserSettings/useUserSettings";
-import {greetUser} from "../../utils/greetUser"
+import { greetUser } from "../../utils/greetUser";
 import { updateUser } from "../../API/usersApi";
 import { getAuthCookie } from "../../coockieManager/coockieManager";
 
@@ -28,11 +28,13 @@ const ProfilePage = () => {
     };
     // eslint-disable-next-line
   }, []);
-  
+
   return (
     <>
       <PageHeader className={classes.header}>
-        <h1 className={classes.h1}>{greetUser()} {loggedUser.name}!</h1>
+        <h2 className={classes.h1}>
+          {greetUser()} {loggedUser.name}!
+        </h2>
       </PageHeader>
       <ContentWrap width="90%" className={classes.contentWrap}>
         {settingsArray.map((category) => (

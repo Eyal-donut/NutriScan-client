@@ -1,9 +1,11 @@
 import classes from "./Logo.classes.module.css";
 
-const Logo = ({ sizeInRem }) => {
+const Logo = ({ sizeInRem, className, profilePage }) => {
   return (
     <div
-      className={classes.logo}
+      className={`${
+        !profilePage ? classes.logo : classes.logoGrey
+      } ${className}`}
       style={{ width: `${sizeInRem}`, height: `${sizeInRem}` }}
     ></div>
   );

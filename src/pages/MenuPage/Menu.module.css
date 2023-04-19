@@ -11,5 +11,14 @@
 }
 
 .menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4rem 0;
+}
 
+.logoAndHeader{
+    display: flex;
+    flex-direction: column;
+    margin-top: -1rem;
 }

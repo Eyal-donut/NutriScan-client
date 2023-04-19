@@ -9,3 +9,8 @@
     color: black;
     font-weight: 600;
 }
+
+.logo{
+   
+    z-index: 10;
+}

@@ -1,3 +1,8 @@
+.header{
+background: var(--bgr-third);
+height: 5rem;
+}
+
 .button {
     width: 50%;
     height: 100%;
@@ -6,5 +11,8 @@
     /* box-shadow: none; */
     color: var(--main-text);
     font-weight: var(--font-weight-text);
-    background: var(--bgr-sec);
+    background: var(--bgr-third);
+    /* background: var(--main-theme-color); */
+    box-shadow: none;
+    border: 1px solid var(--bgr-sec);
   }

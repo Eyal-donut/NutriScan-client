@@ -5,7 +5,7 @@ import classes from "./MyScansHeader.module.css";
 const MyScansHeader = ({ handleNavButtons }) => {
   return (
     <>
-      <PageHeader>
+      <PageHeader className={classes.header}>
         <Button
           className={classes.button}
           onBtnClick={handleNavButtons}

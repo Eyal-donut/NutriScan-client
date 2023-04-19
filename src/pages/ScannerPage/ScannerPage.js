@@ -27,6 +27,7 @@ const ScannerPage = () => {
 
   return (
     <div className={classes.wrap}>
+    
       {!isLoading && (
         <>
           <Scanner onDetectedBarcode={handleDetected} />

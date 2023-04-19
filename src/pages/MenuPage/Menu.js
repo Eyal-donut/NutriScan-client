@@ -7,6 +7,7 @@ import { useLoggedUser } from "../../hooks/useLoggedUser";
 import { useNavigate } from "react-router-dom";
 import { useLoggedUserContext } from "../../context/loggedUserContext";
 import { useLoginAndRegisterPagesDisplayContext } from "../../context/LoginAndRegisterPageContext";
+import Logo from "../../components/global components/Logo/Logo";
 
 const Menu = () => {
   const { setNewUser } = useLoggedUser();
@@ -37,7 +38,10 @@ const Menu = () => {
           screenCoverClassName={isMenuDisplay ? classes.display : classes.hide}
           windowClassName={classes.menu}
         >
-          <h1>Menu</h1>
+          <div className={classes.logoAndHeader}>
+            <Logo sizeInRem="7rem" />
+            <h1>Menu</h1>
+          </div>
           {loggedUser.name && (
             <Button text="Logout" onBtnClick={handleLogout} />
           )}
