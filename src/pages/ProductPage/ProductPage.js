@@ -32,7 +32,10 @@ const ProductPage = () => {
 
   useEffect(() => {
     checkCameraAndRefresh();
-    isProductFound && checkProductMatch(currentProduct, loggedUser);
+    if (isProductFound) {
+      checkProductMatch(currentProduct, loggedUser);
+      updateLocalAndLoggedUser(undefined, "singleProduct", currentProduct);
+    }
 
     return async () => {
       if (isProductFound) {
