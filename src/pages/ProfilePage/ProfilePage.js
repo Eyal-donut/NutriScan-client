@@ -23,9 +23,11 @@ const ProfilePage = () => {
   }, []);
 
   useEffect(() => {
-    return async () => {
-      updateUser(getAuthCookie(), loggedUser);
-    };
+    if (loggedUser.name) {
+      return async () => {
+        updateUser(getAuthCookie(), loggedUser);
+      };
+    }
     // eslint-disable-next-line
   }, []);
 

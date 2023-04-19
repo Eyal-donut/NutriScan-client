@@ -39,8 +39,10 @@ const ProductPage = () => {
         const localProduct = getLocalStorageItem("currentProduct");
         if (!localProduct.deleted) {
           updateLocalAndLoggedUser(undefined, "singleProduct", localProduct);
-          const updated= updateUser(getAuthCookie(), loggedUser);
-          console.log(await updated)
+
+          if (loggedUser.name) {
+            updateUser(getAuthCookie(), loggedUser);
+          }
         }
       }
     };
