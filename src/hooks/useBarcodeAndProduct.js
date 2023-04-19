@@ -49,6 +49,7 @@ export const useBarcodeAndProduct = () => {
       setProductStates(result);
       setLocalStorageItem("currentProduct", result);
       setLocalStorageItem("isProductFound", { state: true });
+      return result;
     }
     if (!result) {
       setLocalStorageItem("isProductFound", { state: false });
