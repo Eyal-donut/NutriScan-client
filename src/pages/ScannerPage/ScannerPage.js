@@ -28,7 +28,6 @@ const ScannerPage = () => {
     <>
       {!isLoading && (
         <>
-          <h1>Scanner Page</h1>
           <Scanner onDetectedBarcode={handleDetected} />
           <form onSubmit={submitHandler}>
             <input ref={inputRef}></input>

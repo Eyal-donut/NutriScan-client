@@ -5,12 +5,14 @@ import { useLoggedUserContext } from "../context/loggedUserContext";
 import { useSpinnerContext } from "../context/SpinnerContext";
 import { setAuthCookie } from "../coockieManager/coockieManager";
 import { useLoggedUser } from "./useLoggedUser";
+import { useLoginAndRegisterPagesDisplayContext } from "../context/LoginAndRegisterPageContext";
 
 export const useLoginAndRegister = () => {
   const { setErrorMessage } = useErrorMessageContext();
   const { setIsLoggedUser } = useLoggedUserContext();
   const { setIsLoading, isLoading } = useSpinnerContext();
   const { setExistingUser } = useLoggedUser();
+  const {setIsLoginPageDisplay} = useLoginAndRegisterPagesDisplayContext()
 
   const navigate = useNavigate();
 
@@ -34,6 +36,7 @@ export const useLoginAndRegister = () => {
         }
         setIsLoggedUser(true);
         setIsLoading(false);
+        setIsLoginPageDisplay(false)
       } else {
         setErrorMessage(data.error);
         setIsLoading(false);

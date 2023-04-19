@@ -23,7 +23,7 @@ const ProfilePage = () => {
   return (
     <>
       <PageHeader className={classes.header}>
-        <h1 className={classes.h1}>{greetUser()}{loggedUser.name}!</h1>
+        <h1 className={classes.h1}>{greetUser()} {loggedUser.name}!</h1>
       </PageHeader>
       <ContentWrap width="90%" className={classes.contentWrap}>
         {settingsArray.map((category) => (

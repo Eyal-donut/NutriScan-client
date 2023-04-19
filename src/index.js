@@ -10,7 +10,7 @@ import { LoggedUserProvider } from "./context/loggedUserContext";
 import { SpinnerProvider } from "./context/SpinnerContext";
 import { ProductProvider } from "./context/ProductContext";
 import { CameraProvider } from "./context/CameraContext";
-import { MenuDisplayProvider } from "./context/loggedUserContext copy";
+import { MenuDisplayProvider } from "./context/MenuDisplayContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -24,17 +24,16 @@ const LoginForm = ({ loginHandler, isLoginOrRegister }) => {
       : setLoginError("");
   }, [isInvalidEmail, isInvalidPassword, isInvalidName]);
 
-  useEffect(() => {
-    return () => {
-      setTimeout(() => {
-        setErrorMessage("");
-      }, 4000);
-    };
-    // eslint-disable-next-line
-  }, []);
+
 
   const inputHandler = (e) => {
-    if (isEmptyForm) setIsEmptyForm(false);
+    if (
+      emailRef.current.value === 0 &&
+      passwordRef.current.value === 0 &&
+      nameRef.current.value === 0
+    ) {
+      setIsEmptyForm(true);
+    } else if (isEmptyForm) setIsEmptyForm(false);
     if (errorMessage !== "") setErrorMessage("");
 
     setTimeout(() => {
@@ -59,7 +58,7 @@ const LoginForm = ({ loginHandler, isLoginOrRegister }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (isEmptyForm) {
-      setLoginError("Please fill out the form");
+      setErrorMessage("Please fill out the form");
       return;
     }
     if (loginError !== "") return;

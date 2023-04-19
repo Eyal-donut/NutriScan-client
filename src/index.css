@@ -23,7 +23,7 @@ html * {
   align-items: center;
   position: relative;
   font-size: 1.4rem;
-  margin-bottom: 7rem;
+  padding-bottom: 7rem;
 }
 
 a {

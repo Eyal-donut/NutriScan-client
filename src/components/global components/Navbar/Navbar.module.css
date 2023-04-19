@@ -1,18 +1,17 @@
 .nav {
   width: 100vw;
-  height: 65px;
+  height: 6.5rem;
   background: var(--bgr-main);
   position: fixed;
-  bottom: 0; 
+  bottom: 0;
   display: flex;
   align-items: center;
-  justify-content: center;  
+  justify-content: center;
   box-shadow: var(--navbar-box-shadow);
-  z-index: 1;
 }
 
 li {
-  margin: 0 1rem
+  margin: 0 1rem;
 }
 
 .linkWrap {

@@ -69,8 +69,6 @@ export const NEW_USER =
             "Sodium": 0
         }
     },
-    "name": "new user",
-    "email": "",
     "products": [],
 }
 

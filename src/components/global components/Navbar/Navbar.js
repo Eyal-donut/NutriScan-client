@@ -1,9 +1,12 @@
 import { NavLink, useLocation } from "react-router-dom";
 import classes from "./Navbar.module.css";
+import { useMenuDisplayContext } from "../../../context/MenuDisplayContext";
 
 const Navbar = () => {
   const location = useLocation();
   const pathName = location.pathname;
+  const { isMenuDisplay, setIsMenuDisplay } = useMenuDisplayContext();
+
   return (
     <>
       <nav className={classes.nav}>
@@ -13,12 +16,16 @@ const Navbar = () => {
               to="/"
               end
               className={({ isActive }) =>
-                isActive ? classes.activeLinkWrap : classes.linkWrap
+                isActive && !isMenuDisplay
+                  ? classes.activeLinkWrap
+                  : classes.linkWrap
               }
             >
               <div
                 className={
-                  pathName === "/" ? classes.activeScanner : classes.scanner
+                  pathName === "/" && !isMenuDisplay
+                    ? classes.activeScanner
+                    : classes.scanner
                 }
               ></div>
               Scanner
@@ -28,13 +35,15 @@ const Navbar = () => {
             <NavLink
               to="/my-scans"
               className={({ isActive }) =>
-                isActive ? classes.activeLinkWrap : classes.linkWrap
+                isActive && !isMenuDisplay
+                  ? classes.activeLinkWrap
+                  : classes.linkWrap
               }
               end
             >
               <div
                 className={
-                  pathName === "/my-scans"
+                  pathName === "/my-scans" && !isMenuDisplay
                     ? classes.activeMyScans
                     : classes.myScans
                 }
@@ -46,13 +55,15 @@ const Navbar = () => {
             <NavLink
               to="/profile"
               className={({ isActive }) =>
-                isActive ? classes.activeLinkWrap : classes.linkWrap
+                isActive && !isMenuDisplay
+                  ? classes.activeLinkWrap
+                  : classes.linkWrap
               }
               end
             >
               <div
                 className={
-                  pathName === "/profile"
+                  pathName === "/profile" && !isMenuDisplay
                     ? classes.activeProfile
                     : classes.profile
                 }
@@ -60,21 +71,22 @@ const Navbar = () => {
               Profile
             </NavLink>
           </li>
-          <li className={classes.li}>
-            <NavLink
-              to="/menu"
-              className={({ isActive }) =>
-                isActive ? classes.activeLinkWrap : classes.linkWrap
+          <li
+            className={classes.li}
+            onClick={() => {
+              setIsMenuDisplay(true);
+            }}
+          >
+            <div
+              className={
+                isMenuDisplay ? classes.activeLinkWrap : classes.linkWrap
               }
-              end
             >
               <div
-                className={
-                  pathName === "/menu" ? classes.activeMenu : classes.menu
-                }
+                className={isMenuDisplay ? classes.activeMenu : classes.menu}
               />
               Menu
-            </NavLink>
+            </div>
           </li>
         </ul>
       </nav>
