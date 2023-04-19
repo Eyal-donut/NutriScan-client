@@ -8,6 +8,8 @@
   align-items: center;
   justify-content: center;
   box-shadow: var(--navbar-box-shadow);
+  z-index: 10;
+  border-top: 1px solid var(--bgr-sec);
 }
 
 li {

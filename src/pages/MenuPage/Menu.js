@@ -7,6 +7,7 @@ import { useLoggedUser } from "../../hooks/useLoggedUser";
 import { useNavigate } from "react-router-dom";
 import { useLoggedUserContext } from "../../context/loggedUserContext";
 import { useLoginAndRegisterPagesDisplayContext } from "../../context/LoginAndRegisterPageContext";
+import { removeAuthCookie } from "../../coockieManager/coockieManager";
 import Logo from "../../components/global components/Logo/Logo";
 
 const Menu = () => {
@@ -19,6 +20,7 @@ const Menu = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    removeAuthCookie();
     setNewUser();
     navigate("/");
     setIsMenuDisplay(false);
