@@ -1,5 +1,10 @@
+@font-face {
+  font-family: 'proxima';
+  src: url(./assets/Proxima\ Nova\ Font.otf);
+}
+
 :root {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'proxima';
   line-height: 1.5;
   font-weight: var(--font-weight-text);
   font-size: 62.5%;

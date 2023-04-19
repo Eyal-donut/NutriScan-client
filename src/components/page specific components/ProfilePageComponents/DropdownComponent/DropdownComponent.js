@@ -6,15 +6,15 @@ import { useState } from "react";
 import { icons } from "../../../../constants/constants";
 
 
-const DropdownComponent = ({ categoryIcon, headerText, options, category }) => {
+const DropdownComponent = ({ headerText, options, category, description }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className={classes.wrap}>
       <div className={classes.headerWrap}>
-        <div className={classes.CategoryIconAndName}>
-          {/* <Icon imageUrl={categoryIcon} className={classes.categoryIcon}/> */}
+        <div className={classes.nameAndDescription}>
           <h3 className={classes.h3}>{headerText}</h3>
+          <h4 className={classes.h4}>{description}</h4>
         </div>
         <Icon
           imageUrl={icons.BACK_ICON}

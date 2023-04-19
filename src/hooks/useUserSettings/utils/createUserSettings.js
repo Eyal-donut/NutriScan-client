@@ -1,5 +1,6 @@
 import { icons } from "../../../constants/constants";
 import { convertNutValuesToClasses } from "./convertNutValuesToClasses";
+import {descriptions} from "../../../constants/constants"
 
 export const createSettingsArray = (product, user) => {
   if (product && !user) {
@@ -142,6 +143,7 @@ export const createSettingsArray = (product, user) => {
     return [
       {
         category: "dietPreferences",
+        description: descriptions.DIET_PREFS_DESCRIPTION,
         name: "Diet Preferences",
         icon: icons.NO_MATCH_ICON,
         value: [
@@ -173,6 +175,7 @@ export const createSettingsArray = (product, user) => {
       },
       {
         category: "environmentPreferences",
+        description: descriptions.ENVIRONMENT_PREFS_DESCRIPTION,
         name: "Environment Preferences",
         icon: icons.MATCH_ICON,
         value: [
@@ -198,6 +201,7 @@ export const createSettingsArray = (product, user) => {
       },
       {
         category: "nutritionPreferences",
+        description: descriptions.NUTRITION_PREFS_DESCRIPTION,
         name: "Nutrition Preferences",
         icon: icons.MATCH_ICON,
         value: [

@@ -12,6 +12,8 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useUserSettings } from "../../hooks/useUserSettings/useUserSettings";
 import { useLoggedUserContext } from "../../context/loggedUserContext";
 import { useProductContext } from "../../context/ProductContext";
+import { updateUser } from "../../API/usersApi";
+import { getAuthCookie } from "../../coockieManager/coockieManager";
 
 const ProductPage = () => {
   const { loggedUser } = useLoggedUserContext();
@@ -32,12 +34,13 @@ const ProductPage = () => {
     checkCameraAndRefresh();
     isProductFound && checkProductMatch(currentProduct, loggedUser);
 
-    return () => {
+    return async () => {
       if (isProductFound) {
         const localProduct = getLocalStorageItem("currentProduct");
         if (!localProduct.deleted) {
           updateLocalAndLoggedUser(undefined, "singleProduct", localProduct);
-          //! Add here api call to update the user
+          const updated= updateUser(getAuthCookie(), loggedUser);
+          console.log(await updated)
         }
       }
     };

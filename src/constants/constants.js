@@ -46,31 +46,30 @@ export const newUser = {
   },
 };
 
-export const NEW_USER = 
-  {
-    "settings": {
-        "dietPreferences": {
-            "Gluten free": false,
-            "Lactose free": false,
-            "Vegan": false,
-            "Vegetarian": false
-        },
-        "environmentPreferences": {
-            "Silicone & Siloxane": false,
-            "Microplastic": false,
-            "Palm oil": false
-        },
-        "nutritionPreferences": {
-            "Fat": 0,
-            "Saturated fat": 0,
-            "Cholesterol": 0,
-            "Carbohydrates": 0,
-            "Sugar": 0,
-            "Sodium": 0
-        }
+export const NEW_USER = {
+  settings: {
+    dietPreferences: {
+      "Gluten free": false,
+      "Lactose free": false,
+      Vegan: false,
+      Vegetarian: false,
     },
-    "products": [],
-}
+    environmentPreferences: {
+      "Silicone & Siloxane": false,
+      Microplastic: false,
+      "Palm oil": false,
+    },
+    nutritionPreferences: {
+      Fat: 0,
+      "Saturated fat": 0,
+      Cholesterol: 0,
+      Carbohydrates: 0,
+      Sugar: 0,
+      Sodium: 0,
+    },
+  },
+  products: [],
+};
 
 //amounts in 100g. Cholesterol in mg, the rest in g
 export const nutValues = {
@@ -80,13 +79,18 @@ export const nutValues = {
   MODERATE_CARBS: 22.5,
   LOW_SUGAR: 5,
   MODERATE_SUGAR: 22.5,
-  LOW_SALT: .3,
+  LOW_SALT: 0.3,
   MODERATE_SALT: 1.5,
   LOW_SAT_FAT: 1.5,
   MODERATE_SAT_FAT: 5,
   LOW_FAT: 3,
   MODERATE_FAT: 17.5,
+};
 
-}
-
-
+export const descriptions = {
+  NUTRITION_PREFS_DESCRIPTION:
+    "Personalize your nutrition for a healthier life!",
+  ENVIRONMENT_PREFS_DESCRIPTION:
+    "Use this filters to make more sustainable decisions",
+  DIET_PREFS_DESCRIPTION: "Mark the ingredients do you want to avoid to suit your life style and diet"
+};

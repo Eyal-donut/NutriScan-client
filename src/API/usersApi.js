@@ -1,7 +1,6 @@
 import axios from "axios";
 import { links } from "../constants/constants";
 
-
 export const loginUser = async (reqBody) => {
   try {
     const response = await axios.request({
@@ -45,6 +44,24 @@ export const getCurrentUser = async (token) => {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
+    });
+    const data = await response.data;
+    return data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
+export const updateUser = async (token, user) => {
+  try {
+    const response = await axios.request({
+      method: "put",
+      baseURL: `${links.AUTH_ROUTES_URL}/update-user`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      data: user,
     });
     const data = await response.data;
     return data;

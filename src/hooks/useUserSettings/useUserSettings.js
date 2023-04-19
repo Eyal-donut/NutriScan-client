@@ -31,10 +31,13 @@ export const useUserSettings = () => {
     setEnvironmentPreferences(environmentPreferences);
     setNutritionPreferences(nutritionPreferences);
 
-    setIsProductMatch(getMatchFromAllResults(allResults));
+    const productMatchResult = getMatchFromAllResults(allResults)
+    console.log(productMatchResult)
+
+    setIsProductMatch(productMatchResult);
     setIsPreferencesSet(true);
 
-    console.log(allResults);
+    return isProductMatch
   };
 
   return {

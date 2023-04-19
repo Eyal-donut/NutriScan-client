@@ -7,6 +7,8 @@ import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh "
 import { useLoggedUserContext } from "../../context/loggedUserContext";
 import { useUserSettings } from "../../hooks/useUserSettings/useUserSettings";
 import {greetUser} from "../../utils/greetUser"
+import { updateUser } from "../../API/usersApi";
+import { getAuthCookie } from "../../coockieManager/coockieManager";
 
 const ProfilePage = () => {
   const { checkCameraAndRefresh } = useCheckCameraAndRefresh();
@@ -17,6 +19,13 @@ const ProfilePage = () => {
 
   useEffect(() => {
     checkCameraAndRefresh();
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    return async () => {
+      updateUser(getAuthCookie(), loggedUser);
+    };
     // eslint-disable-next-line
   }, []);
   
@@ -33,6 +42,7 @@ const ProfilePage = () => {
             headerText={category.name}
             categoryIcon={category.icon}
             category={category.category}
+            description={category.description}
           />
         ))}
       </ContentWrap>

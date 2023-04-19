@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh ";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { updateUser } from "../../API/usersApi";
+import { getAuthCookie } from "../../coockieManager/coockieManager";
 import ProductCardMyScans from "../../components/page specific components/myScans page components/ProductCardMyScans/ProductCardMyScans";
 import SearchBar from "../../components/global components/SearchBar/SearchBar";
 import MyScansHeader from "../../components/page specific components/myScans page components/MyScansHeader/MyScansHeader";
+import { useLoggedUserContext } from "../../context/loggedUserContext";
+
 
 const MyScansPage = () => {
   const { checkCameraAndRefresh } = useCheckCameraAndRefresh();
   const { getItemProperty } = useLocalStorage();
+  const {loggedUser} = useLoggedUserContext()
 
   const [myScans, setMyScans] = useState(() =>
     getItemProperty("loggedUser", "products")
@@ -36,7 +41,13 @@ const MyScansPage = () => {
 
   useEffect(() => {
     checkCameraAndRefresh();
+    // eslint-disable-next-line
+  }, []);
 
+  useEffect(() => {
+    return async () => {
+      updateUser(getAuthCookie(), loggedUser);
+    };
     // eslint-disable-next-line
   }, []);
 

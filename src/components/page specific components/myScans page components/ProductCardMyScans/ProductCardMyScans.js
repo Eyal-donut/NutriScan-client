@@ -3,19 +3,27 @@ import LikeButton from "../../../global components/LikeButton/LikeButton";
 import DeleteButton from "../../../global components/DeleteButton/DeleteButton";
 import ProductImage from "../../../global components/ProductImage/ProductImage";
 import IsMatchBar from "../../../global components/IsMatchBar/IsMatchBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { constants } from "../../../../constants/constants";
 import { useBarcodeAndProduct } from "../../../../hooks/useBarcodeAndProduct";
 import { useLoggedUser } from "../../../../hooks/useLoggedUser";
 import { useNavigate } from "react-router-dom";
 import { useUserSettings } from "../../../../hooks/useUserSettings/useUserSettings";
+import { useLoggedUserContext } from "../../../../context/loggedUserContext";
 
 const ProductCardMyScans = ({ product, page, onBtnClick }) => {
   const { updateMyScanCard, getFromLocalAndSetCurrent } =
     useBarcodeAndProduct();
   const { deleteLocalUserProduct } = useLoggedUser();
+  const { checkProductMatch } = useUserSettings();
+  const { loggedUser } = useLoggedUserContext();
+
   const [isLiked, setIsLiked] = useState(product.isLiked);
-  const { isProductMatch } = useUserSettings();
+
+  const [isMatch, setIsMatch] = useState(() => {
+    return checkProductMatch(product, loggedUser);
+  });
+
   const navigate = useNavigate();
 
   const clickHandler = (e) => {
@@ -38,14 +46,22 @@ const ProductCardMyScans = ({ product, page, onBtnClick }) => {
       navigate("/product");
     }
   };
+
+  useEffect(() => {
+    const isProductMatch = checkProductMatch(product, loggedUser);
+    setIsMatch(isProductMatch);
+
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div
       className={`${classes.wrap} ${
-        isProductMatch === true
+        isMatch === true
           ? classes.wrapYes
-          : isProductMatch === false
+          : isMatch === false
           ? classes.wrapNo
-          : isProductMatch === "Unknown"
+          : isMatch === "Unknown"
           ? classes.wrapUnknown
           : classes.wrapNoFilters
       }`}
@@ -64,7 +80,7 @@ const ProductCardMyScans = ({ product, page, onBtnClick }) => {
       <ul className={classes.productDetails}>
         <li className={classes.li}>{product.name}</li>
         <li className={classes.li}>{product.company}</li>
-        <IsMatchBar page="my-scans" isMatch={isProductMatch} />
+        <IsMatchBar page="my-scans" isMatch={isMatch} />
       </ul>
       <div className={classes.buttonsWrap}>
         <LikeButton
