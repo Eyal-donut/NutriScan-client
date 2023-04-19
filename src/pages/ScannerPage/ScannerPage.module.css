@@ -1,0 +1,11 @@
+.wrap{background: none}
+.input{
+    background: rgb(255, 255, 255, .4);
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.form{
+    margin-top: 1rem;
+    color: black;
+    font-weight: 600;
+}

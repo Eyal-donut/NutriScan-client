@@ -1,5 +1,6 @@
 :root {
-    --bgr-main: #FFFFFF;
+    /* --bgr-main: #FFFFFF; */
+    --bgr-main:#FCFCFC;
     /* --bgr-sec: #EFEFEF; */
     --bgr-sec: #D8DADE;
     --bgr-third: #e5e7eb;

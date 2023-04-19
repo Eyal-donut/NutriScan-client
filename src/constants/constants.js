@@ -4,7 +4,7 @@ import MATCH_ICON from "../assets/icons/checkGreen.png";
 import BACK_ICON from "../assets/icons/arrow.png";
 
 export const constants = {
-  APP_NAME: "Products Scanner",
+  APP_NAME: "NutriScan",
   OPEN_FOOD_API: "Open Food API",
   PRODUCT_NOT_FOUND: "Product not found",
   EMAIL_REGEX: /^\w+([-._]\w+)*@\w+([-._]\w+)*\.\w{2,}$/i,

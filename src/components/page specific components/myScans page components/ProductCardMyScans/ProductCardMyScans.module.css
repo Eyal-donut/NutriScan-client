@@ -6,11 +6,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: .7rem solid var(--grey);
+    border: .9rem solid var(--grey);
     border-radius: 10px;
     box-shadow: var(--btn-box-shadow);
     padding: 0 1rem;
+    cursor: pointer;
 }
+.wrapNo {
+    border: .9rem solid rgb(218, 2, 23, 0.95);
+  }
+  .wrapYes {
+    border: .9rem solid rgb(134, 192, 28, 1);
+  }
+  .wrapUnknown {
+    border: .9rem solid rgb(241, 162, 57, 1);
+  }
+  .wrapNoFilters{
+    border: .9rem solid var(--bgr-third);
+  }
 
 .wrap * {
     text-align: left;

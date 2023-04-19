@@ -7,8 +7,12 @@ import { useLoggedUserContext } from "../context/loggedUserContext";
 export const useBarcodeAndProduct = () => {
   const { loggedUser } = useLoggedUserContext();
   const { setLocalStorageItem } = useLocalStorage();
-  const { setCurrentProduct, setProductSource, currentProduct, setIsProductFound } =
-    useProductContext();
+  const {
+    setCurrentProduct,
+    setProductSource,
+    currentProduct,
+    setIsProductFound,
+  } = useProductContext();
   const { updateLocalAndLoggedUser } = useLoggedUser();
 
   const setProductStates = (product) => {
@@ -24,6 +28,13 @@ export const useBarcodeAndProduct = () => {
     if (product) {
       return product;
     }
+  };
+
+  const getFromLocalAndSetCurrent = (barcode) => {
+    const product = getFromLoggedUserProducts(barcode);
+    setProductStates(product);
+    setLocalStorageItem("currentProduct", product);
+    setLocalStorageItem("isProductFound", { state: true });
   };
 
   const getProductAndSetCurrent = async (barcode) => {
@@ -77,5 +88,6 @@ export const useBarcodeAndProduct = () => {
     getProductAndSetCurrent,
     updateProductAndSetCurrent,
     updateMyScanCard,
+    getFromLocalAndSetCurrent,
   };
 };

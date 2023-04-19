@@ -17,4 +17,5 @@
     top: 50%;
     transform: translateY(-50%) rotate(180deg);
     left: 0;
+    cursor: pointer;
 }

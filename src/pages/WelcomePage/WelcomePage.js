@@ -6,6 +6,7 @@ import ButtonWrap from "../../components/global components/ButtonWrap/ButtonWrap
 import { constants } from "../../constants/constants.js";
 import { useLoginAndRegisterPagesDisplayContext } from "../../context/LoginAndRegisterPageContext.js";
 import { useLoggedUser } from "../../hooks/useLoggedUser.js";
+import Logo from "../../components/global components/Logo/Logo.js";
 
 const WelcomePage = () => {
   const { isLoginPageDisplay, setIsLoginPageDisplay, setIsLoginOrRegister } =
@@ -30,8 +31,8 @@ const WelcomePage = () => {
   return (
     <>
       {isLoginPageDisplay &&  <LoginPage />}
+      <Logo sizeInRem="15rem"/>
 
-      <div>LOGO - design sth cool</div>
       <ContentWrap width="75%">
         <h1>
           Welcome to

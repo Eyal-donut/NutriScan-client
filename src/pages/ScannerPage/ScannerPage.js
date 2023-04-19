@@ -1,5 +1,6 @@
 import Scanner from "../../components/page specific components/scanner page components/Scanner/Scanner";
 import SpinnerPage from "../SpinnerPage/SpinnerPage";
+import classes from './ScannerPage.module.css'
 import { useNavigate } from "react-router-dom";
 import { useBarcodeAndProduct } from "../../hooks/useBarcodeAndProduct";
 import { useSpinnerContext } from "../../context/SpinnerContext";
@@ -25,17 +26,18 @@ const ScannerPage = () => {
   }
 
   return (
-    <>
+    <div className={classes.wrap}>
       {!isLoading && (
         <>
           <Scanner onDetectedBarcode={handleDetected} />
-          <form onSubmit={submitHandler}>
-            <input ref={inputRef}></input>
+          <form className={classes.form} onSubmit={submitHandler}>
+            <label htmlFor="type-barcode" className={classes.label}>Type Barcode: </label>
+            <input className={classes.input} name="type-barcode" ref={inputRef}></input>
           </form>
         </>
       )}
       {isLoading && <SpinnerPage />}
-    </>
+    </div>
   );
 };
 export default ScannerPage;

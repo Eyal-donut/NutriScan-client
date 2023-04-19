@@ -18,12 +18,12 @@ const MyScansHeader = ({ handleNavButtons }) => {
           text="Liked Products"
           id="liked-products-btn"
         ></Button>
-        <Button
+        {/* <Button
           className={classes.button}
           onBtnClick={handleNavButtons}
           text="Filters"
           id="filters-btn"
-        ></Button>
+        ></Button> */}
       </PageHeader>
     </>
   );
