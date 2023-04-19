@@ -2,6 +2,42 @@ import WARNING_ICON from "../assets/icons/warningOrange.png";
 import NO_MATCH_ICON from "../assets/icons/noMatchRed.png";
 import MATCH_ICON from "../assets/icons/checkGreen.png";
 import BACK_ICON from "../assets/icons/arrow.png";
+import CARBS_ICON from "../assets/icons/new/carbs.png"
+import CHOLESTEROL_ICON from "../assets/icons/new/cholesete.png"
+import FAT_ICON from "../assets/icons/new/fat.png"
+import GLUTEN_ICON from "../assets/icons/new/gluten.png"
+import LACTOSE_ICON from "../assets/icons/new/lactose.png"
+import PALM_ICON from "../assets/icons/new/palm.png"
+import PLASTIC_ICON from "../assets/icons/new/plastic.png"
+import SALT_ICON from "../assets/icons/new/salt.png"
+import SILICONE_ICON from "../assets/icons/new/sillicone.png"
+import SUGAR_ICON from "../assets/icons/new/sugar.png"
+import TRANS_ICON from "../assets/icons/new/trans.png"
+import VEGAN_ICON from "../assets/icons/new/vegan.png"
+import VEGETARIAN_ICON from "../assets/icons/new/veget.png"
+
+
+export const icons = {
+  MATCH_ICON,
+  WARNING_ICON,
+  NO_MATCH_ICON,
+  BACK_ICON,
+  CARBS_ICON,
+  CHOLESTEROL_ICON,
+  FAT_ICON,
+  GLUTEN_ICON,
+  LACTOSE_ICON,
+  PALM_ICON,
+  PLASTIC_ICON,
+  SALT_ICON,
+  SILICONE_ICON,
+  SUGAR_ICON,
+  TRANS_ICON,
+  VEGAN_ICON,
+  VEGETARIAN_ICON
+};
+
+
 
 export const constants = {
   APP_NAME: "NutriScan",
@@ -16,12 +52,7 @@ export const links = {
   OPEN_FOOD_FACTS_URL: "https://world.openfoodfacts.org/api/v2/product",
 };
 
-export const icons = {
-  MATCH_ICON,
-  WARNING_ICON,
-  NO_MATCH_ICON,
-  BACK_ICON,
-};
+
 
 export const newUser = {
   products: [],
