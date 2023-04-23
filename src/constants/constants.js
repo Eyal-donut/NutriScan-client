@@ -53,30 +53,6 @@ export const links = {
 };
 
 
-
-export const newUser = {
-  products: [],
-  dietPreferences: {
-    "Gluten free": false,
-    "Lactose free": false,
-    Vegan: false,
-    Vegetarian: false,
-  },
-  environmentPreferences: {
-    "Silicone & Siloxane": false,
-    Microplastic: false,
-    "Palm oil": false,
-  },
-  nutritionPreferences: {
-    Fat: "Off",
-    "Saturated fat": "Off",
-    Cholesterol: "Off",
-    Carbohydrates: "Off",
-    Sugar: "Off",
-    Salt: "Off",
-  },
-};
-
 export const NEW_USER = {
   settings: {
     dietPreferences: {
