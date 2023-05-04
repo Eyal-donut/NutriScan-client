@@ -1,71 +1,83 @@
-# Getting Started with Create React App
+# NutriScan Readme File
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to NutriScan! 
+NutriScan is an innovative app designed to help you make informed purchasing decisions based on your nutritional, dietary and environmental preferences. Make informed purchasing decisions and find products that align with your values by simply scanning products' barcode. 
+NutriScan is  It is easy to use, and you can access it as a web version or install it as an app. Our app is powered by cutting-edge technologies such as React, Node.js, and MongoDB, and we have integrated several features to make your experience seamless.
 
-## Available Scripts
+## How to Run the App
 
-In the project directory, you can run:
+### Web Version
 
-### `npm start`
+To access the web version, simply visit the following link:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+https://nutri-scan.netlify.app/
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Install as an App
 
-### `npm test`
+To install NutriScan as an app, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Visit the web version of NutriScan at the following link: https://nutri-scan.netlify.app/
+2. Click on the computer logo on the right side of the URL box.
+3. Click the "Install" button.
 
-### `npm run build`
+## How to Use the App
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To use the NutriScan app, simply follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Open the app on your device.
+2. Scan a product's barcode using the integrated barcode scanner.
+3. The app will show you if the product matches your diet, environment, and nutrition preferences.
+4. Set your preferences in the app by going to the preferences page.
+5. View detailed information about each product, including ingredients and nutritional values.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Features
 
-### `npm run eject`
+NutriScan comes with the following features:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Scan products' barcode and see if they match your diet, environment, and nutrition preferences.
+- Set your diet, environment, and nutrition preferences in the app.
+- View detailed information about each product, including ingredients and nutritional values.
+- Search products from the products you scanned by name, barcode number, category, or manufacturer.
+- Create a user to have all your scans saved, or use without logging in and directly start scanning.
+- Authentication with JSON Web Tokens (JWT).
+- Dynamically created database, with products scraped from multiple supermarket chains' websites.
+- Microsoft Azure API integration for translation of products' information from Hebrew to English.
+- Quagga barcode scanner integration.
+- Progressive web app: use the app as a web version, or install it with a click and use as an app from every device.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technologies Used
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+NutriScan was developed using the following technologies:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- React
+- Node.js
+- Express
+- JSON Web Tokens (JWT)
+- MongoDB
+- Puppeteer (scraping)
+- Microsoft Azure (translation)
+- Quagga barcode scanner
 
-## Learn More
+## Deployment Services Used
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+NutriScan was deployed using the following services:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Server deployed to Render
+- Client (UI) deployed to Netlify
 
-### Code Splitting
+## Planned Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+We are continually improving the app and have several planned features in the pipeline. The following features are planned for the near future of NutriScan:
 
-### Analyzing the Bundle Size
+- Search from products, instead of scanning.
+- In the product's page, a carousel of similar products.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Challenges
 
-### Making a Progressive Web App
+The development of NutriScan presented several challenges, including:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Writing the logic for the products and the users to find if each of the options match to the user preferences, if each category matches, and if the product matches, to get the results dynamically in the app and present them in the front end.
+- Scraping - writing a scraping function that scrolls to load all the products, opens each product page, opens the ingredients section of each product, and gets all the information.
+- Dynamically creating the database, with all the steps: translation and filter functions, so they will fit with what I want to present in the front end.
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# products-scanner-clien
+# Thank you for checking out NutriScan, and I hope you find it useful!
