@@ -78,6 +78,6 @@ The development of NutriScan presented several challenges, including:
 
 - Writing the logic for the products and the users to find if each of the options match to the user preferences, if each category matches, and if the product matches, to get the results dynamically in the app and present them in the front end.
 - Scraping - writing a scraping function that scrolls to load all the products, opens each product page, opens the ingredients section of each product, and gets all the information.
-- Dynamically creating the database, with all the steps: translation and filter functions, so they will fit with what I want to present in the front end.
+- Dynamically creating the database, with all the steps: translation and filter functions, so they will fit with what I want to present in the front end./
 
 # Thank you for checking out NutriScan, and I hope you find it useful!
