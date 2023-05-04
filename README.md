@@ -76,8 +76,8 @@ We are continually improving the app and have several planned features in the pi
 
 The development of NutriScan presented several challenges, including:
 
-- Writing the logic for the products and the users to find if each of the options match to the user preferences, if each category matches, and if the product matches, to get the results dynamically in the app and present them in the front end.
-- Scraping - writing a scraping function that scrolls to load all the products, opens each product page, opens the ingredients section of each product, and gets all the information.
-- Dynamically creating the database, with all the steps: translation and filter functions, so they will fit with what I want to present in the front end.
+- Writing the logic for the products and the users to find if each of the options match to the user preferences was the apps main challenge and the core of its logic. 
+- Scraping: writing a scraping function that scrolls to load all the products, opens each product page, opens the ingredients section of each product, and gets all the information. If the function fails due to a fail on the website side, it will reload and start again, until it succeeds. The function also waits a bit after every step, to mimic user behavior.
+- Dynamically creating the database, embedding translation and many functions that test the products' scraped data took a lot of planning and structured work.
 
 ### Thank you for checking out NutriScan, and I hope you find it useful!
