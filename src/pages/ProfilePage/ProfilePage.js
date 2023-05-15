@@ -7,7 +7,7 @@ import { useCheckCameraAndRefresh } from "../../hooks/useCheckCameraAndRefresh "
 import { useLoggedUserContext } from "../../context/loggedUserContext";
 import { useUserSettings } from "../../hooks/useUserSettings/useUserSettings";
 import { greetUser } from "../../utils/greetUser";
-import { capitalizeUsername } from "../../utils/CapitalizeUsername";
+import { capitalizeUsername } from "../../utils/capitalizeUsername";
 import { updateUser } from "../../API/usersApi";
 import { getAuthCookie } from "../../coockieManager/coockieManager";
 
@@ -35,9 +35,12 @@ const ProfilePage = () => {
   return (
     <>
       <PageHeader className={classes.header}>
-        <h2 className={classes.h1}>
-          {greetUser()} {capitalizeUsername(loggedUser.name)}!
-        </h2>
+        <div className={classes.container}>
+          <h2 className={classes.h2}>
+            {greetUser()} {capitalizeUsername(loggedUser.name)}!
+          </h2>
+          <h4>Settings</h4>
+        </div>
       </PageHeader>
       <ContentWrap width="90%" className={classes.contentWrap}>
         {settingsArray.map((category) => (
