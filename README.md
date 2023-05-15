@@ -44,6 +44,7 @@ NutriScan comes with the following features:
 - Microsoft Azure API integration for translation of products' information from Hebrew to English.
 - Quagga barcode scanner integration.
 - Progressive web app: use the app as a web version, or install it with a click and use as an app from every device.
+- Responsive UI.
 
 ## Technologies Used
 
