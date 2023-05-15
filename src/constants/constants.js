@@ -98,6 +98,6 @@ export const descriptions = {
   NUTRITION_PREFS_DESCRIPTION:
     "Personalize your nutrition for a healthier life!",
   ENVIRONMENT_PREFS_DESCRIPTION:
-    "Use this filters to make more sustainable decisions",
+    "Use these filters to make more sustainable decisions",
   DIET_PREFS_DESCRIPTION: "Mark the ingredients do you want to avoid to suit your life style and diet"
 };
