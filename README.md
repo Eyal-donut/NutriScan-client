@@ -1,8 +1,7 @@
 # NutriScan Readme File
 
 Welcome to NutriScan! 
-NutriScan is an innovative app designed to help you make informed purchasing decisions based on your nutritional, dietary and environmental preferences. Make informed purchasing decisions and find products that align with your values by simply scanning products' barcode. 
-NutriScan is  It is easy to use, and you can access it as a web version or install it as an app. Our app is powered by cutting-edge technologies such as React, Node.js, and MongoDB, and we have integrated several features to make your experience seamless.
+NutriScan is an innovative full stack app, designed to help you make informed purchasing decisions based on your nutritional, dietary and environmental preferences. It does that by simply scanning products' barcode. It is easy to use, and is accessible as a web version and as a mobile app. It is powered by cutting-edge technologies such as React, Node.js, and MongoDB, and is integrated with several features to make the user experience seamless.
 
 ## How to Run the App
 
