@@ -1,6 +1,7 @@
 .header{
 background: var(--bgr-third);
 height: 5rem;
+z-index: 100;
 }
 
 .button {
