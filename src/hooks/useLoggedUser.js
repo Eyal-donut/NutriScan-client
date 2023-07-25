@@ -4,22 +4,22 @@ import { useLocalStorage } from "./useLocalStorage";
 
 export const useLoggedUser = () => {
   const { loggedUser, setLoggedUser, setIsLoggedUser } = useLoggedUserContext();
-  const { setLocalStorageItem, getItemProperty } = useLocalStorage();
+  const { setLocalStorageItem, getItemProperty, getLocalStorageItem } =
+    useLocalStorage();
 
-//This is new!
+  //This is new!
   const getLocalLoggedUser = () => {
-    const {getLocalStorageItem} = useLocalStorage()
-    const localUser = getLocalStorageItem("loggedUser")
-    if(localUser){
-      return localUser
+    const localUser = getLocalStorageItem("loggedUser");
+    if (localUser) {
+      return localUser;
     }
-    return {}
-  }
+    return {};
+  };
 
   const setNewUser = () => {
     setLocalStorageItem("loggedUser", NEW_USER);
     setLoggedUser(NEW_USER);
-    setIsLoggedUser(true)
+    setIsLoggedUser(true);
   };
 
   const setExistingUser = (existingUser) => {
@@ -113,6 +113,6 @@ export const useLoggedUser = () => {
     setLoggedUserFromLocal,
     deleteLocalUserProduct,
     //This is new
-    getLocalLoggedUser
+    getLocalLoggedUser,
   };
 };
