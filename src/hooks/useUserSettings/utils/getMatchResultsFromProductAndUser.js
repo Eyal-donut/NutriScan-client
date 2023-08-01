@@ -19,7 +19,6 @@ export const getMatchResultsFromProductAndUser = (
     const unknownArray = [];
 
     for (const productOption of productOptionsArray) {
-      console.log(productOption)
       const examinedUserOption = userOptionsArray.find(
         (userOption) => userOption.name === productOption.name
       );
