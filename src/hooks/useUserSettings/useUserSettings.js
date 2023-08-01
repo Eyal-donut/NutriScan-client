@@ -16,7 +16,6 @@ export const useUserSettings = () => {
       .flat();
 
     const productCategoriesArray = createSettingsArray(product, undefined);
-
     const {
       allResults,
       dietPreferences,
@@ -31,13 +30,12 @@ export const useUserSettings = () => {
     setEnvironmentPreferences(environmentPreferences);
     setNutritionPreferences(nutritionPreferences);
 
-    const productMatchResult = getMatchFromAllResults(allResults)
-    console.log(productMatchResult)
+    const productMatchResult = getMatchFromAllResults(allResults);
 
     setIsProductMatch(productMatchResult);
     setIsPreferencesSet(true);
 
-    return isProductMatch
+    return isProductMatch;
   };
 
   return {
