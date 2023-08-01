@@ -26,7 +26,6 @@ export const useLoginAndRegister = () => {
       data = await registerUser({ email, password, name });
     }
     if (data.success) {
-      console.log(typeof data.token)
       setAuthCookie(data.token);
       const fetchedUser = await getCurrentUser(data.token);
       if (data.success) {
