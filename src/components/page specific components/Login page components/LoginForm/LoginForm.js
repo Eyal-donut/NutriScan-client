@@ -24,13 +24,18 @@ const LoginForm = ({ loginHandler, isLoginOrRegister }) => {
       : setLoginError("");
   }, [isInvalidEmail, isInvalidPassword, isInvalidName]);
 
-
-
   const inputHandler = (e) => {
-    if (
-      emailRef.current.value === 0 &&
-      passwordRef.current.value === 0 &&
-      nameRef.current.value === 0
+    if (nameRef.current) {
+      if (
+        emailRef.current?.value.length === 0 &&
+        passwordRef.current?.value.length === 0 &&
+        nameRef.current?.value.length === 0
+      ) {
+        setIsEmptyForm(true);
+      }
+    } else if (
+      emailRef.current?.value.length === 0 &&
+      passwordRef.current?.value.length === 0
     ) {
       setIsEmptyForm(true);
     } else if (isEmptyForm) setIsEmptyForm(false);
@@ -95,7 +100,7 @@ const LoginForm = ({ loginHandler, isLoginOrRegister }) => {
               type="text"
               ref={nameRef}
               className={classes.input}
-              onChange={inputHandler}
+              onInput={inputHandler}
             />
             {isInvalidName && (
               <ErrorMessage textOne={"Please enter a username"} />
@@ -111,7 +116,7 @@ const LoginForm = ({ loginHandler, isLoginOrRegister }) => {
             type="text"
             ref={emailRef}
             className={classes.input}
-            onChange={inputHandler}
+            onInput={inputHandler}
           />
           {isInvalidEmail && <ErrorMessage textOne={"Invalid Email format"} />}
         </li>
@@ -124,7 +129,7 @@ const LoginForm = ({ loginHandler, isLoginOrRegister }) => {
             type="password"
             ref={passwordRef}
             className={classes.input}
-            onChange={inputHandler}
+            onInput={inputHandler}
           />
           {isInvalidPassword && (
             <ErrorMessage
