@@ -32,13 +32,17 @@ const LoginForm = ({ loginHandler, isLoginOrRegister }) => {
         nameRef.current?.value.length === 0
       ) {
         setIsEmptyForm(true);
+      } else {
+        setIsEmptyForm(false);
       }
     } else if (
       emailRef.current?.value.length === 0 &&
       passwordRef.current?.value.length === 0
     ) {
       setIsEmptyForm(true);
-    } else if (isEmptyForm) setIsEmptyForm(false);
+    } else {
+      setIsEmptyForm(false);
+    }
     if (errorMessage !== "") setErrorMessage("");
 
     setTimeout(() => {
@@ -62,6 +66,7 @@ const LoginForm = ({ loginHandler, isLoginOrRegister }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log(isEmptyForm, "empty form?");
     if (isEmptyForm) {
       setErrorMessage("Please fill out the form");
       return;
